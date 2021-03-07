@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1755</width>
-    <height>929</height>
+    <width>1549</width>
+    <height>796</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,6 +22,9 @@
       <width>1751</width>
       <height>901</height>
      </rect>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="Tim">
@@ -50,7 +53,7 @@
        <string>Lieke</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="kind3">
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -63,7 +66,7 @@
        <string>...</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="kind4">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -76,7 +79,7 @@
        <string>...</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="kind5">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -89,7 +92,7 @@
        <string>...</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="kind6">
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -259,20 +262,61 @@
        </rect>
       </property>
       <property name="text">
-       <string>Vorige Pagina</string>
+       <string>Volgende Pagina</string>
       </property>
      </widget>
      <widget class="QPushButton" name="replay">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>610</y>
-        <width>221</width>
-        <height>121</height>
+        <x>730</x>
+        <y>530</y>
+        <width>151</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
        <string>Opnieuw</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="text">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>620</y>
+        <width>871</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;-------------------------------------------------------------------&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;-----------------------------------------------------------------------------------&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;------------------------------------------------------------------&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pagenr">
+      <property name="geometry">
+       <rect>
+        <x>1454</x>
+        <y>530</y>
+        <width>21</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Books">
+     <widget class="QPushButton" name="book1">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>60</y>
+        <width>451</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Milo en Lana op de kinderboerderij</string>
       </property>
      </widget>
     </widget>
@@ -283,26 +327,26 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1755</width>
+     <width>1549</width>
      <height>26</height>
     </rect>
    </property>
    <property name="defaultUp">
     <bool>false</bool>
    </property>
-   <widget class="QMenu" name="menuhoi">
+   <widget class="QMenu" name="menu">
     <property name="title">
      <string>Menu</string>
     </property>
     <addaction name="separator"/>
     <addaction name="actionKinderen"/>
     <addaction name="actionBoeken"/>
+    <addaction name="actionPaginas"/>
     <addaction name="separator"/>
     <addaction name="actionInstellingen"/>
     <addaction name="separator"/>
-    <addaction name="actionTerug"/>
    </widget>
-   <addaction name="menuhoi"/>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionKinderen">
@@ -315,9 +359,9 @@
     <string>Boeken</string>
    </property>
   </action>
-  <action name="actionTerug">
+  <action name="actionPaginas">
    <property name="text">
-    <string>Terug</string>
+    <string>Pagina's van huidige boek</string>
    </property>
   </action>
   <action name="actionInstellingen">
