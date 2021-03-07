@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, uic
+from PyQt5.QtGui import QPixmap
 import sys
 
 
@@ -23,6 +24,10 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedwidget = self.findChild(QtWidgets.QStackedWidget, 'stackedWidget')
         
         self.show()
+        
+        self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
+        pixmap = QPixmap('video.PNG')
+        self.screen.setPixmap(pixmap)
 
     def set_children_window(self):
         self.stackedWidget.setCurrentIndex(0)
