@@ -23,8 +23,8 @@
       <height>901</height>
      </rect>
     </property>
-    <widget class="QWidget" name="page">
-     <widget class="QPushButton" name="pushButton">
+    <widget class="QWidget" name="Children">
+     <widget class="QPushButton" name="Tim">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -37,7 +37,7 @@
        <string>Tim</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="Lieke">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -103,8 +103,8 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2">
-     <widget class="QPushButton" name="pushButton_7">
+    <widget class="QWidget" name="Pages">
+     <widget class="QPushButton" name="page1">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -117,7 +117,7 @@
        <string>Pagina 1</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="page2">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -130,7 +130,7 @@
        <string>Pagina 2</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_9">
+     <widget class="QPushButton" name="page3">
       <property name="geometry">
        <rect>
         <x>510</x>
@@ -143,7 +143,7 @@
        <string>Pagina 3</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_10">
+     <widget class="QPushButton" name="page4">
       <property name="geometry">
        <rect>
         <x>720</x>
@@ -156,7 +156,7 @@
        <string>Pagina 4</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_11">
+     <widget class="QPushButton" name="page5">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -169,7 +169,7 @@
        <string>Pagina 5</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_12">
+     <widget class="QPushButton" name="page6">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -182,7 +182,7 @@
        <string>Pagina 6</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_13">
+     <widget class="QPushButton" name="page7">
       <property name="geometry">
        <rect>
         <x>510</x>
@@ -195,7 +195,7 @@
        <string>Pagina 7</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_14">
+     <widget class="QPushButton" name="page8">
       <property name="geometry">
        <rect>
         <x>720</x>
@@ -208,7 +208,7 @@
        <string>Pagina 8</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_15">
+     <widget class="QPushButton" name="pagex">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -222,8 +222,8 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_3">
-     <widget class="QLabel" name="label">
+    <widget class="QWidget" name="Pageview">
+     <widget class="QLabel" name="screen">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -236,7 +236,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fakevideo/video.PNG&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_16">
+     <widget class="QPushButton" name="previous_page">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -249,7 +249,7 @@
        <string>Vorige Pagina</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_17">
+     <widget class="QPushButton" name="next_page">
       <property name="geometry">
        <rect>
         <x>1270</x>
@@ -262,7 +262,7 @@
        <string>Vorige Pagina</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_18">
+     <widget class="QPushButton" name="replay">
       <property name="geometry">
        <rect>
         <x>690</x>
@@ -290,8 +290,41 @@
    <property name="defaultUp">
     <bool>false</bool>
    </property>
+   <widget class="QMenu" name="menuhoi">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionKinderen"/>
+    <addaction name="actionBoeken"/>
+    <addaction name="separator"/>
+    <addaction name="actionInstellingen"/>
+    <addaction name="separator"/>
+    <addaction name="actionTerug"/>
+   </widget>
+   <addaction name="menuhoi"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionKinderen">
+   <property name="text">
+    <string>Kinderen</string>
+   </property>
+  </action>
+  <action name="actionBoeken">
+   <property name="text">
+    <string>Boeken</string>
+   </property>
+  </action>
+  <action name="actionTerug">
+   <property name="text">
+    <string>Terug</string>
+   </property>
+  </action>
+  <action name="actionInstellingen">
+   <property name="text">
+    <string>Instellingen</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="resources.qrc"/>
