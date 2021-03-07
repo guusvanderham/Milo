@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="fakevideo">
+    <file>video.PNG</file>
+  </qresource>
+</RCC>
