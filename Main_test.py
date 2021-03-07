@@ -76,7 +76,14 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.show()
         
+<<<<<<< Updated upstream
         
+=======
+        #voor plaatjes
+        self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
+        pixmap = QPixmap('video.PNG')
+        self.screen.setPixmap(pixmap)
+>>>>>>> Stashed changes
 
 
     #verander de window
