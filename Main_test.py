@@ -70,34 +70,34 @@ class Ui(QtWidgets.QMainWindow):
         self.actionKinderen.triggered.connect(self.set_children_window)
         self.actionBoeken.triggered.connect(self.set_book_window)
         self.actionPaginas.triggered.connect(self.set_page_window)
+        self.actionInstellingen.triggered.connect(self.set_instellingen_window)
         
         #de stacked widget waarin de verschillende windows staan
         self.stackedwidget = self.findChild(QtWidgets.QStackedWidget, 'stackedWidget')
         self.stackedWidget.setCurrentIndex(0)
         self.show()
         
-<<<<<<< Updated upstream
         
-=======
         #voor plaatjes
         self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
         pixmap = QPixmap('video.PNG')
         self.screen.setPixmap(pixmap)
->>>>>>> Stashed changes
 
 
     #verander de window
     def set_children_window(self):
         self.stackedWidget.setCurrentIndex(0)
         print('changed window to children')
+    def set_instellingen_window(self):
+        self.stackedwidget.setCurrentIndex(1)
     def set_page_window(self):
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         print('changed window to pages')
     def set_pageview_window(self):
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
         print('changed window to page view')        
     def set_book_window(self):
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
         print('changed window to page view')  
     def turn_page_next(self):
         self.page_nr+=1
@@ -108,6 +108,7 @@ class Ui(QtWidgets.QMainWindow):
             self.page_nr-=1
         self.pagenrlabel.setText(str(self.page_nr))
         print('page set to: ' + str(self.page_nr))
+    
 
 
 app = QtWidgets.QApplication(sys.argv)
