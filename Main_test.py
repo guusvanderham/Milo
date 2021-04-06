@@ -15,9 +15,13 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         
         #beginview: kinderen
-        self.child1 = self.findChild(QtWidgets.QPushButton, 'Tim')
-        self.child1.clicked.connect(self.set_book_window) 
-        self.child2 = self.findChild(QtWidgets.QPushButton, 'Lieke')
+        self.child = self.findChild(QtWidgets.QPushButton, 'Tim_old')
+        self.child.clicked.connect(self.set_book_window)
+
+        #kinderen connecten aan volgende pagina
+        self.child1 = self.findChild(QtWidgets.QPushButton, 'kind1')
+        self.child1.clicked.connect(self.set_book_window)
+        self.child2 = self.findChild(QtWidgets.QPushButton, 'kind2')
         self.child2.clicked.connect(self.set_book_window) 
         self.child3 = self.findChild(QtWidgets.QPushButton, 'kind3')
         self.child3.clicked.connect(self.set_book_window) 
@@ -27,6 +31,9 @@ class Ui(QtWidgets.QMainWindow):
         self.child5.clicked.connect(self.set_book_window) 
         self.child6 = self.findChild(QtWidgets.QPushButton, 'kind6')
         self.child6.clicked.connect(self.set_book_window) 
+        self.child7 = self.findChild(QtWidgets.QPushButton, 'kind7')
+        self.child7.clicked.connect(self.set_book_window)
+
         #view met de verschillende boeken
         self.book1 = self.findChild(QtWidgets.QPushButton, 'book1')
         self.book1.clicked.connect(self.set_page_window) 
@@ -36,10 +43,10 @@ class Ui(QtWidgets.QMainWindow):
         self.page1.clicked.connect(self.set_pageview_window)
         self.page2 = self.findChild(QtWidgets.QPushButton, 'page2')
         self.page2.clicked.connect(self.set_pageview_window)
-        self.page3 = self.findChild(QtWidgets.QPushButton, 'page3')
-        self.page3.clicked.connect(self.set_pageview_window)
-        self.page4 = self.findChild(QtWidgets.QPushButton, 'page4')
-        self.page4.clicked.connect(self.set_pageview_window)
+        #self.page3 = self.findChild(QtWidgets.QPushButton, 'page3')
+        #self.page3.clicked.connect(self.set_pageview_window)
+        #self.page4 = self.findChild(QtWidgets.QPushButton, 'page4')
+        #self.page4.clicked.connect(self.set_pageview_window)
         self.page5 = self.findChild(QtWidgets.QPushButton, 'page5')
         self.page5.clicked.connect(self.set_pageview_window)
         self.page6 = self.findChild(QtWidgets.QPushButton, 'page6')
@@ -82,6 +89,55 @@ class Ui(QtWidgets.QMainWindow):
         self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
         pixmap = QPixmap('video.PNG')
         self.screen.setPixmap(pixmap)
+
+        #if Qlabels name is iets met logo (dus logo of logo_2 of logo_3) : dan deze pixmap 
+        self.logo = self.findChild(QtWidgets.QLabel, 'logo')
+        pixmap2 = QPixmap('logo.PNG')
+        self.logo.setPixmap(pixmap2)
+
+        self.logo_2 = self.findChild(QtWidgets.QLabel, 'logo_2')
+        self.logo_2.setPixmap(pixmap2)
+
+        self.background = self.findChild(QtWidgets.QLabel, 'background')
+        pixmap3 = QPixmap('background.PNG')
+        self.background.setPixmap(pixmap3)
+
+        #kinderen
+        self.child1_img = self.findChild(QtWidgets.QLabel, 'tim_img')
+        pixmap4 = QPixmap('tim.PNG')
+        self.child1_img.setPixmap(pixmap4)
+
+        self.child2_img = self.findChild(QtWidgets.QLabel, 'lieke_img')
+        pixmap5 = QPixmap('lieke.PNG')
+        self.child2_img.setPixmap(pixmap5)
+
+        self.child2_img_2 = self.findChild(QtWidgets.QLabel, 'lieke_img_2')
+        self.child2_img_2.setPixmap(pixmap5)
+
+        self.child3_img = self.findChild(QtWidgets.QLabel, 'jorik_img')
+        pixmap6 = QPixmap('jorik.PNG')
+        self.child3_img.setPixmap(pixmap6)
+
+        self.child4_img = self.findChild(QtWidgets.QLabel, 'noraja_img')
+        pixmap7 = QPixmap('noraja.PNG')
+        self.child4_img.setPixmap(pixmap7)
+
+        self.child5_img = self.findChild(QtWidgets.QLabel, 'annsophie_img')
+        pixmap8 = QPixmap('annsophie.PNG')
+        self.child5_img.setPixmap(pixmap8)
+
+        self.child6_img = self.findChild(QtWidgets.QLabel, 'annemiek_img')
+        pixmap9 = QPixmap('annemiek.PNG')
+        self.child6_img.setPixmap(pixmap9)
+
+        self.child7_img = self.findChild(QtWidgets.QLabel, 'arjan_img')
+        pixmap10 = QPixmap('arjan.PNG')
+        self.child7_img.setPixmap(pixmap10)
+
+        #buttons
+        self.add = self.findChild(QtWidgets.QLabel, 'add')
+        pixmap11 = QPixmap('add.PNG')
+        self.add.setPixmap(pixmap11)
 
 
     #verander de window

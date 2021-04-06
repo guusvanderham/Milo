@@ -2,4 +2,22 @@
   <qresource prefix="fakevideo">
     <file>video.PNG</file>
   </qresource>
+  <qresource prefix="Buttons">
+    <file>add.png</file>
+  </qresource>
+  <qresource prefix="kind">
+    <file>tim.png</file>
+    <file>noraja.png</file>
+    <file>jorik.png</file>
+    <file>lieke.png</file>
+    <file>annemiek.png</file>
+    <file>annsophie.png</file>
+    <file>arjan.png</file>
+  </qresource>
+  <qresource prefix="background">
+    <file>background.png</file>
+  </qresource>
+  <qresource prefix="logo">
+    <file>logo.png</file>
+  </qresource>
 </RCC>
