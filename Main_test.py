@@ -43,10 +43,10 @@ class Ui(QtWidgets.QMainWindow):
         self.page1.clicked.connect(self.set_pageview_window)
         self.page2 = self.findChild(QtWidgets.QPushButton, 'page2')
         self.page2.clicked.connect(self.set_pageview_window)
-        #self.page3 = self.findChild(QtWidgets.QPushButton, 'page3')
-        #self.page3.clicked.connect(self.set_pageview_window)
-        #self.page4 = self.findChild(QtWidgets.QPushButton, 'page4')
-        #self.page4.clicked.connect(self.set_pageview_window)
+        self.page3 = self.findChild(QtWidgets.QPushButton, 'page3')
+        self.page3.clicked.connect(self.set_pageview_window)
+        self.page4 = self.findChild(QtWidgets.QPushButton, 'page4')
+        self.page4.clicked.connect(self.set_pageview_window)
         self.page5 = self.findChild(QtWidgets.QPushButton, 'page5')
         self.page5.clicked.connect(self.set_pageview_window)
         self.page6 = self.findChild(QtWidgets.QPushButton, 'page6')
@@ -55,8 +55,14 @@ class Ui(QtWidgets.QMainWindow):
         self.page7.clicked.connect(self.set_pageview_window)
         self.page8 = self.findChild(QtWidgets.QPushButton, 'page8')
         self.page8.clicked.connect(self.set_pageview_window)
-        self.pagex = self.findChild(QtWidgets.QPushButton, 'pagex')
-        self.pagex.clicked.connect(self.set_pageview_window)
+        self.page9 = self.findChild(QtWidgets.QPushButton, 'page9')
+        self.page9.clicked.connect(self.set_pageview_window)
+        self.page10 = self.findChild(QtWidgets.QPushButton, 'page10')
+        self.page10.clicked.connect(self.set_pageview_window)
+        self.page11 = self.findChild(QtWidgets.QPushButton, 'page11')
+        self.page11.clicked.connect(self.set_pageview_window)
+        #self.pagex = self.findChild(QtWidgets.QPushButton, 'pagex')
+        #self.pagex.clicked.connect(self.set_pageview_window)
         
         #view van één pagina
         self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
@@ -102,7 +108,7 @@ class Ui(QtWidgets.QMainWindow):
         pixmap3 = QPixmap('background.PNG')
         self.background.setPixmap(pixmap3)
 
-        #kinderen
+        #plaatjes kinderen
         self.child1_img = self.findChild(QtWidgets.QLabel, 'tim_img')
         pixmap4 = QPixmap('tim.PNG')
         self.child1_img.setPixmap(pixmap4)
@@ -134,10 +140,58 @@ class Ui(QtWidgets.QMainWindow):
         pixmap10 = QPixmap('arjan.PNG')
         self.child7_img.setPixmap(pixmap10)
 
-        #buttons
+        #plaatjes buttons
         self.add = self.findChild(QtWidgets.QLabel, 'add')
         pixmap11 = QPixmap('add.PNG')
         self.add.setPixmap(pixmap11)
+
+        #plaatjes paginaoverzicht
+        self.page1_img = self.findChild(QtWidgets.QLabel, 'page1_img')
+        pixmap12 = QPixmap('Image_1.PNG')
+        self.page1_img.setPixmap(pixmap12)
+
+        self.page2_img = self.findChild(QtWidgets.QLabel, 'page2_img')
+        pixmap13 = QPixmap('Image_7.PNG')
+        self.page2_img.setPixmap(pixmap13)
+
+        self.page3_img = self.findChild(QtWidgets.QLabel, 'page3_img')
+        pixmap14 = QPixmap('Image_8.PNG')
+        self.page3_img.setPixmap(pixmap14)
+
+        self.page4_img = self.findChild(QtWidgets.QLabel, 'page4_img')
+        pixmap15 = QPixmap('Image_9.PNG')
+        self.page4_img.setPixmap(pixmap15)
+
+        self.page5_img = self.findChild(QtWidgets.QLabel, 'page5_img')
+        pixmap16 = QPixmap('Image_10.PNG')
+        self.page5_img.setPixmap(pixmap16)
+
+        self.page6_img = self.findChild(QtWidgets.QLabel, 'page6_img')
+        pixmap17 = QPixmap('Image_11.PNG')
+        self.page6_img.setPixmap(pixmap17)
+
+        self.page7_img = self.findChild(QtWidgets.QLabel, 'page7_img')
+        pixmap18 = QPixmap('Image_12.PNG')
+        self.page7_img.setPixmap(pixmap18)
+
+        self.page8_img = self.findChild(QtWidgets.QLabel, 'page8_img')
+        pixmap19 = QPixmap('Image_13.PNG')
+        self.page8_img.setPixmap(pixmap19)
+
+        self.page9_img = self.findChild(QtWidgets.QLabel, 'page9_img')
+        pixmap20 = QPixmap('Image_14.PNG')
+        self.page9_img.setPixmap(pixmap20)
+
+        self.page10_img = self.findChild(QtWidgets.QLabel, 'page10_img')
+        pixmap21 = QPixmap('Image_15.PNG')
+        self.page10_img.setPixmap(pixmap21)
+
+        self.page11_img = self.findChild(QtWidgets.QLabel, 'page11_img')
+        pixmap22 = QPixmap('Image_16.PNG')
+        self.page11_img.setPixmap(pixmap22)
+
+
+
 
 
     #verander de window

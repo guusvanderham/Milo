@@ -2,6 +2,19 @@
   <qresource prefix="fakevideo">
     <file>video.PNG</file>
   </qresource>
+  <qresource prefix="pagina's">
+    <file>Image_1.png</file>
+    <file>Image_7.png</file>
+    <file>Image_8.png</file>
+    <file>Image_9.png</file>
+    <file>Image_10.png</file>
+    <file>Image_11.png</file>
+    <file>Image_12.png</file>
+    <file>Image_13.png</file>
+    <file>Image_14.png</file>
+    <file>Image_15.png</file>
+    <file>Image_16.png</file>
+  </qresource>
   <qresource prefix="Buttons">
     <file>add.png</file>
   </qresource>
