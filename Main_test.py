@@ -40,6 +40,9 @@ class Ui(QtWidgets.QMainWindow):
         
         #view met alle paginas van een boek
         self.page1 = self.findChild(QtWidgets.QPushButton, 'page1')
+        #weer iets als if clicked:
+        # video = video 1 (in set_pageview_window) die window is verder hetzelfde
+        # caption = ... (bij het label caption)
         self.page1.clicked.connect(self.set_pageview_window)
         self.page2 = self.findChild(QtWidgets.QPushButton, 'page2')
         self.page2.clicked.connect(self.set_pageview_window)
