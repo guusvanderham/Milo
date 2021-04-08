@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1549</width>
-    <height>796</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>400</width>
+    <height>400</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,125 +23,400 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>1751</width>
-      <height>901</height>
+      <x>-90</x>
+      <y>10</y>
+      <width>1920</width>
+      <height>1080</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Children">
-     <widget class="QPushButton" name="Tim">
+     <widget class="QPushButton" name="kind2">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>60</y>
-        <width>171</width>
-        <height>121</height>
+        <x>440</x>
+        <y>250</y>
+        <width>131</width>
+        <height>251</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
       <property name="text">
-       <string>Tim</string>
+       <string>
+
+
+Tim</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Lieke">
+     <widget class="QPushButton" name="Tim_old">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>60</y>
+        <x>1150</x>
+        <y>640</y>
         <width>171</width>
-        <height>121</height>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/annemiek.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: grey;
+            border-image: url(:/kind/tim.png) 10 10 10 10;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="logo">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>-40</y>
+        <width>431</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>200</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="tim_img">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>220</y>
+        <width>221</width>
+        <height>211</height>
        </rect>
       </property>
       <property name="text">
-       <string>Lieke</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/tim.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lieke_img">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>220</y>
+        <width>221</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/lieke.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="kind1">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>250</y>
+        <width>131</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string>
+
+
+Lieke</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="jorik_img">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>220</y>
+        <width>221</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/jorik.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="kind3">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>60</y>
-        <width>171</width>
-        <height>121</height>
+        <x>710</x>
+        <y>250</y>
+        <width>131</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string>
+
+
+Jorik</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="noraja_img">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>220</y>
+        <width>221</width>
+        <height>211</height>
        </rect>
       </property>
       <property name="text">
-       <string>...</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/noraja.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="kind4">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>210</y>
-        <width>171</width>
-        <height>121</height>
+        <x>980</x>
+        <y>250</y>
+        <width>131</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string>
+
+
+Noraja</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="annsophie_img">
+      <property name="geometry">
+       <rect>
+        <x>1220</x>
+        <y>220</y>
+        <width>221</width>
+        <height>211</height>
        </rect>
       </property>
       <property name="text">
-       <string>...</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/annsophie.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="kind5">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>210</y>
-        <width>171</width>
-        <height>121</height>
+        <x>1250</x>
+        <y>250</y>
+        <width>131</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string>
+
+
+Sophie</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="arjan_img">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>520</y>
+        <width>221</width>
+        <height>211</height>
        </rect>
       </property>
       <property name="text">
-       <string>...</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/arjan.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="kind6">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>210</y>
-        <width>171</width>
-        <height>121</height>
+        <x>160</x>
+        <y>550</y>
+        <width>131</width>
+        <height>251</height>
        </rect>
       </property>
-      <property name="text">
-       <string>...</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="extrakind">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>240</y>
-        <width>114</width>
-        <height>71</height>
-       </rect>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton { background-color: grey;
-    border-style: outset;
-    border-width: 1px;
-    border-radius: 30px;
-    border-color: grey;
-    min-width: 10em;
-    padding: 6px;
-}
-
-QPushButton:hover {
-    background: qradialgradient(
-        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
-        radius: 1.35, stop: 0 #fff, stop: 1 #bbb
-        );
-    }
-</string>
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
       </property>
       <property name="text">
-       <string>Voeg kind toe</string>
+       <string>
+
+
+Arjan</string>
       </property>
      </widget>
+     <widget class="QLabel" name="annemiek_img">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>520</y>
+        <width>221</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/annemiek.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="kind7">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>550</y>
+        <width>131</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string>
+
+
+Anne</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="add">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>540</y>
+        <width>200</width>
+        <height>180</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/add.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <zorder>Tim_old</zorder>
+     <zorder>logo</zorder>
+     <zorder>tim_img</zorder>
+     <zorder>kind2</zorder>
+     <zorder>lieke_img</zorder>
+     <zorder>kind1</zorder>
+     <zorder>jorik_img</zorder>
+     <zorder>kind3</zorder>
+     <zorder>noraja_img</zorder>
+     <zorder>kind4</zorder>
+     <zorder>annsophie_img</zorder>
+     <zorder>kind5</zorder>
+     <zorder>arjan_img</zorder>
+     <zorder>kind6</zorder>
+     <zorder>annemiek_img</zorder>
+     <zorder>kind7</zorder>
+     <zorder>add</zorder>
     </widget>
     <widget class="QWidget" name="Instellingen">
      <widget class="QLabel" name="label">
@@ -395,121 +676,715 @@ QPushButton:clicked {
      </widget>
     </widget>
     <widget class="QWidget" name="Pages">
-     <widget class="QPushButton" name="page1">
+     <widget class="QLabel" name="lieke_img_2">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>90</y>
+        <x>260</x>
+        <y>0</y>
         <width>191</width>
-        <height>121</height>
+        <height>151</height>
        </rect>
       </property>
       <property name="text">
-       <string>Pagina 1</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/lieke.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="name_kid">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>20</y>
+        <width>241</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Lieke</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="titel">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>90</y>
+        <width>581</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ink Free</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Kijk eens wat een kleintje!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page1_img">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page2_img">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page3_img">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page4_img">
+      <property name="geometry">
+       <rect>
+        <x>1520</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page5_img">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page6_img">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page7_img">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page8_img">
+      <property name="geometry">
+       <rect>
+        <x>1520</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page9_img">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>720</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page10_img">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>720</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="page11_img">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>720</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/pagina's/Image_1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page1">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="page2">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>90</y>
-        <width>191</width>
-        <height>121</height>
+        <x>680</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
       <property name="text">
-       <string>Pagina 2</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="page3">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>90</y>
-        <width>191</width>
-        <height>121</height>
+        <x>1100</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
       <property name="text">
-       <string>Pagina 3</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="page4">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>90</y>
-        <width>191</width>
-        <height>121</height>
+        <x>1520</x>
+        <y>220</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Pagina 4</string>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
       </property>
-     </widget>
-     <widget class="QPushButton" name="page5">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>240</y>
-        <width>191</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Pagina 5</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="page6">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>240</y>
-        <width>191</width>
-        <height>121</height>
-       </rect>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
       </property>
       <property name="text">
-       <string>Pagina 6</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="page7">
-      <property name="geometry">
-       <rect>
-        <x>510</x>
-        <y>240</y>
-        <width>191</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Pagina 7</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="page8">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>240</y>
-        <width>191</width>
-        <height>121</height>
+        <x>1520</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
       <property name="text">
-       <string>Pagina 8</string>
+       <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pagex">
+     <widget class="QPushButton" name="page7">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>390</y>
-        <width>191</width>
-        <height>121</height>
+        <x>1100</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
       <property name="text">
-       <string>Pagina ...</string>
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page6">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page10">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>720</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page11">
+      <property name="geometry">
+       <rect>
+        <x>1100</x>
+        <y>720</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page9">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>720</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page5">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>470</y>
+        <width>321</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>400</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>400</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>1400</x>
+        <y>400</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>1820</x>
+        <y>400</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>1820</x>
+        <y>650</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;8&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>1400</x>
+        <y>650</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;7&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_27">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>650</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;6&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>650</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>900</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;9&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_30">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>900</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;10&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>1390</x>
+        <y>900</y>
+        <width>35</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;11&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -597,8 +1472,8 @@ QPushButton:clicked {
      <widget class="QPushButton" name="book1">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>60</y>
+        <x>130</x>
+        <y>190</y>
         <width>451</width>
         <height>601</height>
        </rect>
@@ -607,15 +1482,43 @@ QPushButton:clicked {
        <string>Milo en Lana op de kinderboerderij</string>
       </property>
      </widget>
+     <widget class="QLabel" name="logo_2">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>-50</y>
+        <width>431</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
+   <widget class="QLabel" name="background">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1920</width>
+      <height>1080</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/background/background.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <zorder>background</zorder>
+   <zorder>stackedWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1549</width>
+     <width>1920</width>
      <height>18</height>
     </rect>
    </property>
