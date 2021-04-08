@@ -11,6 +11,8 @@ import numpy as np
 import six
 import time
 import glob
+from sklearn.neighbors import (NeighborhoodComponentsAnalysis,KNeighborsClassifier)
+from joblib import load
 from IPython.display import display
 
 from six import BytesIO
@@ -38,6 +40,8 @@ model_fn = model.signatures['serving_default']
 #create category index
 labelmap_path=r'model\label_map.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(labelmap_path, use_display_name=True)
+#load classifier
+knn = load('knn.joblib')
 #%%
 def resize(frame, size):
     #crop to square
@@ -49,16 +53,47 @@ def resize(frame, size):
     
     return resized
 
-def detect(output_dict, category_index):
+def cut_out_detection(image, coords ):
+    sizex,sizey,_=image.shape
+    ymin=(coords[0]*sizey).astype(np.uint64)
+    xmin=(coords[1]*sizex).astype(np.uint64)
+    ymax=(coords[2]*sizey).astype(np.uint64)
+    xmax=(coords[3]*sizex).astype(np.uint64)
+    boxsizex=(((xmax-xmin)*0.50)/2).astype(np.uint64)
+    boxsizey=(((ymax-ymin)*0.50)/2).astype(np.uint64)
+    image = image[ymin+boxsizey:ymax-boxsizey,xmin+boxsizex:xmax-boxsizex,:]
+    return image
+
+def dominant_color(image):
+    pixels = np.float32(image.reshape(-1, 3))
+    n_colors = 2
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
+    flags = cv2.KMEANS_RANDOM_CENTERS
+    print(pixels.shape)
+    if(pixels.shape[0]>0):
+        _, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)
+        return palette
+    else:
+        return [[],[]]
+    
+
+def detect(image,output_dict, category_index, knn):
     num_detections = int(output_dict.pop('num_detections'))
     output_dict = {key:value[0, :num_detections].numpy() for key,value in output_dict.items()}
     output_dict['num_detections'] = num_detections
     output_dict['detection_classes'] = output_dict['detection_classes'].astype(np.int64)
-    
-    
     best_detection = output_dict['detection_classes'][0]
-    print(category_index[best_detection]['name'])
-    return output_dict
+    nn_detection=category_index[best_detection]['name']    
+    coords=output_dict['detection_boxes'][0]
+    cutout=cut_out_detection(image,coords)
+    color1, color2=dominant_color(cutout)
+    if any(color1):
+        knn_detection = knn.predict([np.array([color1,color2]).flatten().tolist()])
+    else:
+        knn_detection='none'
+    
+    return output_dict, knn_detection, nn_detection
+
 
 
 
@@ -81,7 +116,8 @@ while(True):
     #predict
     output_dict = model_fn(input_tensor)
     #detect
-    output_dict = detect(output_dict, category_index)
+    output_dict, knn_detection, nn_detection = detect(frame, output_dict, category_index, knn)
+    print(knn_detection)
     #visualize
     image = vis_util.visualize_boxes_and_labels_on_image_array(
         resized,
