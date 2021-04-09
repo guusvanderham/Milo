@@ -40,6 +40,7 @@ model_fn = model.signatures['serving_default']
 #create category index
 labelmap_path=r'model\label_map.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(labelmap_path, use_display_name=True)
+#%%
 #load classifier
 knn = load('knn.joblib')
 #%%
@@ -92,7 +93,7 @@ def detect(image,output_dict, category_index, knn):
     else:
         knn_detection='none'
     
-    return output_dict, knn_detection, nn_detection
+    return output_dict, knn_detection, nn_detection, color1
 
 
 
@@ -104,9 +105,8 @@ cap = cv2.VideoCapture(0)
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
-
     # resize and make tensor
-    size=(512,512)
+    size=(480,480)
     resized=resize(frame,size)
     
     #make tensor
@@ -116,7 +116,7 @@ while(True):
     #predict
     output_dict = model_fn(input_tensor)
     #detect
-    output_dict, knn_detection, nn_detection = detect(frame, output_dict, category_index, knn)
+    output_dict, knn_detection, nn_detection, color1 = detect(frame, output_dict, category_index, knn)
     print(knn_detection)
     #visualize
     image = vis_util.visualize_boxes_and_labels_on_image_array(
@@ -128,9 +128,15 @@ while(True):
         instance_masks=output_dict.get('detection_masks_reframed', None),
         use_normalized_coordinates=True,
         line_thickness=8)
-        
+    bar=np.ones((480,20,3))*color1    
     # Display the resulting frame
-    cv2.imshow('frame',image)
+    image2=np.zeros((480,500,3))
+    image2[0:480,0:480,:]=resized
+    image2[0:480,480:500,:]=bar
+    image2=image2.astype(np.uint8)
+    #image=np.concatenate((image,bar),axis=2)
+    cv2.imshow('frame',image2)
+    
     
     
     #Quit when 'q' is pressed
