@@ -84,8 +84,9 @@ def detect(image,output_dict, category_index, knn):
     output_dict['detection_classes'] = output_dict['detection_classes'].astype(np.int64)
     best_detection = output_dict['detection_classes'][0]
     nn_detection=category_index[best_detection]['name']  
+    scores=output_dict['detection_multiclass_scores'][0,:]
     if nn_detection =='ezel':
-        scores=output_dict['detection_multiclass_scores'][0,:]
+        
         if scores[0]<0.80:
             scores = np.delete(scores,0)
             print(len(scores))
@@ -94,6 +95,8 @@ def detect(image,output_dict, category_index, knn):
             nn_detection=category_index[nextbest]['name'] 
             if nn_detection == 'hond':
                 nn_detection = 'koe'
+    elif nn_detection == 'koe'and  scores[2]<0.6:
+                nn_detection = 'kuiken'
     elif nn_detection == 'schaap':
         scores=output_dict['detection_multiclass_scores'][0,:]
         if scores[5]<0.70:
