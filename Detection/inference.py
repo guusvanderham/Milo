@@ -60,8 +60,8 @@ def cut_out_detection(image, coords ):
     xmin=(coords[1]*sizex).astype(np.uint64)
     ymax=(coords[2]*sizey).astype(np.uint64)
     xmax=(coords[3]*sizex).astype(np.uint64)
-    boxsizex=(((xmax-xmin)*0.50)/2).astype(np.uint64)
-    boxsizey=(((ymax-ymin)*0.50)/2).astype(np.uint64)
+    boxsizex=(((xmax-xmin)*0.30)/2).astype(np.uint64)
+    boxsizey=(((ymax-ymin)*0.30)/2).astype(np.uint64)
     image = image[ymin+boxsizey:ymax-boxsizey,xmin+boxsizex:xmax-boxsizex,:]
     return image
 
@@ -70,7 +70,6 @@ def dominant_color(image):
     n_colors = 2
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 200, .1)
     flags = cv2.KMEANS_RANDOM_CENTERS
-    print(pixels.shape)
     if(pixels.shape[0]>0):
         _, labels, palette = cv2.kmeans(pixels, n_colors, None, criteria, 10, flags)
         return palette
@@ -84,7 +83,24 @@ def detect(image,output_dict, category_index, knn):
     output_dict['num_detections'] = num_detections
     output_dict['detection_classes'] = output_dict['detection_classes'].astype(np.int64)
     best_detection = output_dict['detection_classes'][0]
-    nn_detection=category_index[best_detection]['name']    
+    nn_detection=category_index[best_detection]['name']  
+    if nn_detection =='ezel':
+        scores=output_dict['detection_multiclass_scores'][0,:]
+        if scores[0]<0.80:
+            scores = np.delete(scores,0)
+            print(len(scores))
+            nextbest=np.argmax(scores)+2
+
+            nn_detection=category_index[nextbest]['name'] 
+            if nn_detection == 'hond':
+                nn_detection = 'koe'
+    elif nn_detection == 'schaap':
+        scores=output_dict['detection_multiclass_scores'][0,:]
+        if scores[5]<0.70:
+            #np.delete(scores,5)
+            #nextbest=np.argmax(scores)
+            nn_detection='kuiken'#category_index[nextbest]['name'] 
+        
     coords=output_dict['detection_boxes'][0]
     cutout=cut_out_detection(image,coords)
     color1, color2=dominant_color(cutout)
@@ -117,7 +133,7 @@ while(True):
     output_dict = model_fn(input_tensor)
     #detect
     output_dict, knn_detection, nn_detection, color1 = detect(frame, output_dict, category_index, knn)
-    print(knn_detection)
+    print(nn_detection)
     #visualize
     image = vis_util.visualize_boxes_and_labels_on_image_array(
         resized,
@@ -128,7 +144,9 @@ while(True):
         instance_masks=output_dict.get('detection_masks_reframed', None),
         use_normalized_coordinates=True,
         line_thickness=8)
-    bar=np.ones((480,20,3))*color1    
+    bar=np.ones((480,20,3)) 
+    if any(color1):
+        bar=np.ones((480,20,3))*color1  
     # Display the resulting frame
     image2=np.zeros((480,500,3))
     image2[0:480,0:480,:]=resized
