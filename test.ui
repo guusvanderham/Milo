@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
-    <height>1080</height>
+    <width>2736</width>
+    <height>1824</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -23,14 +23,14 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>-90</x>
-      <y>10</y>
-      <width>1920</width>
-      <height>1080</height>
+      <x>0</x>
+      <y>0</y>
+      <width>2736</width>
+      <height>1824</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1389,17 +1389,17 @@ QPushButton:clicked {
      </widget>
     </widget>
     <widget class="QWidget" name="Pageview">
-     <widget class="QLabel" name="screen">
+     <widget class="QLabel" name="boek">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>-110</x>
         <y>30</y>
-        <width>1361</width>
-        <height>491</height>
+        <width>1881</width>
+        <height>851</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fakevideo/video.PNG&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fakevideo/boek.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="previous_page">
@@ -1502,8 +1502,8 @@ QPushButton:clicked {
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1920</width>
-      <height>1080</height>
+      <width>2736</width>
+      <height>1824</height>
      </rect>
     </property>
     <property name="text">
@@ -1518,7 +1518,7 @@ QPushButton:clicked {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
+     <width>2736</width>
      <height>18</height>
     </rect>
    </property>

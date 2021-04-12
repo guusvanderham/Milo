@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="fakevideo">
+    <file>boek.png</file>
     <file>video.PNG</file>
   </qresource>
   <qresource prefix="pagina's">

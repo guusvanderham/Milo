@@ -68,9 +68,9 @@ class Ui(QtWidgets.QMainWindow):
         #self.pagex.clicked.connect(self.set_pageview_window)
         
         #view van één pagina
-        self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
-        pixmap = QPixmap('video.PNG')
-        self.screen.setPixmap(pixmap)
+        self.boek = self.findChild(QtWidgets.QLabel, 'boek' )
+        pixmap = QPixmap('boek.PNG')
+        self.boek.setPixmap(pixmap)
         self.pagenrlabel = self.findChild(QtWidgets.QLabel, 'pagenr' )
         
         self.nextpagebutton = self.findChild(QtWidgets.QPushButton, 'next_page')
@@ -95,9 +95,15 @@ class Ui(QtWidgets.QMainWindow):
         
         
         #voor plaatjes
-        self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
-        pixmap = QPixmap('video.PNG')
-        self.screen.setPixmap(pixmap)
+        #self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
+        #pixmap = QPixmap('video.PNG')
+        #self.screen.setPixmap(pixmap)
+
+        #lijst met images
+        #lijst met widths
+        #lijst met hights 
+        #lijst met channels, whatever dat is 
+        #nieuwe lijst met pixmaps die nog op de goeie plek moeten komen en nu leeg is
 
         #if Qlabels name is iets met logo (dus logo of logo_2 of logo_3) : dan deze pixmap 
         self.logo = self.findChild(QtWidgets.QLabel, 'logo')
@@ -120,6 +126,7 @@ class Ui(QtWidgets.QMainWindow):
         pixmap5 = QPixmap('lieke.PNG')
         self.child2_img.setPixmap(pixmap5)
 
+        #dit moet kind_pagina overzicht worden als label, dat ik de pixmap kan pakken van t goeie kind
         self.child2_img_2 = self.findChild(QtWidgets.QLabel, 'lieke_img_2')
         self.child2_img_2.setPixmap(pixmap5)
 
@@ -193,6 +200,22 @@ class Ui(QtWidgets.QMainWindow):
         pixmap22 = QPixmap('Image_16.PNG')
         self.page11_img.setPixmap(pixmap22)
 
+    class Child: 
+        def __init__(self, name, img, button_size, fond_size, low_stim, pages_read):
+            self.name = name
+            self.img = img
+            self.button_size = button_size
+            self.fond_size = fond_size
+            self.low_stim = low_stim 
+            self.pages_read = pages_read
+        
+        def show_kid(self):
+            pixmap = QPixmap(self.img)
+            return pixmap
+    
+
+
+
 
 
 
@@ -221,7 +244,6 @@ class Ui(QtWidgets.QMainWindow):
             self.page_nr-=1
         self.pagenrlabel.setText(str(self.page_nr))
         print('page set to: ' + str(self.page_nr))
-    
 
 
 app = QtWidgets.QApplication(sys.argv)
