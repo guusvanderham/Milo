@@ -1,14 +1,79 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtGui import QPixmap
 import sys
+from PyQt5.QtWidgets import  QWidget, QLabel, QApplication
+from PyQt5.QtCore import QThread, Qt, pyqtSignal, pyqtSlot
+from PyQt5.QtGui import QImage, QPixmap
+import cv2
+import threading
 
+from PyQt5.QtWidgets import (
+    QWidget, QApplication, QProgressBar, QMainWindow,
+    QHBoxLayout, QPushButton
+)
+
+from PyQt5.QtCore import (
+    Qt, QObject, pyqtSignal, pyqtSlot, QRunnable, QThreadPool
+)
+import time
+import sys
+
+#%%
+#Dit is het paralelle proces waarin de video wordt afgespeeld
+class Thread(QThread):
+    #signaalding om te sturen dat het scherm geupdate moet worden
+    changePixmap = pyqtSignal(QImage)
+    #blijft draaien zolang dit waar is
+    running=True
+    def run(self):
+        #0 voor webcam, anders link naar de file
+        #cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
+        
+        #loop oneindig 
+        while self.running:
+            #pak de volgende frame
+            ret, frame = cap.read()
+            
+            if ret:
+                #doe even resizen
+                rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                h, w, ch = rgbImage.shape
+                bytesPerLine = ch * w
+                convertToQtFormat = QImage(rgbImage.data, w, h, bytesPerLine, QImage.Format_RGB888)
+                p = convertToQtFormat.scaled(1920, 1080, Qt.KeepAspectRatio) 
+                #stuur update signaal
+                self.changePixmap.emit(p)
+                
+            if self.running==False:
+                break
+            #zorg dat je niet te snel afspeelt
+            time.sleep(0.02)
+    #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
+    def kill(self):
+        self.running = False
+        print('received stop signal from window.')
+        
+class WorkerSignals(QObject):
+    progress = pyqtSignal(int)
 
 class Ui(QtWidgets.QMainWindow):
-    def __init__(self):
+    #update videoplayer frame
+    @pyqtSlot(QImage)
+    def setImage(self, image):
+        self.videoplayer.setPixmap(QPixmap.fromImage(image))
+        
+    #er is op kruisje gedrukt dus sluit alles correct af    
+    def closeEvent(self, event):
+        
+        self.thread.kill()
+        print("Closing")
+        self.destory()
+        
+    def __init__(self, app):
         super(Ui, self).__init__()
         #global variables
         self.page_nr=1
-        
         
         
         #laad de interface file
@@ -77,7 +142,13 @@ class Ui(QtWidgets.QMainWindow):
         self.nextpagebutton.clicked.connect(self.turn_page_next)
         self.previouspagebutton = self.findChild(QtWidgets.QPushButton, 'previous_page')
         self.previouspagebutton.clicked.connect(self.turn_page_previous)
-        #instellingen
+        #Dit stukje gaat over de videoplayer, met self.thread.start() begint hij met het afspelen van de animatie
+        self.videoplayer = self.findChild(QtWidgets.QLabel, 'videoplayer' )
+        self.thread = Thread(self)
+        #app.aboutToQuit.connect(th.stop)
+        self.thread.changePixmap.connect(self.setImage)
+        #self.thread.start()
+
         
         
         
@@ -199,6 +270,8 @@ class Ui(QtWidgets.QMainWindow):
         self.page11_img = self.findChild(QtWidgets.QLabel, 'page11_img')
         pixmap22 = QPixmap('Image_16.PNG')
         self.page11_img.setPixmap(pixmap22)
+        
+
 
     class Child: 
         def __init__(self, name, img, button_size, fond_size, low_stim, pages_read):
@@ -212,12 +285,6 @@ class Ui(QtWidgets.QMainWindow):
         def show_kid(self):
             pixmap = QPixmap(self.img)
             return pixmap
-    
-
-
-
-
-
 
 
     #verander de window
@@ -238,6 +305,7 @@ class Ui(QtWidgets.QMainWindow):
     def turn_page_next(self):
         self.page_nr+=1
         self.pagenrlabel.setText(str(self.page_nr))
+        self.thread.start()
         print('page set to: ' + str(self.page_nr))
     def turn_page_previous(self):
         if(self.page_nr>1):
@@ -245,10 +313,8 @@ class Ui(QtWidgets.QMainWindow):
         self.pagenrlabel.setText(str(self.page_nr))
         print('page set to: ' + str(self.page_nr))
 
-
-app = QtWidgets.QApplication(sys.argv)
-window = Ui()
-app.exec_()
-
-#sys.exit(app.exec_())
-sys.exit()
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    window = Ui(app)
+    window.show()
+    sys.exit()

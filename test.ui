@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1405,8 +1405,8 @@ QPushButton:clicked {
      <widget class="QPushButton" name="previous_page">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>610</y>
+        <x>470</x>
+        <y>760</y>
         <width>221</width>
         <height>121</height>
        </rect>
@@ -1418,8 +1418,8 @@ QPushButton:clicked {
      <widget class="QPushButton" name="next_page">
       <property name="geometry">
        <rect>
-        <x>1270</x>
-        <y>620</y>
+        <x>1490</x>
+        <y>750</y>
         <width>221</width>
         <height>121</height>
        </rect>
@@ -1431,8 +1431,8 @@ QPushButton:clicked {
      <widget class="QPushButton" name="replay">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>530</y>
+        <x>1010</x>
+        <y>690</y>
         <width>151</width>
         <height>61</height>
        </rect>
@@ -1444,8 +1444,8 @@ QPushButton:clicked {
      <widget class="QLabel" name="text">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>620</y>
+        <x>660</x>
+        <y>770</y>
         <width>871</width>
         <height>111</height>
        </rect>
@@ -1465,6 +1465,19 @@ QPushButton:clicked {
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="videoplayer">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>50</y>
+        <width>1241</width>
+        <height>701</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -1519,7 +1532,7 @@ QPushButton:clicked {
      <x>0</x>
      <y>0</y>
      <width>2736</width>
-     <height>18</height>
+     <height>26</height>
     </rect>
    </property>
    <property name="defaultUp">
