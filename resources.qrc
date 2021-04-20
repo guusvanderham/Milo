@@ -1,25 +1,37 @@
 <RCC>
   <qresource prefix="fakevideo">
-    <file>boek.png</file>
-    <file>video.PNG</file>
+    <file>Images/boek.png</file>
   </qresource>
   <qresource prefix="pagina's">
-    <file>Image_1.png</file>
-    <file>Image_7.png</file>
-    <file>Image_8.png</file>
-    <file>Image_9.png</file>
-    <file>Image_10.png</file>
-    <file>Image_11.png</file>
-    <file>Image_12.png</file>
-    <file>Image_13.png</file>
-    <file>Image_14.png</file>
-    <file>Image_15.png</file>
-    <file>Image_16.png</file>
+    <file>Images/Image_1.png</file>
+    <file>Images/Image_7.png</file>
+    <file>Images/Image_8.png</file>
+    <file>Images/Image_9.png</file>
+    <file>Images/Image_10.png</file>
+    <file>Images/Image_11.png</file>
+    <file>Images/Image_12.png</file>
+    <file>Images/Image_13.png</file>
+    <file>Images/Image_14.png</file>
+    <file>Images/Image_15.png</file>
+    <file>Images/Image_16.png</file>
   </qresource>
   <qresource prefix="Buttons">
-    <file>add.png</file>
+    <file>Images/sound.png</file>
+    <file>Images/repeat.png</file>
+    <file>Images/next.png</file>
+    <file>Images/back.png</file>
+    <file>Images/allessamen.png</file>
+    <file>Images/menuknop.png</file>
+    <file>Images/add.png</file>
   </qresource>
   <qresource prefix="kind">
+    <file>Images/jorik.png</file>
+    <file>Images/lieke.png</file>
+    <file>Images/jorik.png</file>
+    <file>Images/lieke.png</file>
+    <file>Images/annemiek.png</file>
+    <file>Images/annsophie.png</file>
+    <file>Images/arjan.png</file>
     <file>tim.png</file>
     <file>noraja.png</file>
     <file>jorik.png</file>
@@ -29,9 +41,11 @@
     <file>arjan.png</file>
   </qresource>
   <qresource prefix="background">
+    <file>Images/background.jpeg</file>
     <file>background.png</file>
   </qresource>
   <qresource prefix="logo">
+    <file>Images/logo.png</file>
     <file>logo.png</file>
   </qresource>
 </RCC>

@@ -28,7 +28,8 @@ class Thread(QThread):
     def run(self):
         #0 voor webcam, anders link naar de file
         #cap = cv2.VideoCapture(0)
-        cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
+        #cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
+        cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
         
         #loop oneindig 
         while self.running:
@@ -75,7 +76,6 @@ class Ui(QtWidgets.QMainWindow):
         #global variables
         self.page_nr=1
         
-        
         #laad de interface file
         uic.loadUi('test.ui', self)
         
@@ -103,7 +103,7 @@ class Ui(QtWidgets.QMainWindow):
         self.book1 = self.findChild(QtWidgets.QPushButton, 'book1')
         self.book1.clicked.connect(self.set_page_window) 
         
-        #view met alle paginas van een boek
+        #view met alle paginas van een boek + connect aan pageview
         self.page1 = self.findChild(QtWidgets.QPushButton, 'page1')
         #weer iets als if clicked:
         # video = video 1 (in set_pageview_window) die window is verder hetzelfde
@@ -133,15 +133,26 @@ class Ui(QtWidgets.QMainWindow):
         #self.pagex.clicked.connect(self.set_pageview_window)
         
         #view van één pagina
-        self.boek = self.findChild(QtWidgets.QLabel, 'boek' )
-        pixmap = QPixmap('boek.PNG')
-        self.boek.setPixmap(pixmap)
+        self.boek = self.findChild(QtWidgets.QLabel, 'boek')
+        self.boek.setPixmap(QPixmap('images/boek.PNG'))
         self.pagenrlabel = self.findChild(QtWidgets.QLabel, 'pagenr' )
         
         self.nextpagebutton = self.findChild(QtWidgets.QPushButton, 'next_page')
+        self.nextpagebutton_img = self.findChild(QtWidgets.QLabel, 'next_page_img')
+        self.nextpagebutton_img.setPixmap(QPixmap('images/next.PNG'))
         self.nextpagebutton.clicked.connect(self.turn_page_next)
+
         self.previouspagebutton = self.findChild(QtWidgets.QPushButton, 'previous_page')
+        self.previouspagebutton_img = self.findChild(QtWidgets.QLabel, 'previous_page_img')
+        self.previouspagebutton_img.setPixmap(QPixmap('images/back.PNG'))
         self.previouspagebutton.clicked.connect(self.turn_page_previous)
+
+        #@guus kan jij zorgen dat deze code pas 'happened' als de animatie is afgelopen?
+        self.replay = self.findChild(QtWidgets.QPushButton, 'opnieuw')
+        self.replay_img = self.findChild(QtWidgets.QLabel, 'opnieuw_img')
+        self.replay_img.setPixmap(QPixmap('images/repeat.PNG'))
+        #self.replay.clicked. --> restart animatie
+        
         #Dit stukje gaat over de videoplayer, met self.thread.start() begint hij met het afspelen van de animatie
         self.videoplayer = self.findChild(QtWidgets.QLabel, 'videoplayer' )
         self.thread = Thread(self)
@@ -178,23 +189,40 @@ class Ui(QtWidgets.QMainWindow):
 
         #if Qlabels name is iets met logo (dus logo of logo_2 of logo_3) : dan deze pixmap 
         self.logo = self.findChild(QtWidgets.QLabel, 'logo')
-        pixmap2 = QPixmap('logo.PNG')
+        pixmap2 = QPixmap('images/logo.PNG')
         self.logo.setPixmap(pixmap2)
 
         self.logo_2 = self.findChild(QtWidgets.QLabel, 'logo_2')
         self.logo_2.setPixmap(pixmap2)
 
+        #centralwidget spul
         self.background = self.findChild(QtWidgets.QLabel, 'background')
-        pixmap3 = QPixmap('background.PNG')
-        self.background.setPixmap(pixmap3)
+        self.background.setPixmap(QPixmap('images/background.JPEG'))
+
+        self.hamburger_img = self.findChild(QtWidgets.QLabel, 'hamburger_img')
+        self.hamburger_img.setPixmap(QPixmap('images/menuknop.PNG'))
+        self.hamburger_uit_img = self.findChild(QtWidgets.QLabel, 'hamburger_uit_img')
+        self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
+        self.hamburger = self.findChild(QtWidgets.QPushButton, 'hamburger')
+        self.hamburger.clicked.connect(self.foldout_menu)
+        self.exit = self.findChild(QtWidgets.QPushButton, 'exit')
+        self.exit.setEnabled(False)
+        self.exit.clicked.connect(self.foldin_menu)
+        
+        #if self.hamburger.clicked == True: 
+         #   print("hoi")
+            
+            #self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
+        #if clicked self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
+
 
         #plaatjes kinderen
         self.child1_img = self.findChild(QtWidgets.QLabel, 'tim_img')
-        pixmap4 = QPixmap('tim.PNG')
+        pixmap4 = QPixmap('images/tim.PNG')
         self.child1_img.setPixmap(pixmap4)
 
         self.child2_img = self.findChild(QtWidgets.QLabel, 'lieke_img')
-        pixmap5 = QPixmap('lieke.PNG')
+        pixmap5 = QPixmap('images/lieke.PNG')
         self.child2_img.setPixmap(pixmap5)
 
         #dit moet kind_pagina overzicht worden als label, dat ik de pixmap kan pakken van t goeie kind
@@ -202,73 +230,73 @@ class Ui(QtWidgets.QMainWindow):
         self.child2_img_2.setPixmap(pixmap5)
 
         self.child3_img = self.findChild(QtWidgets.QLabel, 'jorik_img')
-        pixmap6 = QPixmap('jorik.PNG')
+        pixmap6 = QPixmap('images/jorik.PNG')
         self.child3_img.setPixmap(pixmap6)
 
         self.child4_img = self.findChild(QtWidgets.QLabel, 'noraja_img')
-        pixmap7 = QPixmap('noraja.PNG')
+        pixmap7 = QPixmap('images/noraja.PNG')
         self.child4_img.setPixmap(pixmap7)
 
         self.child5_img = self.findChild(QtWidgets.QLabel, 'annsophie_img')
-        pixmap8 = QPixmap('annsophie.PNG')
+        pixmap8 = QPixmap('images/annsophie.PNG')
         self.child5_img.setPixmap(pixmap8)
 
         self.child6_img = self.findChild(QtWidgets.QLabel, 'annemiek_img')
-        pixmap9 = QPixmap('annemiek.PNG')
+        pixmap9 = QPixmap('images/annemiek.PNG')
         self.child6_img.setPixmap(pixmap9)
 
         self.child7_img = self.findChild(QtWidgets.QLabel, 'arjan_img')
-        pixmap10 = QPixmap('arjan.PNG')
+        pixmap10 = QPixmap('images/arjan.PNG')
         self.child7_img.setPixmap(pixmap10)
 
         #plaatjes buttons
         self.add = self.findChild(QtWidgets.QLabel, 'add')
-        pixmap11 = QPixmap('add.PNG')
+        pixmap11 = QPixmap('images/add.PNG')
         self.add.setPixmap(pixmap11)
 
         #plaatjes paginaoverzicht
         self.page1_img = self.findChild(QtWidgets.QLabel, 'page1_img')
-        pixmap12 = QPixmap('Image_1.PNG')
+        pixmap12 = QPixmap('images/Image_1.PNG')
         self.page1_img.setPixmap(pixmap12)
 
         self.page2_img = self.findChild(QtWidgets.QLabel, 'page2_img')
-        pixmap13 = QPixmap('Image_7.PNG')
+        pixmap13 = QPixmap('images/Image_7.PNG')
         self.page2_img.setPixmap(pixmap13)
 
         self.page3_img = self.findChild(QtWidgets.QLabel, 'page3_img')
-        pixmap14 = QPixmap('Image_8.PNG')
+        pixmap14 = QPixmap('images/Image_8.PNG')
         self.page3_img.setPixmap(pixmap14)
 
         self.page4_img = self.findChild(QtWidgets.QLabel, 'page4_img')
-        pixmap15 = QPixmap('Image_9.PNG')
+        pixmap15 = QPixmap('images/Image_9.PNG')
         self.page4_img.setPixmap(pixmap15)
 
         self.page5_img = self.findChild(QtWidgets.QLabel, 'page5_img')
-        pixmap16 = QPixmap('Image_10.PNG')
+        pixmap16 = QPixmap('images/Image_10.PNG')
         self.page5_img.setPixmap(pixmap16)
 
         self.page6_img = self.findChild(QtWidgets.QLabel, 'page6_img')
-        pixmap17 = QPixmap('Image_11.PNG')
+        pixmap17 = QPixmap('images/Image_11.PNG')
         self.page6_img.setPixmap(pixmap17)
 
         self.page7_img = self.findChild(QtWidgets.QLabel, 'page7_img')
-        pixmap18 = QPixmap('Image_12.PNG')
+        pixmap18 = QPixmap('images/Image_12.PNG')
         self.page7_img.setPixmap(pixmap18)
 
         self.page8_img = self.findChild(QtWidgets.QLabel, 'page8_img')
-        pixmap19 = QPixmap('Image_13.PNG')
+        pixmap19 = QPixmap('images/Image_13.PNG')
         self.page8_img.setPixmap(pixmap19)
 
         self.page9_img = self.findChild(QtWidgets.QLabel, 'page9_img')
-        pixmap20 = QPixmap('Image_14.PNG')
+        pixmap20 = QPixmap('images/Image_14.PNG')
         self.page9_img.setPixmap(pixmap20)
 
         self.page10_img = self.findChild(QtWidgets.QLabel, 'page10_img')
-        pixmap21 = QPixmap('Image_15.PNG')
+        pixmap21 = QPixmap('images/Image_15.PNG')
         self.page10_img.setPixmap(pixmap21)
 
         self.page11_img = self.findChild(QtWidgets.QLabel, 'page11_img')
-        pixmap22 = QPixmap('Image_16.PNG')
+        pixmap22 = QPixmap('images/Image_16.PNG')
         self.page11_img.setPixmap(pixmap22)
         
 
@@ -312,9 +340,23 @@ class Ui(QtWidgets.QMainWindow):
             self.page_nr-=1
         self.pagenrlabel.setText(str(self.page_nr))
         print('page set to: ' + str(self.page_nr))
+    def foldout_menu(self):
+        print("menu expanded")
+        self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
+        self.hamburger_img.setPixmap(QPixmap('images/empty.JPEG'))
+        self.hamburger.setEnabled(False)
+        self.exit.setEnabled(True)
+    def foldin_menu(self):
+        print("menu ingeklapt")
+        self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
+        self.hamburger_img.setPixmap(QPixmap('images/menuknop.PNG'))
+        self.hamburger.setEnabled(True)
+        self.exit.setEnabled(False)
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
+    #sys.exit()
+    sys.exit(app.exec_()) 
