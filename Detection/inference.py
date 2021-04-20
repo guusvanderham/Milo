@@ -25,24 +25,28 @@ import tensorflow as tf
 from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
+from collections import Counter
 #%%
-#load the model
-tf.keras.backend.clear_session()
-gpus = tf.config.experimental.list_physical_devices('GPU')
-if gpus:
-    try:
-        tf.config.experimental.set_virtual_device_configuration(gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
-    except RuntimeError as e:
-        print(e)
-model = tf.saved_model.load(r'model\saved_model')
-model_fn = model.signatures['serving_default']
+def load_model():
+    #load the model
+    tf.keras.backend.clear_session()
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    if gpus:
+        try:
+            tf.config.experimental.set_virtual_device_configuration(gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
+        except RuntimeError as e:
+            print(e)
+    model = tf.saved_model.load(r'Detection\model\saved_model')
+    model_fn = model.signatures['serving_default']
+    
+    #create category index
+    labelmap_path=r'Detection\model\label_map.pbtxt'
+    category_index = label_map_util.create_category_index_from_labelmap(labelmap_path, use_display_name=True)
+    
+    #load classifier
+    #knn = load('knn.joblib')
+    return [model, model_fn, category_index]
 
-#create category index
-labelmap_path=r'model\label_map.pbtxt'
-category_index = label_map_util.create_category_index_from_labelmap(labelmap_path, use_display_name=True)
-#%%
-#load classifier
-knn = load('knn.joblib')
 #%%
 def resize(frame, size):
     #crop to square
@@ -77,7 +81,7 @@ def dominant_color(image):
         return [[],[]]
     
 
-def detect(image,output_dict, category_index, knn):
+def detect(image,output_dict, category_index):
     num_detections = int(output_dict.pop('num_detections'))
     output_dict = {key:value[0, :num_detections].numpy() for key,value in output_dict.items()}
     output_dict['num_detections'] = num_detections
@@ -89,7 +93,7 @@ def detect(image,output_dict, category_index, knn):
         
         if scores[0]<0.80:
             scores = np.delete(scores,0)
-            print(len(scores))
+            #print(len(scores))
             nextbest=np.argmax(scores)+2
 
             nn_detection=category_index[nextbest]['name'] 
@@ -107,63 +111,79 @@ def detect(image,output_dict, category_index, knn):
     coords=output_dict['detection_boxes'][0]
     cutout=cut_out_detection(image,coords)
     color1, color2=dominant_color(cutout)
-    if any(color1):
-        knn_detection = knn.predict([np.array([color1,color2]).flatten().tolist()])
-    else:
-        knn_detection='none'
     
-    return output_dict, knn_detection, nn_detection, color1
+    
+    return output_dict, nn_detection, color1
 
+def milo_predict(frame,model, model_fn, category_index):
+    size=(480,480)
+    resized=resize(frame,size)
+    #make tensor
+    input_tensor = tf.convert_to_tensor(resized)
+    input_tensor = input_tensor[tf.newaxis,...]
+    output_dict = model_fn(input_tensor)
+    output_dict, nn_detection, color1 = detect(frame, output_dict, category_index)
+    return nn_detection
 
 
 
 #%%
-
-cap = cv2.VideoCapture(0)
-
-while(True):
-    # Capture frame-by-frame
-    ret, frame = cap.read()
-    # resize and make tensor
-    size=(480,480)
-    resized=resize(frame,size)
+def test(model, model_fn, category_index):
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    start = time.time()
+    detections =[]
+    while(True):
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+        # resize and make tensor
+        size=(480,480)
+        resized=resize(frame,size)
+        
+        #make tensor
+        input_tensor = tf.convert_to_tensor(resized)
+        input_tensor = input_tensor[tf.newaxis,...]
+        
+        #predict
+        output_dict = model_fn(input_tensor)
+        #detect
+        output_dict, nn_detection, color1 = detect(frame, output_dict, category_index)
+        #print(nn_detection)
+        #visualize
+        image = vis_util.visualize_boxes_and_labels_on_image_array(
+            resized,
+            output_dict['detection_boxes'],
+            output_dict['detection_classes'],
+            output_dict['detection_scores'],
+            category_index,
+            instance_masks=output_dict.get('detection_masks_reframed', None),
+            use_normalized_coordinates=True,
+            line_thickness=8)
+        #bar=np.ones((480,20,3)) 
+        #if any(color1):
+        #    bar=np.ones((480,20,3))*color1  
+        # Display the resulting frame
+        #image2=np.zeros((480,500,3))
+        #image2[0:480,0:480,:]=resized
+        #image2[0:480,480:500,:]=bar
+        #image2=image2.astype(np.uint8)
+        #image=np.concatenate((image,bar),axis=2)
+        cv2.imshow('frame',image)
+        detections.append(nn_detection)
+        now= time.time()
+        current_time=now-start
+        if current_time > 5:
+            occurence_count = Counter(detections)
+            final_detection=occurence_count.most_common(1)[0][0]
+            print(final_detection)
+            break
+        
+        #Quit when 'q' is pressed
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
     
-    #make tensor
-    input_tensor = tf.convert_to_tensor(resized)
-    input_tensor = input_tensor[tf.newaxis,...]
+    # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
     
-    #predict
-    output_dict = model_fn(input_tensor)
-    #detect
-    output_dict, knn_detection, nn_detection, color1 = detect(frame, output_dict, category_index, knn)
-    print(nn_detection)
-    #visualize
-    image = vis_util.visualize_boxes_and_labels_on_image_array(
-        resized,
-        output_dict['detection_boxes'],
-        output_dict['detection_classes'],
-        output_dict['detection_scores'],
-        category_index,
-        instance_masks=output_dict.get('detection_masks_reframed', None),
-        use_normalized_coordinates=True,
-        line_thickness=8)
-    bar=np.ones((480,20,3)) 
-    if any(color1):
-        bar=np.ones((480,20,3))*color1  
-    # Display the resulting frame
-    image2=np.zeros((480,500,3))
-    image2[0:480,0:480,:]=resized
-    image2[0:480,480:500,:]=bar
-    image2=image2.astype(np.uint8)
-    #image=np.concatenate((image,bar),axis=2)
-    cv2.imshow('frame',image2)
-    
-    
-    
-    #Quit when 'q' is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-# When everything done, release the capture
-cap.release()
-cv2.destroyAllWindows()
+#[model, model_fn, category_index ]= load_model()
+#test(model, model_fn, category_index)

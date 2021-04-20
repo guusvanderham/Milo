@@ -7,6 +7,7 @@ from PyQt5.QtGui import QImage, QPixmap
 import cv2
 import threading
 
+
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
     QHBoxLayout, QPushButton
@@ -17,7 +18,19 @@ from PyQt5.QtCore import (
 )
 import time
 import sys
-
+sys.path.insert(1, 'Detection')
+from inference import *
+[m,mf,c] = load_model()
+#%%
+def resize(frame, size):
+    #crop to square
+    if(frame.shape[1]>frame.shape[0]):
+        cropside=int((frame.shape[1]-frame.shape[0])/2)
+        cropped=frame[:,cropside:frame.shape[1]-cropside,:]
+    #resize
+    #resized = cv2.resize(cropped, size, interpolation = cv2.INTER_AREA)
+    
+    return cropped
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
 class Thread(QThread):
@@ -26,10 +39,11 @@ class Thread(QThread):
     #blijft draaien zolang dit waar is
     running=True
     def run(self):
+        
         #0 voor webcam, anders link naar de file
         #cap = cv2.VideoCapture(0)
-        #cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
-        cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
+        cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
+        #cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
         
         #loop oneindig 
         while self.running:
@@ -46,28 +60,87 @@ class Thread(QThread):
                 #stuur update signaal
                 self.changePixmap.emit(p)
                 
+                
             if self.running==False:
                 break
             #zorg dat je niet te snel afspeelt
             time.sleep(0.02)
+            if ret == False:
+                print('video done')
+                break
     #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
     def kill(self):
         self.running = False
-        print('received stop signal from window.')
+        print('received stop signal from window.(1)')
+
+class Thread2(QThread):
+
+    #signaalding om te sturen dat het scherm geupdate moet worden
+    changecamPixmap = pyqtSignal(QImage)
+    #blijft draaien zolang dit waar is
+    running=True
+    def load_model_please(self,package):
+        self.model = package[1]
+        self.model_fn = package[2]
+        self.category_index = package[3]
         
-class WorkerSignals(QObject):
-    progress = pyqtSignal(int)
+    def run(self):
+        #0 voor webcam, anders link naar de file
+        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        #cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
+        #cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
+        start = time.time()
+        detections=[]
+        #loop oneindig 
+        while self.running:
+            #pak de volgende frame
+            ret, frame = cap.read()
+            if ret:
+                nn_detection = milo_predict(frame, self.model, self.model_fn, self.category_index)
+                detections.append(nn_detection)
+                now= time.time()
+                current_time=now-start
+                if current_time > 10:
+                    occurence_count = Counter(detections)
+                    final_detection=occurence_count.most_common(1)[0][0]
+                    print(final_detection)
+                    break
+                
+                #doe even resizen
+                #frame=resize(frame,[1080,1080])
+                rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                h, w, ch = rgbImage.shape
+                bytesPerLine = ch * w
+                convertToQtFormat = QImage(rgbImage.data, w, h, bytesPerLine, QImage.Format_RGB888)
+                p = convertToQtFormat.scaled(350, 350, Qt.KeepAspectRatio) 
+                #stuur update signaal
+                self.changecamPixmap.emit(p)                
+            if self.running==False:
+                break
+            #zorg dat je niet te snel afspeelt
+            #time.sleep(0.02)
+            
+    #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
+    def kill(self):
+        self.running = False
+        print('received stop signal from window.(2)')
+        
+
 
 class Ui(QtWidgets.QMainWindow):
     #update videoplayer frame
     @pyqtSlot(QImage)
     def setImage(self, image):
         self.videoplayer.setPixmap(QPixmap.fromImage(image))
+    @pyqtSlot(QImage)
+    def setcamplayer(self, image):
+        self.camplayer.setPixmap(QPixmap.fromImage(image))    
         
     #er is op kruisje gedrukt dus sluit alles correct af    
     def closeEvent(self, event):
         
         self.thread.kill()
+        self.thread2.kill()
         print("Closing")
         #self.destory()
         
@@ -76,9 +149,13 @@ class Ui(QtWidgets.QMainWindow):
         #global variables
         self.page_nr=1
         
+        
         #laad de interface file
         uic.loadUi('test.ui', self)
+        self.show()
+        #laat eerst programma zien en laad dan pas het model
         
+        #[m,c]=[0,1]
         #beginview: kinderen
         self.child = self.findChild(QtWidgets.QPushButton, 'Tim_old')
         self.child.clicked.connect(self.set_book_window)
@@ -151,13 +228,16 @@ class Ui(QtWidgets.QMainWindow):
         self.replay = self.findChild(QtWidgets.QPushButton, 'opnieuw')
         self.replay_img = self.findChild(QtWidgets.QLabel, 'opnieuw_img')
         self.replay_img.setPixmap(QPixmap('images/repeat.PNG'))
-        #self.replay.clicked. --> restart animatie
+        self.replay.clicked.connect(self.replay_animation)
         
         #Dit stukje gaat over de videoplayer, met self.thread.start() begint hij met het afspelen van de animatie
         self.videoplayer = self.findChild(QtWidgets.QLabel, 'videoplayer' )
+        self.camplayer = self.findChild(QtWidgets.QLabel, 'camplayer' )
         self.thread = Thread(self)
-        #app.aboutToQuit.connect(th.stop)
         self.thread.changePixmap.connect(self.setImage)
+        self.thread2 = Thread2(self)
+        self.thread2.load_model_please([self, m,mf,c])
+        self.thread2.changecamPixmap.connect(self.setcamplayer)
         #self.thread.start()
 
         
@@ -173,7 +253,8 @@ class Ui(QtWidgets.QMainWindow):
         #de stacked widget waarin de verschillende windows staan
         self.stackedwidget = self.findChild(QtWidgets.QStackedWidget, 'stackedWidget')
         self.stackedWidget.setCurrentIndex(0)
-        self.show()
+        
+        
         
         
         #voor plaatjes
@@ -330,10 +411,13 @@ class Ui(QtWidgets.QMainWindow):
     def set_book_window(self):
         self.stackedWidget.setCurrentIndex(4)
         print('changed window to page view')  
+    def replay_animation(self):
+        self.thread.start()
+        print('thread started')
     def turn_page_next(self):
         self.page_nr+=1
         self.pagenrlabel.setText(str(self.page_nr))
-        self.thread.start()
+        self.thread2.start()
         print('page set to: ' + str(self.page_nr))
     def turn_page_previous(self):
         if(self.page_nr>1):
@@ -358,5 +442,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    #sys.exit()
-    sys.exit(app.exec_()) 
+    sys.exit()
+    #sys.exit(app.exec_()) 

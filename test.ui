@@ -1438,7 +1438,7 @@ QPushButton:clicked {
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>vid1</string>
       </property>
      </widget>
      <widget class="QPushButton" name="opnieuw">
@@ -1564,6 +1564,19 @@ QPushButton:clicked {
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="camplayer">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>721</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>vid2</string>
+      </property>
+     </widget>
      <zorder>boek</zorder>
      <zorder>text</zorder>
      <zorder>pagenr</zorder>
@@ -1574,6 +1587,7 @@ QPushButton:clicked {
      <zorder>opnieuw</zorder>
      <zorder>previous_page_img</zorder>
      <zorder>previous_page</zorder>
+     <zorder>camplayer</zorder>
     </widget>
     <widget class="QWidget" name="Books">
      <widget class="QPushButton" name="book1">
@@ -1797,7 +1811,7 @@ QPushButton:clicked {
      <x>0</x>
      <y>0</y>
      <width>1920</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="defaultUp">
