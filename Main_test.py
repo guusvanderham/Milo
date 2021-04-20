@@ -20,7 +20,8 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
-[m,mf,c] = load_model()
+#[m,mf,c] = load_model()
+[m,mf,c] = ['dum', 'dummy','dumst']
 #%%
 def resize(frame, size):
     #crop to square
@@ -42,8 +43,8 @@ class Thread(QThread):
         
         #0 voor webcam, anders link naar de file
         #cap = cv2.VideoCapture(0)
-        cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
-        #cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
+        #cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
+        cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
         
         #loop oneindig 
         while self.running:
@@ -87,8 +88,7 @@ class Thread2(QThread):
     def run(self):
         #0 voor webcam, anders link naar de file
         cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-        #cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
-        #cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
+
         start = time.time()
         detections=[]
         #loop oneindig 
@@ -417,7 +417,7 @@ class Ui(QtWidgets.QMainWindow):
     def turn_page_next(self):
         self.page_nr+=1
         self.pagenrlabel.setText(str(self.page_nr))
-        self.thread2.start()
+        #self.thread2.start()
         print('page set to: ' + str(self.page_nr))
     def turn_page_previous(self):
         if(self.page_nr>1):
@@ -442,5 +442,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 
