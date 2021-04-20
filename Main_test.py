@@ -68,7 +68,7 @@ class Ui(QtWidgets.QMainWindow):
         
         self.thread.kill()
         print("Closing")
-        self.destory()
+        #self.destory()
         
     def __init__(self, app):
         super(Ui, self).__init__()
