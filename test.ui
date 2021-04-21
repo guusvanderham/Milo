@@ -1402,7 +1402,7 @@ QPushButton:clicked {
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fakevideo/boek.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="text">
+     <widget class="QLabel" name="caption">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -1578,7 +1578,7 @@ QPushButton:clicked {
       </property>
      </widget>
      <zorder>boek</zorder>
-     <zorder>text</zorder>
+     <zorder>caption</zorder>
      <zorder>pagenr</zorder>
      <zorder>videoplayer</zorder>
      <zorder>next_page_img</zorder>
@@ -1811,7 +1811,7 @@ QPushButton:clicked {
      <x>0</x>
      <y>0</y>
      <width>1920</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <property name="defaultUp">

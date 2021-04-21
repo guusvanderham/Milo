@@ -32,6 +32,30 @@ def resize(frame, size):
     #resized = cv2.resize(cropped, size, interpolation = cv2.INTER_AREA)
     
     return cropped
+def set_caption(self, pagenr):
+    captions = ['Hallo ..., we lezen nu kijk eens wat een kleintje',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Het kleine kalfje en moeder koe. Lopen samen naar de boerderij toe.',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komt daar voorbij? \n Daar loopt de haan, wat hoor ik nu? De haan roept heel hard: kukeleku!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De hond, die blaft hard voor zijn hok En ...miauw! De poes: die schrok!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar vliegt de vogel, in de lucht heel snel. En de boer op de grond, die zet hem wel!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Moeder varken en de kleine biggen. Gaan achter het hek in de modder liggen.',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Een kuiken dat piept, hij zwemt in het water. En mama eend? Die komt wat later.',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De geit, die heeft allemaal gras in zijn bek. En konijn in haar hol? Die vindt het maar gek!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De kip die zoekt in de tuin wat te eten. Maar het ei in haar nest is ze niet vergeten!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar is het lammetje, met zijn kopje zo zacht. En daar mama schaap, die lief op hem wacht.',
+        'Zie Milo en Lana eens vrolijk zwaaien! Ze mogen van de boer alle dieren aaien. \n Wat een fijne lente-dag was dat, Met al die grote en kleine dieren op pad!'
+        ]
+    self.page_caption.setText(captions[pagenr-1])
+    
+    
+def load_page(self, pagenr):
+    self.stackedWidget.setCurrentIndex(3)
+    self.animationpath='Animations/pagina'+str(pagenr)+'.mp4'
+    self.thread.animationpath =self.animationpath
+    set_caption(self, pagenr)
+    self.thread.kill()
+    time.sleep(0.1)
+    self.thread.start()
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
 class Thread(QThread):
@@ -39,12 +63,13 @@ class Thread(QThread):
     changePixmap = pyqtSignal(QImage)
     #blijft draaien zolang dit waar is
     running=True
+    animationpath='\Animations\pagina1.mp4'
     def run(self):
-        
+        self.running =True
         #0 voor webcam, anders link naar de file
         #cap = cv2.VideoCapture(0)
         #cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
-        cap = cv2.VideoCapture(r'C:\Users\Gebruiker\Documents\GitHub\Milo\pagina2.mp4') #cap voor Rosa
+        cap = cv2.VideoCapture(self.animationpath) #cap voor Rosa
         
         #loop oneindig 
         while self.running:
@@ -57,7 +82,7 @@ class Thread(QThread):
                 h, w, ch = rgbImage.shape
                 bytesPerLine = ch * w
                 convertToQtFormat = QImage(rgbImage.data, w, h, bytesPerLine, QImage.Format_RGB888)
-                p = convertToQtFormat.scaled(1920, 1080, Qt.KeepAspectRatio) 
+                p = convertToQtFormat.scaled(1200, 900, Qt.KeepAspectRatio) 
                 #stuur update signaal
                 self.changePixmap.emit(p)
                 
@@ -185,27 +210,27 @@ class Ui(QtWidgets.QMainWindow):
         #weer iets als if clicked:
         # video = video 1 (in set_pageview_window) die window is verder hetzelfde
         # caption = ... (bij het label caption)
-        self.page1.clicked.connect(self.set_pageview_window)
+        self.page1.clicked.connect(self.set_pageview_window1)
         self.page2 = self.findChild(QtWidgets.QPushButton, 'page2')
-        self.page2.clicked.connect(self.set_pageview_window)
+        self.page2.clicked.connect(self.set_pageview_window2)
         self.page3 = self.findChild(QtWidgets.QPushButton, 'page3')
-        self.page3.clicked.connect(self.set_pageview_window)
+        self.page3.clicked.connect(self.set_pageview_window3)
         self.page4 = self.findChild(QtWidgets.QPushButton, 'page4')
-        self.page4.clicked.connect(self.set_pageview_window)
+        self.page4.clicked.connect(self.set_pageview_window4)
         self.page5 = self.findChild(QtWidgets.QPushButton, 'page5')
-        self.page5.clicked.connect(self.set_pageview_window)
+        self.page5.clicked.connect(self.set_pageview_window5)
         self.page6 = self.findChild(QtWidgets.QPushButton, 'page6')
-        self.page6.clicked.connect(self.set_pageview_window)
+        self.page6.clicked.connect(self.set_pageview_window6)
         self.page7 = self.findChild(QtWidgets.QPushButton, 'page7')
-        self.page7.clicked.connect(self.set_pageview_window)
+        self.page7.clicked.connect(self.set_pageview_window7)
         self.page8 = self.findChild(QtWidgets.QPushButton, 'page8')
-        self.page8.clicked.connect(self.set_pageview_window)
+        self.page8.clicked.connect(self.set_pageview_window8)
         self.page9 = self.findChild(QtWidgets.QPushButton, 'page9')
-        self.page9.clicked.connect(self.set_pageview_window)
+        self.page9.clicked.connect(self.set_pageview_window9)
         self.page10 = self.findChild(QtWidgets.QPushButton, 'page10')
-        self.page10.clicked.connect(self.set_pageview_window)
+        self.page10.clicked.connect(self.set_pageview_window10)
         self.page11 = self.findChild(QtWidgets.QPushButton, 'page11')
-        self.page11.clicked.connect(self.set_pageview_window)
+        self.page11.clicked.connect(self.set_pageview_window11)
         #self.pagex = self.findChild(QtWidgets.QPushButton, 'pagex')
         #self.pagex.clicked.connect(self.set_pageview_window)
         
@@ -213,6 +238,7 @@ class Ui(QtWidgets.QMainWindow):
         self.boek = self.findChild(QtWidgets.QLabel, 'boek')
         self.boek.setPixmap(QPixmap('images/boek.PNG'))
         self.pagenrlabel = self.findChild(QtWidgets.QLabel, 'pagenr' )
+        self.page_caption = self.findChild(QtWidgets.QLabel, 'caption')
         
         self.nextpagebutton = self.findChild(QtWidgets.QPushButton, 'next_page')
         self.nextpagebutton_img = self.findChild(QtWidgets.QLabel, 'next_page_img')
@@ -394,9 +420,60 @@ class Ui(QtWidgets.QMainWindow):
         def show_kid(self):
             pixmap = QPixmap(self.img)
             return pixmap
-
+        
+        
 
     #verander de window
+    def set_pageview_window(self):
+        print('changed window to page view')  
+        load_page(self, self.page_nr)
+    def set_pageview_window1(self):
+        print('changed window to page view')  
+        self.page_nr = 1
+        load_page(self, 1)
+    def set_pageview_window2(self):
+        print('changed window to page view')  
+        self.page_nr = 2
+        load_page(self, 2)
+    def set_pageview_window3(self):
+        print('changed window to page view')  
+        self.page_nr = 3
+        load_page(self, 3)
+    def set_pageview_window4(self):
+        print('changed window to page view')  
+        self.page_nr = 4
+        load_page(self, 4)
+    def set_pageview_window5(self):
+        print('changed window to page view')  
+        self.page_nr = 5
+        load_page(self, 5)
+    def set_pageview_window6(self):
+        print('changed window to page view')  
+        self.page_nr = 6
+        load_page(self, 6)
+    def set_pageview_window7(self):
+        print('changed window to page view')  
+        self.page_nr = 7
+        load_page(self, 7)
+    def set_pageview_window8(self):
+        print('changed window to page view')  
+        self.page_nr = 8
+        load_page(self, 8)
+    def set_pageview_window9(self):
+        print('changed window to page view')  
+        self.page_nr = 9
+        load_page(self, 9)
+    def set_pageview_window10(self):
+        print('changed window to page view')  
+        self.page_nr = 10
+        load_page(self, 10)
+    def set_pageview_window11(self):
+        print('changed window to page view')  
+        self.page_nr = 11
+        load_page(self, 11)
+
+        
+
     def set_children_window(self):
         self.stackedWidget.setCurrentIndex(0)
         print('changed window to children')
@@ -404,25 +481,27 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedwidget.setCurrentIndex(1)
     def set_page_window(self):
         self.stackedWidget.setCurrentIndex(2)
-        print('changed window to pages')
-    def set_pageview_window(self):
-        self.stackedWidget.setCurrentIndex(3)
-        print('changed window to page view')        
+        print('changed window to pages')        
     def set_book_window(self):
         self.stackedWidget.setCurrentIndex(4)
-        print('changed window to page view')  
+        print('changed window to bookview')  
     def replay_animation(self):
+        if self.thread.running == True:
+            self.thread.kill()
+            time.sleep(0.1)
         self.thread.start()
         print('thread started')
     def turn_page_next(self):
-        self.page_nr+=1
+        if(self.page_nr<11):
+            self.page_nr+=1
         self.pagenrlabel.setText(str(self.page_nr))
-        #self.thread2.start()
+        load_page(self, self.page_nr)
         print('page set to: ' + str(self.page_nr))
     def turn_page_previous(self):
         if(self.page_nr>1):
             self.page_nr-=1
         self.pagenrlabel.setText(str(self.page_nr))
+        load_page(self, self.page_nr)
         print('page set to: ' + str(self.page_nr))
     def foldout_menu(self):
         print("menu expanded")
@@ -442,5 +521,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    #sys.exit()
-    sys.exit(app.exec_()) 
+    sys.exit()
+    #sys.exit(app.exec_()) 
