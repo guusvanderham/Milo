@@ -6,7 +6,7 @@ from PyQt5.QtCore import QThread, Qt, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QImage, QPixmap
 import cv2
 import threading
-
+from playsound import playsound
 
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
@@ -56,6 +56,7 @@ def load_page(self, pagenr):
     self.thread.kill()
     time.sleep(0.1)
     self.thread.start()
+
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
 class Thread(QThread):
@@ -150,7 +151,18 @@ class Thread2(QThread):
         self.running = False
         print('received stop signal from window.(2)')
         
-
+class Thread3(QThread):    
+    #blijft draaien zolang dit waar is
+    running=True
+    soundpath='Sounds\duck.mp3'
+    def run(self):
+        playsound(self.soundpath)
+        print('quack')
+        return
+    #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
+    def kill(self):
+        self.running = False
+        print('received stop signal from window.(3)')
 
 class Ui(QtWidgets.QMainWindow):
     #update videoplayer frame
@@ -166,6 +178,7 @@ class Ui(QtWidgets.QMainWindow):
         
         self.thread.kill()
         self.thread2.kill()
+        self.thread3.kill()
         print("Closing")
         #self.destory()
         
@@ -264,6 +277,8 @@ class Ui(QtWidgets.QMainWindow):
         self.thread2 = Thread2(self)
         self.thread2.load_model_please([self, m,mf,c])
         self.thread2.changecamPixmap.connect(self.setcamplayer)
+        self.thread3 = Thread3(self)
+        
         #self.thread.start()
 
         
@@ -505,6 +520,7 @@ class Ui(QtWidgets.QMainWindow):
         print('page set to: ' + str(self.page_nr))
     def foldout_menu(self):
         print("menu expanded")
+        self.thread3.start()
         self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
         self.hamburger_img.setPixmap(QPixmap('images/empty.JPEG'))
         self.hamburger.setEnabled(False)
