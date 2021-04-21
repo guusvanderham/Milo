@@ -28,7 +28,7 @@ def set_caption(self, pagenr):
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Het kleine kalfje en moeder koe. Lopen samen naar de boerderij toe.',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komt daar voorbij? \n Daar loopt de haan, wat hoor ik nu? De haan roept heel hard: kukeleku!',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De hond, die blaft hard voor zijn hok En ...miauw! De poes: die schrok!',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar vliegt de vogel, in de lucht heel snel. En de boer op de grond, die zet hem wel!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar vliegt de vogel, in de lucht heel snel. En de boer op de grond, die ziet hem wel!',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Moeder varken en de kleine biggen. Gaan achter het hek in de modder liggen.',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Een kuiken dat piept, hij zwemt in het water. En mama eend? Die komt wat later.',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De geit, die heeft allemaal gras in zijn bek. En konijn in haar hol? Die vindt het maar gek!',
@@ -326,10 +326,33 @@ class Ui(QtWidgets.QMainWindow):
         self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
         self.hamburger = self.findChild(QtWidgets.QPushButton, 'hamburger')
         self.hamburger.clicked.connect(self.foldout_menu)
+
         self.exit = self.findChild(QtWidgets.QPushButton, 'exit')
         self.exit.setEnabled(False)
         self.exit.clicked.connect(self.foldin_menu)
-        
+
+        self.instellingen = self.findChild(QtWidgets.QPushButton, 'instellingen')
+        self.instellingen.setEnabled(False)
+        self.instellingen.clicked.connect(self.instellingen_menu) 
+
+        self.instellingen_open = self.findChild(QtWidgets.QLabel, 'instellingen_open')
+        self.instellingen_open.setPixmap(QPixmap('images/empty.JPEG'))
+
+        self.naar_klas = self.findChild(QtWidgets.QPushButton, 'knop_klas')
+        self.naar_klas.setEnabled(False)
+        self.naar_klas.setText(' ')
+        self.naar_klas.clicked.connect(self.set_children_window)
+
+        self.naar_boeken = self.findChild(QtWidgets.QPushButton, 'knop_boeken')
+        self.naar_boeken.setEnabled(False)
+        self.naar_boeken.setText(' ')
+        self.naar_boeken.clicked.connect(self.set_book_window)
+
+        self.naar_paginas = self.findChild(QtWidgets.QPushButton, 'knop_paginas')
+        self.naar_paginas.setEnabled(False)
+        self.naar_paginas.setText(' ')
+        self.naar_paginas.clicked.connect(self.set_page_window)
+
         #if self.hamburger.clicked == True: 
          #   print("hoi")
             
@@ -490,14 +513,18 @@ class Ui(QtWidgets.QMainWindow):
 
     def set_children_window(self):
         self.stackedWidget.setCurrentIndex(0)
+        self.foldin_menu()
         print('changed window to children')
     def set_instellingen_window(self):
         self.stackedwidget.setCurrentIndex(1)
+        self.foldin_menu()
     def set_page_window(self):
         self.stackedWidget.setCurrentIndex(2)
+        self.foldin_menu()
         print('changed window to pages')        
     def set_book_window(self):
         self.stackedWidget.setCurrentIndex(4)
+        self.foldin_menu()
         print('changed window to bookview')  
     def replay_animation(self):
         if self.thread.running == True:
@@ -518,24 +545,53 @@ class Ui(QtWidgets.QMainWindow):
         self.pagenrlabel.setText(str(self.page_nr))
         load_page(self, self.page_nr)
         print('page set to: ' + str(self.page_nr))
+
     def foldout_menu(self):
         print("menu expanded")
-        self.thread3.start()
+        self.thread3.start() #HAHA I found the quack
+        #verander hamburgerknop in uitgeklapt menu
         self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
         self.hamburger_img.setPixmap(QPixmap('images/empty.JPEG'))
+        #enable knoppen in menu
         self.hamburger.setEnabled(False)
         self.exit.setEnabled(True)
+        self.instellingen.setEnabled(True)
+        self.naar_klas.setEnabled(True)
+        self.naar_boeken.setEnabled(True)
+        self.naar_paginas.setEnabled(True)
+        #laat eventuele tekst op knoppen verschijnen
+        self.naar_klas.setText('Klas')
+        self.naar_boeken.setText('Boeken')
+        self.naar_paginas.setText('Pagina Overzicht')
+
     def foldin_menu(self):
         print("menu ingeklapt")
+        #verander terug in menuknop
         self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
         self.hamburger_img.setPixmap(QPixmap('images/menuknop.PNG'))
+        #enable/disable knoppen
         self.hamburger.setEnabled(True)
         self.exit.setEnabled(False)
+        self.instellingen.setEnabled(False)
+        self.naar_klas.setEnabled(False)
+        self.naar_boeken.setEnabled(False)
+        self.naar_paginas.setEnabled(False)
+        #laat teksten knoppen verdwijnen
+        self.naar_klas.setText(' ')
+        self.naar_boeken.setText(' ')
+        self.naar_paginas.setText(' ')
+
+    def instellingen_menu(self):
+        print("dit zijn de instellingen")
+        #self.instellingen_open.show()
+        self.instellingen_open.setPixmap(QPixmap('images/instelling_backblack.PNG'))
+        self.foldin_menu()
+        
 
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 

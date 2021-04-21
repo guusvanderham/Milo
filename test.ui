@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1716,19 +1716,19 @@ QPushButton:clicked {
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>1689</x>
-      <y>100</y>
+      <x>1680</x>
+      <y>80</y>
       <width>221</width>
       <height>131</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_11">
+      <widget class="QPushButton" name="knop_paginas">
        <property name="font">
         <font>
          <family>Segoe UI</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -1748,11 +1748,11 @@ QPushButton:clicked {
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="knop_klas">
        <property name="font">
         <font>
          <family>Segoe UI</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -1772,11 +1772,11 @@ QPushButton:clicked {
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_10">
+      <widget class="QPushButton" name="knop_boeken">
        <property name="font">
         <font>
          <family>Segoe UI</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -1797,6 +1797,48 @@ QPushButton:clicked {
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="instellingen">
+    <property name="geometry">
+     <rect>
+      <x>1630</x>
+      <y>130</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="instellingen_open">
+    <property name="geometry">
+     <rect>
+      <x>4</x>
+      <y>0</y>
+      <width>1921</width>
+      <height>1081</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/background/Images/instelling_backblack.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <zorder>instellingen_open</zorder>
    <zorder>background</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>hamburger_uit_img</zorder>
@@ -1804,6 +1846,7 @@ QPushButton:clicked {
    <zorder>hamburger</zorder>
    <zorder>exit</zorder>
    <zorder>gridLayoutWidget</zorder>
+   <zorder>instellingen</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1811,7 +1854,7 @@ QPushButton:clicked {
      <x>0</x>
      <y>0</y>
      <width>1920</width>
-     <height>26</height>
+     <height>18</height>
     </rect>
    </property>
    <property name="defaultUp">

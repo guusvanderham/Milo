@@ -16,11 +16,18 @@
     <file>Images/Image_16.png</file>
   </qresource>
   <qresource prefix="Buttons">
+    <file>Images/small.png</file>
+    <file>Images/sound.png</file>
+    <file>Images/switch_off.png</file>
+    <file>Images/switch_on.png</file>
+    <file>Images/medium.png</file>
+    <file>Images/large.png</file>
     <file>Images/sound.png</file>
     <file>Images/repeat.png</file>
     <file>Images/next.png</file>
     <file>Images/back.png</file>
     <file>Images/allessamen.png</file>
+    <file>Images/close.png</file>
     <file>Images/menuknop.png</file>
     <file>Images/add.png</file>
   </qresource>
@@ -41,8 +48,8 @@
     <file>arjan.png</file>
   </qresource>
   <qresource prefix="background">
+    <file>Images/instelling_backblack.png</file>
     <file>Images/background.jpeg</file>
-    <file>background.png</file>
   </qresource>
   <qresource prefix="logo">
     <file>Images/logo.png</file>
