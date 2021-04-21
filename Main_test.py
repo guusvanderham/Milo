@@ -23,15 +23,6 @@ from inference import *
 #[m,mf,c] = load_model()
 [m,mf,c] = ['dum', 'dummy','dumst']
 #%%
-def resize(frame, size):
-    #crop to square
-    if(frame.shape[1]>frame.shape[0]):
-        cropside=int((frame.shape[1]-frame.shape[0])/2)
-        cropped=frame[:,cropside:frame.shape[1]-cropside,:]
-    #resize
-    #resized = cv2.resize(cropped, size, interpolation = cv2.INTER_AREA)
-    
-    return cropped
 def set_caption(self, pagenr):
     captions = ['Hallo ..., we lezen nu kijk eens wat een kleintje',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Het kleine kalfje en moeder koe. Lopen samen naar de boerderij toe.',
@@ -66,11 +57,8 @@ class Thread(QThread):
     running=True
     animationpath='\Animations\pagina1.mp4'
     def run(self):
-        self.running =True
-        #0 voor webcam, anders link naar de file
-        #cap = cv2.VideoCapture(0)
-        #cap = cv2.VideoCapture(r'C:\Users\guusv\Documents\GitHub\Milo\pagina2.mp4')
-        cap = cv2.VideoCapture(self.animationpath) #cap voor Rosa
+        self.running =True       
+        cap = cv2.VideoCapture(self.animationpath) 
         
         #loop oneindig 
         while self.running:
@@ -78,7 +66,6 @@ class Thread(QThread):
             ret, frame = cap.read()
             
             if ret:
-                #doe even resizen
                 rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 h, w, ch = rgbImage.shape
                 bytesPerLine = ch * w
@@ -106,10 +93,16 @@ class Thread2(QThread):
     changecamPixmap = pyqtSignal(QImage)
     #blijft draaien zolang dit waar is
     running=True
+    sounddict = {"varken" : "Sounds\\varken.mp3",
+                 "kuiken" : "Sounds\kuiken.mp3",
+                 "koe" : "Sounds\koe.mp3",
+                 "schaap" :"Sounds\schaap.mp3",
+                 "hond":"Sounds\hond.mp3"}
     def load_model_please(self,package):
         self.model = package[1]
         self.model_fn = package[2]
         self.category_index = package[3]
+        
         
     def run(self):
         #0 voor webcam, anders link naar de file
@@ -122,7 +115,14 @@ class Thread2(QThread):
             #pak de volgende frame
             ret, frame = cap.read()
             if ret:
-                nn_detection = milo_predict(frame, self.model, self.model_fn, self.category_index)
+                nn_detection,box = milo_predict(frame, self.model, self.model_fn, self.category_index)
+                y=int(frame.shape[0]*box[0])
+                x=int(frame.shape[1]*box[1])
+                w=int((box[2]-box[0])*frame.shape[0])
+                h=int((box[3]-box[1])*frame.shape[1])
+                cv2.rectangle(frame,(x,y),(x+w,y+h),(255,255,255),5)
+                cv2.putText(frame,nn_detection,(x+w+10,y+h),0,1.5,(255,255,255), 3)
+                
                 detections.append(nn_detection)
                 now= time.time()
                 current_time=now-start
@@ -130,10 +130,9 @@ class Thread2(QThread):
                     occurence_count = Counter(detections)
                     final_detection=occurence_count.most_common(1)[0][0]
                     print(final_detection)
+                    playsound(self.sounddict[final_detection])
                     break
                 
-                #doe even resizen
-                #frame=resize(frame,[1080,1080])
                 rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 h, w, ch = rgbImage.shape
                 bytesPerLine = ch * w
@@ -154,7 +153,7 @@ class Thread2(QThread):
 class Thread3(QThread):    
     #blijft draaien zolang dit waar is
     running=True
-    soundpath='Sounds\duck.mp3'
+    soundpath='Sounds\eend.mp3'
     def run(self):
         playsound(self.soundpath)
         print('quack')
@@ -505,6 +504,7 @@ class Ui(QtWidgets.QMainWindow):
             self.thread.kill()
             time.sleep(0.1)
         self.thread.start()
+        self.thread2.start()
         print('thread started')
     def turn_page_next(self):
         if(self.page_nr<11):

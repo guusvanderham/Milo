@@ -123,7 +123,8 @@ def milo_predict(frame,model, model_fn, category_index):
     input_tensor = input_tensor[tf.newaxis,...]
     output_dict = model_fn(input_tensor)
     output_dict, nn_detection, color1 = detect(frame, output_dict, category_index)
-    return nn_detection
+    box = output_dict['detection_boxes'][0]
+    return nn_detection, box
 
 
 
