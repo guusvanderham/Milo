@@ -16,6 +16,7 @@
     <file>Images/Image_16.png</file>
   </qresource>
   <qresource prefix="Buttons">
+    <file>Images/checked.png</file>
     <file>Images/small.png</file>
     <file>Images/sound.png</file>
     <file>Images/switch_off.png</file>

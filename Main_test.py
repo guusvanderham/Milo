@@ -39,15 +39,16 @@ def set_caption(self, pagenr):
     self.page_caption.setText(captions[pagenr-1])
     
     
-def load_page(self, pagenr):
+def load_page(self, pagenr): #load page moet ook het kind meenemen
     self.stackedWidget.setCurrentIndex(3)
-    self.animationpath='Animations/pagina'+str(pagenr)+'.mp4'
+    self.animationpath='Animations/pagina'+str(pagenr)+'.mp4' 
     self.thread.animationpath =self.animationpath
     set_caption(self, pagenr)
+    self.huidig_kind.pages_read.append(pagenr)
     self.thread.kill()
     time.sleep(0.1)
     self.thread.start()
-
+    #kind.pages_read.append(pagenr)
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
 class Thread(QThread):
@@ -163,6 +164,21 @@ class Thread3(QThread):
         self.running = False
         print('received stop signal from window.(3)')
 
+class Child: 
+    def __init__(self, name, img, pages_read): #, img, button_size, fond_size, low_stim, pages_read):
+        self.name = name
+        self.img = img
+            #self.button_size = button_size
+            #self.fond_size = fond_size
+            #self.low_stim = low_stim 
+        self.pages_read = pages_read
+        
+        #def show_kid(self):
+            #pixmap = QPixmap(self.img)
+            #return pixmap
+        #[m,c]=[0,1]
+        #beginview: kinderen
+
 class Ui(QtWidgets.QMainWindow):
     #update videoplayer frame
     @pyqtSlot(QImage)
@@ -178,6 +194,7 @@ class Ui(QtWidgets.QMainWindow):
         self.thread.kill()
         self.thread2.kill()
         self.thread3.kill()
+        #sla settings van kind op -> in vervolg -> open kinderen met settings
         print("Closing")
         #self.destory()
         
@@ -191,17 +208,23 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
         #laat eerst programma zien en laad dan pas het model
+
         
-        #[m,c]=[0,1]
-        #beginview: kinderen
-        self.child = self.findChild(QtWidgets.QPushButton, 'Tim_old')
-        self.child.clicked.connect(self.set_book_window)
+        #kinderen
+        self.dummy = Child('Dummy Tim', 'images/tim.png', [])
+        self.dummy2 = Child('Dummy Lieke', 'images/lieke.png', [])
+
+        #huidig dummy kind
+        self.huidig_kind = Child('total dummy', 'images/arjan.png', []) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
+
 
         #kinderen connecten aan volgende pagina
         self.child1 = self.findChild(QtWidgets.QPushButton, 'kind1')
         self.child1.clicked.connect(self.set_book_window)
+        self.child1.clicked.connect(self.set_child1)
         self.child2 = self.findChild(QtWidgets.QPushButton, 'kind2')
-        self.child2.clicked.connect(self.set_book_window) 
+        self.child2.clicked.connect(self.set_book_window)
+        self.child2.clicked.connect(self.set_child2)
         self.child3 = self.findChild(QtWidgets.QPushButton, 'kind3')
         self.child3.clicked.connect(self.set_book_window) 
         self.child4 = self.findChild(QtWidgets.QPushButton, 'kind4')
@@ -245,6 +268,32 @@ class Ui(QtWidgets.QMainWindow):
         self.page11.clicked.connect(self.set_pageview_window11)
         #self.pagex = self.findChild(QtWidgets.QPushButton, 'pagex')
         #self.pagex.clicked.connect(self.set_pageview_window)
+
+        #page_read voor elke pagina
+        self.page_read1 = self.findChild(QtWidgets.QLabel, 'page_read1')
+        self.page_read1.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read2 = self.findChild(QtWidgets.QLabel, 'page_read2')
+        self.page_read2.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read3 = self.findChild(QtWidgets.QLabel, 'page_read3')
+        self.page_read3.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read4 = self.findChild(QtWidgets.QLabel, 'page_read4')
+        self.page_read4.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read5 = self.findChild(QtWidgets.QLabel, 'page_read5')
+        self.page_read5.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read6 = self.findChild(QtWidgets.QLabel, 'page_read6')
+        self.page_read6.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read7 = self.findChild(QtWidgets.QLabel, 'page_read7')
+        self.page_read7.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read8 = self.findChild(QtWidgets.QLabel, 'page_read8')
+        self.page_read8.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read9 = self.findChild(QtWidgets.QLabel, 'page_read9')
+        self.page_read9.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read10 = self.findChild(QtWidgets.QLabel, 'page_read10')
+        self.page_read10.setPixmap(QPixmap('images/empty.JPEG'))
+        self.page_read11 = self.findChild(QtWidgets.QLabel, 'page_read11')
+        self.page_read11.setPixmap(QPixmap('images/empty.JPEG'))
+
+        self.vinkjeslijst = [self.page_read1, self.page_read2, self.page_read3, self.page_read4, self.page_read5, self.page_read6, self.page_read7, self.page_read8, self.page_read9, self.page_read10, self.page_read11]
         
         #view van één pagina
         self.boek = self.findChild(QtWidgets.QLabel, 'boek')
@@ -353,11 +402,9 @@ class Ui(QtWidgets.QMainWindow):
         self.naar_paginas.setText(' ')
         self.naar_paginas.clicked.connect(self.set_page_window)
 
-        #if self.hamburger.clicked == True: 
-         #   print("hoi")
-            
-            #self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
-        #if clicked self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
+        #instellingen labels
+        self.instelling_grid = self.findChild(QtWidgets.QGridLayout, 'gridLayout_2')
+        #self.instelling_grid.lower()
 
 
         #plaatjes kinderen
@@ -370,8 +417,8 @@ class Ui(QtWidgets.QMainWindow):
         self.child2_img.setPixmap(pixmap5)
 
         #dit moet kind_pagina overzicht worden als label, dat ik de pixmap kan pakken van t goeie kind
-        self.child2_img_2 = self.findChild(QtWidgets.QLabel, 'lieke_img_2')
-        self.child2_img_2.setPixmap(pixmap5)
+        #self.child2_img_2 = self.findChild(QtWidgets.QLabel, 'lieke_img_2')
+        #self.child2_img_2.setPixmap(pixmap5)
 
         self.child3_img = self.findChild(QtWidgets.QLabel, 'jorik_img')
         pixmap6 = QPixmap('images/jorik.PNG')
@@ -443,71 +490,84 @@ class Ui(QtWidgets.QMainWindow):
         pixmap22 = QPixmap('images/Image_16.PNG')
         self.page11_img.setPixmap(pixmap22)
         
+        self.name_kid = self.findChild(QtWidgets.QLabel, 'name_kid')
+        self.img_kid = self.findChild(QtWidgets.QLabel, 'img_kid')
 
 
-    class Child: 
-        def __init__(self, name, img, button_size, fond_size, low_stim, pages_read):
-            self.name = name
-            self.img = img
-            self.button_size = button_size
-            self.fond_size = fond_size
-            self.low_stim = low_stim 
-            self.pages_read = pages_read
+    
         
-        def show_kid(self):
-            pixmap = QPixmap(self.img)
-            return pixmap
-        
-        
+    #verander kind
+    def set_child1(self):
+        self.huidig_kind = self.dummy2
+        for pagina in self.vinkjeslijst:
+            pagina.setPixmap(QPixmap('images/empty.JPEG')) 
+            #nu reset ie wat er al is gelezen, maar dit moet dus opgeslagen worden bij het afsluiten en opstarten van het programma
+
+    def set_child2(self):
+        self.huidig_kind = self.dummy
+        for pagina in self.vinkjeslijst:
+            pagina.setPixmap(QPixmap('images/empty.JPEG'))    
 
     #verander de window
     def set_pageview_window(self):
         print('changed window to page view')  
         load_page(self, self.page_nr)
+
     def set_pageview_window1(self):
         print('changed window to page view')  
         self.page_nr = 1
         load_page(self, 1)
+
     def set_pageview_window2(self):
         print('changed window to page view')  
         self.page_nr = 2
         load_page(self, 2)
+        
     def set_pageview_window3(self):
         print('changed window to page view')  
         self.page_nr = 3
         load_page(self, 3)
+        
     def set_pageview_window4(self):
         print('changed window to page view')  
         self.page_nr = 4
         load_page(self, 4)
+        
     def set_pageview_window5(self):
         print('changed window to page view')  
         self.page_nr = 5
         load_page(self, 5)
+        
     def set_pageview_window6(self):
         print('changed window to page view')  
         self.page_nr = 6
         load_page(self, 6)
+        
     def set_pageview_window7(self):
         print('changed window to page view')  
         self.page_nr = 7
         load_page(self, 7)
+        
     def set_pageview_window8(self):
         print('changed window to page view')  
         self.page_nr = 8
         load_page(self, 8)
+        
     def set_pageview_window9(self):
         print('changed window to page view')  
         self.page_nr = 9
         load_page(self, 9)
+        
     def set_pageview_window10(self):
         print('changed window to page view')  
         self.page_nr = 10
         load_page(self, 10)
+        
     def set_pageview_window11(self):
         print('changed window to page view')  
         self.page_nr = 11
         load_page(self, 11)
+        
 
         
 
@@ -521,7 +581,18 @@ class Ui(QtWidgets.QMainWindow):
     def set_page_window(self):
         self.stackedWidget.setCurrentIndex(2)
         self.foldin_menu()
-        print('changed window to pages')        
+        print('changed window to pages') 
+        self.name_kid.setText(self.huidig_kind.name) 
+        self.img_kid.setPixmap(QPixmap(self.huidig_kind.img))
+        self.apply_checked()
+        #bij page_view --> apply_checked(kind.pages_read) (functie die kind meeneemt) 
+        # (pages read is dan een lijst met page_read labels) --> kan ik self.page_read{self.pagenr}?
+        #apply_checked functie, for elk e in kind.pages_read -> e.setPixmap(QPixmap('images/checked.PNG'))     
+        #  
+    def apply_checked(self):
+        #print(self.huidig_kind.pages_read)
+        for pagina in self.huidig_kind.pages_read:
+            self.vinkjeslijst[pagina-1].setPixmap(QPixmap('images/checked.PNG'))
     def set_book_window(self):
         self.stackedWidget.setCurrentIndex(4)
         self.foldin_menu()
@@ -581,9 +652,11 @@ class Ui(QtWidgets.QMainWindow):
         self.naar_boeken.setText(' ')
         self.naar_paginas.setText(' ')
 
+        
+
     def instellingen_menu(self):
         print("dit zijn de instellingen")
-        #self.instellingen_open.show()
+        self.instellingen_open.raise_()
         self.instellingen_open.setPixmap(QPixmap('images/instelling_backblack.PNG'))
         self.foldin_menu()
         
