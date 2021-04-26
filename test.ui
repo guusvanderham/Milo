@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -2124,7 +2124,6 @@ color: grey
     <zorder>knopgrootte</zorder>
     <zorder>knop_zichtbaar</zorder>
    </widget>
-   <zorder>instellingen_open</zorder>
    <zorder>background</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>hamburger_uit_img</zorder>
@@ -2140,8 +2139,8 @@ color: grey
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
-     <height>18</height>
+     <width>2736</width>
+     <height>22</height>
     </rect>
    </property>
    <property name="defaultUp">

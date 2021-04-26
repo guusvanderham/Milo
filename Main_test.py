@@ -20,66 +20,37 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
-[m,mf,c] = load_model()
-#[m,mf,c] = ['dum', 'dummy','dumst']
+#[m,mf,c] = load_model()
+[m,mf,c] = ['dum', 'dummy','dumst']
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo ..., we lezen nu kijk eens wat een kleintje',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Het kleine kalfje en moeder koe. Lopen samen naar de boerderij toe.',
-        'Milo: Wat een schattig kalfje. Hoe vind jij het om naar de boerderij te gaan?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komt daar voorbij? \n Daar loopt de haan, wat hoor ik nu? De haan roept heel hard: kukeleku!',
-        'Milo: Wat vind jij het leukste dierengeluid?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De hond, die blaft hard voor zijn hok En ...miauw! De poes: die schrok!',
-        'Milo: Oh! Ik schrok ook! Naar welk dier zou jij nu heen willen gaan?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar vliegt de vogel, in de lucht heel snel. En de boer op de grond, die zet hem wel!',
-        'Milo: *Opmerking over vogels*  Welk dier vind jij het liefst? Laten we daar naartoe gaan!',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Moeder varken en de kleine biggen. Gaan achter het hek in de modder liggen.',
-        'Een lekker modderbadje daar heb ik ook wel zin in. Wat zou jij doen op de boerderij?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Een kuiken dat piept, hij zwemt in het water. En mama eend? Die komt wat later.',
-        'Milo: Spitter spetter spater, ik hou van water. Hoe vind jij het om te zwemmen?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De geit, die heeft allemaal gras in zijn bek. En konijn in haar hol? Die vindt het maar gek!',
-        'Milo: Konijntjes zijn super zacht! Heb jij al wel eens een dier geaaid? Hoe vond je dat?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De kip die zoekt in de tuin wat te eten. Maar het ei in haar nest is ze niet vergeten!',
-        'Milo: Wat een goeie mama is die kip. Naar welk dier zullen we nu gaan?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar is het lammetje, met zijn kopje zo zacht. En daar mama schaap, die lief op hem wacht.',
-        'Milo: Welke dieren vind jij zacht?',
-        'Zie Milo en Lana eens vrolijk zwaaien! Ze mogen van de boer alle dieren aaien. \n Wat een fijne lente-dag was dat, Met al die grote en kleine dieren op pad!',
-        'Milo: Wat een leuk verhaal was dat! Welk dier vond jij het leukst? '
+        'Zie Milo en Lana eens vrolijk zwaaien! Ze mogen van de boer alle dieren aaien. \n Wat een fijne lente-dag was dat, Met al die grote en kleine dieren op pad!'
         ]
     self.page_caption.setText(captions[pagenr-1])
     
     
 def load_page(self, pagenr):
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     print('begin loading page:' + str(pagenr))
     self.stackedWidget.setCurrentIndex(3)
     self.animationpath='Animations/pagina'+str(int(pagenr/2)+1)+'.mp4'
-=======
-    self.stackedWidget.setCurrentIndex(3)
-    self.animationpath='Animations/pagina'+str(pagenr)+'.mp4'
->>>>>>> parent of 3457f29 (dingen)
-=======
-    self.stackedWidget.setCurrentIndex(3)
-    self.animationpath='Animations/pagina'+str(pagenr)+'.mp4'
->>>>>>> parent of 3457f29 (dingen)
+
+
     self.thread.animationpath =self.animationpath
     set_caption(self, pagenr)
     self.thread.kill()
     time.sleep(0.1)
-<<<<<<< HEAD
-    if pagenr % 2 == 0 or self.page_nr == 1:
-        self.thread.start()
-    if np.isin(self.page_nr, [7,9,17]):
-        self.capturebutton.show()
-    else:
-        self.capturebutton.hide()
-=======
     self.thread.start()
-<<<<<<< HEAD
->>>>>>> parent of 3457f29 (dingen)
-=======
->>>>>>> parent of 3457f29 (dingen)
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -124,8 +95,6 @@ class Thread2(QThread):
 
     #signaalding om te sturen dat het scherm geupdate moet worden
     changecamPixmap = pyqtSignal(QImage)
-    #signaalding om te sturen welke pagina er moet worden geladen
-    changepage = pyqtSignal(int)
     #blijft draaien zolang dit waar is
     running=True
     sounddict = {"varken" : "Sounds\\varken.mp3",
@@ -133,11 +102,6 @@ class Thread2(QThread):
                  "koe" : "Sounds\koe.mp3",
                  "schaap" :"Sounds\schaap.mp3",
                  "hond":"Sounds\hond.mp3"}
-    pagedict = {"varken" : 10,
-                "kuiken" : 12,
-                "koe" : 2,
-                "schaap" : 18,
-                "hond" : 6}
     def load_model_please(self,package):
         self.model = package[1]
         self.model_fn = package[2]
@@ -171,7 +135,6 @@ class Thread2(QThread):
                     final_detection=occurence_count.most_common(1)[0][0]
                     print(final_detection)
                     playsound(self.sounddict[final_detection])
-                    self.changepage.emit(self.pagedict[final_detection])
                     break
                 
                 rgbImage = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -199,7 +162,7 @@ class Thread3(QThread):
         playsound(self.soundpath)
         print('quack')
         return
-    #stop het proces zodat je pc niet vastloopt en je spyder honderdduizend keer moet opstarten wat een teringzooi
+    #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
     def kill(self):
         self.running = False
         print('received stop signal from window.(3)')
@@ -211,12 +174,7 @@ class Ui(QtWidgets.QMainWindow):
         self.videoplayer.setPixmap(QPixmap.fromImage(image))
     @pyqtSlot(QImage)
     def setcamplayer(self, image):
-        self.camplayer.setPixmap(QPixmap.fromImage(image))
-    @pyqtSlot(int)
-    def set_page_choice(self, pagechoice):
-        load_page(self, pagechoice)
-
-
+        self.camplayer.setPixmap(QPixmap.fromImage(image))    
         
     #er is op kruisje gedrukt dus sluit alles correct af    
     def closeEvent(self, event):
@@ -231,7 +189,7 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__()
         #global variables
         self.page_nr=1
-        self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
+        
         
         #laad de interface file
         uic.loadUi('test.ui', self)
@@ -307,10 +265,7 @@ class Ui(QtWidgets.QMainWindow):
         self.previouspagebutton_img = self.findChild(QtWidgets.QLabel, 'previous_page_img')
         self.previouspagebutton_img.setPixmap(QPixmap('images/back.PNG'))
         self.previouspagebutton.clicked.connect(self.turn_page_previous)
-        
-        self.capturebutton = self.findChild(QtWidgets.QPushButton, 'capture')
-        self.capturebutton.clicked.connect(self.capture_choice)
-        
+
         #@guus kan jij zorgen dat deze code pas 'happened' als de animatie is afgelopen?
         self.replay = self.findChild(QtWidgets.QPushButton, 'opnieuw')
         self.replay_img = self.findChild(QtWidgets.QLabel, 'opnieuw_img')
@@ -325,7 +280,6 @@ class Ui(QtWidgets.QMainWindow):
         self.thread2 = Thread2(self)
         self.thread2.load_model_please([self, m,mf,c])
         self.thread2.changecamPixmap.connect(self.setcamplayer)
-        self.thread2.changepage.connect(self.set_page_choice)
         self.thread3 = Thread3(self)
         
         #self.thread.start()
@@ -379,40 +333,10 @@ class Ui(QtWidgets.QMainWindow):
         self.exit = self.findChild(QtWidgets.QPushButton, 'exit')
         self.exit.setEnabled(False)
         self.exit.clicked.connect(self.foldin_menu)
-<<<<<<< HEAD
         
         #if self.hamburger.clicked == True: 
-   
-=======
-
-        self.instellingen = self.findChild(QtWidgets.QPushButton, 'instellingen')
-        self.instellingen.setEnabled(False)
-        self.instellingen.clicked.connect(self.instellingen_menu) 
-
-        self.instellingen_open = self.findChild(QtWidgets.QLabel, 'instellingen_open')
-        self.instellingen_open.setPixmap(QPixmap('images/empty.JPEG'))
-
-        self.naar_klas = self.findChild(QtWidgets.QPushButton, 'knop_klas')
-        self.naar_klas.setEnabled(False)
-        self.naar_klas.setText(' ')
-        self.naar_klas.clicked.connect(self.set_children_window)
-
-        self.naar_boeken = self.findChild(QtWidgets.QPushButton, 'knop_boeken')
-        self.naar_boeken.setEnabled(False)
-        self.naar_boeken.setText(' ')
-        self.naar_boeken.clicked.connect(self.set_book_window)
-
-        self.naar_paginas = self.findChild(QtWidgets.QPushButton, 'knop_paginas')
-        self.naar_paginas.setEnabled(False)
-        self.naar_paginas.setText(' ')
-        self.naar_paginas.clicked.connect(self.set_page_window)
-
-        #if self.hamburger.clicked == True: 
          #   print("hoi")
-<<<<<<< HEAD
->>>>>>> parent of 3457f29 (dingen)
-=======
->>>>>>> parent of 3457f29 (dingen)
+
             
             #self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
         #if clicked self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
@@ -532,43 +456,6 @@ class Ui(QtWidgets.QMainWindow):
         load_page(self, 2)
     def set_pageview_window3(self):
         print('changed window to page view')  
-<<<<<<< HEAD
-        self.page_nr = 4
-        load_page(self, 4)
-    def set_pageview_window4(self):
-        print('changed window to page view')  
-        self.page_nr = 6
-        load_page(self, 6)
-    def set_pageview_window5(self):
-        print('changed window to page view')  
-        self.page_nr = 8
-        load_page(self, 8)
-    def set_pageview_window6(self):
-        print('changed window to page view')  
-        self.page_nr = 10
-        load_page(self, 10)
-    def set_pageview_window7(self):
-        print('changed window to page view')  
-        self.page_nr = 12
-        load_page(self, 12)
-    def set_pageview_window8(self):
-        print('changed window to page view')  
-        self.page_nr = 14
-        load_page(self, 14)
-    def set_pageview_window9(self):
-        print('changed window to page view')  
-        self.page_nr = 16
-        load_page(self, 16)
-    def set_pageview_window10(self):
-        print('changed window to page view')  
-        self.page_nr = 18
-        load_page(self, 18)
-    def set_pageview_window11(self):
-        print('changed window to page view')  
-        self.page_nr = 20
-        load_page(self, 20)
-    
-=======
         self.page_nr = 3
         load_page(self, 3)
     def set_pageview_window4(self):
@@ -603,10 +490,7 @@ class Ui(QtWidgets.QMainWindow):
         print('changed window to page view')  
         self.page_nr = 11
         load_page(self, 11)
-<<<<<<< HEAD
->>>>>>> parent of 3457f29 (dingen)
-=======
->>>>>>> parent of 3457f29 (dingen)
+
 
         
 
@@ -617,13 +501,7 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedwidget.setCurrentIndex(1)
     def set_page_window(self):
         self.stackedWidget.setCurrentIndex(2)
-<<<<<<< HEAD
-=======
         self.foldin_menu()
-<<<<<<< HEAD
->>>>>>> parent of 3457f29 (dingen)
-=======
->>>>>>> parent of 3457f29 (dingen)
         print('changed window to pages')        
     def set_book_window(self):
         self.stackedWidget.setCurrentIndex(4)
@@ -633,25 +511,19 @@ class Ui(QtWidgets.QMainWindow):
             self.thread.kill()
             time.sleep(0.1)
         self.thread.start()
-        #self.thread2.start()
+        self.thread2.start()
         print('thread started')
     def turn_page_next(self):
-        if(self.page_nr<21):
+        if(self.page_nr<11):
             self.page_nr+=1
         self.pagenrlabel.setText(str(self.page_nr))
-        
-        load_page(self, self.page_order[self.page_nr-1])
+        load_page(self, self.page_nr)
         print('page set to: ' + str(self.page_nr))
     def turn_page_previous(self):
         if(self.page_nr>1):
-            if self.page_nr % 2 == 0 :
-                self.page_nr-=2
-                if self.page_nr==0:
-                    self.page_nr =1
-            else:
-                self.page_nr-=1
+            self.page_nr-=1
         self.pagenrlabel.setText(str(self.page_nr))
-        load_page(self, self.page_order[self.page_nr-1])
+        load_page(self, self.page_nr)
         print('page set to: ' + str(self.page_nr))
     def foldout_menu(self):
         print("menu expanded")
@@ -666,32 +538,11 @@ class Ui(QtWidgets.QMainWindow):
         self.hamburger_img.setPixmap(QPixmap('images/menuknop.PNG'))
         self.hamburger.setEnabled(True)
         self.exit.setEnabled(False)
-<<<<<<< HEAD
-    def capture_choice(self):
-        print('capturing choice')
-        self.thread2.start()
-=======
-        self.instellingen.setEnabled(False)
-        self.naar_klas.setEnabled(False)
-        self.naar_boeken.setEnabled(False)
-        self.naar_paginas.setEnabled(False)
-        #laat teksten knoppen verdwijnen
-        self.naar_klas.setText(' ')
-        self.naar_boeken.setText(' ')
-        self.naar_paginas.setText(' ')
-
-    def instellingen_menu(self):
-        print("dit zijn de instellingen")
-        #self.instellingen_open.show()
-        self.instellingen_open.setPixmap(QPixmap('images/instelling_backblack.PNG'))
-        self.foldin_menu()
-        
->>>>>>> parent of 3457f29 (dingen)
 
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    #ys.exit()
+    #sys.exit()
     sys.exit(app.exec_()) 
