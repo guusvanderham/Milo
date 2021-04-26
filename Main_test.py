@@ -20,8 +20,8 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
-[m,mf,c] = load_model()
-#[m,mf,c] = ['dum', 'dummy','dumst']
+#[m,mf,c] = load_model()
+[m,mf,c] = ['dum', 'dummy','dumst']
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo ..., we lezen nu kijk eens wat een kleintje',
