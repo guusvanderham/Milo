@@ -51,9 +51,14 @@ def set_caption(self, pagenr):
     
 def load_page(self, pagenr):
 <<<<<<< HEAD
+<<<<<<< HEAD
     print('begin loading page:' + str(pagenr))
     self.stackedWidget.setCurrentIndex(3)
     self.animationpath='Animations/pagina'+str(int(pagenr/2)+1)+'.mp4'
+=======
+    self.stackedWidget.setCurrentIndex(3)
+    self.animationpath='Animations/pagina'+str(pagenr)+'.mp4'
+>>>>>>> parent of 3457f29 (dingen)
 =======
     self.stackedWidget.setCurrentIndex(3)
     self.animationpath='Animations/pagina'+str(pagenr)+'.mp4'
@@ -71,6 +76,9 @@ def load_page(self, pagenr):
         self.capturebutton.hide()
 =======
     self.thread.start()
+<<<<<<< HEAD
+>>>>>>> parent of 3457f29 (dingen)
+=======
 >>>>>>> parent of 3457f29 (dingen)
 
 #%%
@@ -401,6 +409,9 @@ class Ui(QtWidgets.QMainWindow):
 
         #if self.hamburger.clicked == True: 
          #   print("hoi")
+<<<<<<< HEAD
+>>>>>>> parent of 3457f29 (dingen)
+=======
 >>>>>>> parent of 3457f29 (dingen)
             
             #self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
@@ -592,6 +603,9 @@ class Ui(QtWidgets.QMainWindow):
         print('changed window to page view')  
         self.page_nr = 11
         load_page(self, 11)
+<<<<<<< HEAD
+>>>>>>> parent of 3457f29 (dingen)
+=======
 >>>>>>> parent of 3457f29 (dingen)
 
         
@@ -606,6 +620,9 @@ class Ui(QtWidgets.QMainWindow):
 <<<<<<< HEAD
 =======
         self.foldin_menu()
+<<<<<<< HEAD
+>>>>>>> parent of 3457f29 (dingen)
+=======
 >>>>>>> parent of 3457f29 (dingen)
         print('changed window to pages')        
     def set_book_window(self):
