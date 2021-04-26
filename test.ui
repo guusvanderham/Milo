@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1577,19 +1577,6 @@ QPushButton:clicked {
        <string>vid2</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="capture">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>770</y>
-        <width>231</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Leg keuze vast</string>
-      </property>
-     </widget>
      <zorder>boek</zorder>
      <zorder>caption</zorder>
      <zorder>pagenr</zorder>
@@ -1601,7 +1588,6 @@ QPushButton:clicked {
      <zorder>previous_page_img</zorder>
      <zorder>previous_page</zorder>
      <zorder>camplayer</zorder>
-     <zorder>capture</zorder>
     </widget>
     <widget class="QWidget" name="Books">
      <widget class="QPushButton" name="book1">
@@ -1825,7 +1811,7 @@ QPushButton:clicked {
      <x>0</x>
      <y>0</y>
      <width>2736</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="defaultUp">
