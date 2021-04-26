@@ -50,19 +50,28 @@ def set_caption(self, pagenr):
     
     
 def load_page(self, pagenr):
+<<<<<<< HEAD
     print('begin loading page:' + str(pagenr))
     self.stackedWidget.setCurrentIndex(3)
     self.animationpath='Animations/pagina'+str(int(pagenr/2)+1)+'.mp4'
+=======
+    self.stackedWidget.setCurrentIndex(3)
+    self.animationpath='Animations/pagina'+str(pagenr)+'.mp4'
+>>>>>>> parent of 3457f29 (dingen)
     self.thread.animationpath =self.animationpath
     set_caption(self, pagenr)
     self.thread.kill()
     time.sleep(0.1)
+<<<<<<< HEAD
     if pagenr % 2 == 0 or self.page_nr == 1:
         self.thread.start()
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
     else:
         self.capturebutton.hide()
+=======
+    self.thread.start()
+>>>>>>> parent of 3457f29 (dingen)
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -362,9 +371,37 @@ class Ui(QtWidgets.QMainWindow):
         self.exit = self.findChild(QtWidgets.QPushButton, 'exit')
         self.exit.setEnabled(False)
         self.exit.clicked.connect(self.foldin_menu)
+<<<<<<< HEAD
         
         #if self.hamburger.clicked == True: 
    
+=======
+
+        self.instellingen = self.findChild(QtWidgets.QPushButton, 'instellingen')
+        self.instellingen.setEnabled(False)
+        self.instellingen.clicked.connect(self.instellingen_menu) 
+
+        self.instellingen_open = self.findChild(QtWidgets.QLabel, 'instellingen_open')
+        self.instellingen_open.setPixmap(QPixmap('images/empty.JPEG'))
+
+        self.naar_klas = self.findChild(QtWidgets.QPushButton, 'knop_klas')
+        self.naar_klas.setEnabled(False)
+        self.naar_klas.setText(' ')
+        self.naar_klas.clicked.connect(self.set_children_window)
+
+        self.naar_boeken = self.findChild(QtWidgets.QPushButton, 'knop_boeken')
+        self.naar_boeken.setEnabled(False)
+        self.naar_boeken.setText(' ')
+        self.naar_boeken.clicked.connect(self.set_book_window)
+
+        self.naar_paginas = self.findChild(QtWidgets.QPushButton, 'knop_paginas')
+        self.naar_paginas.setEnabled(False)
+        self.naar_paginas.setText(' ')
+        self.naar_paginas.clicked.connect(self.set_page_window)
+
+        #if self.hamburger.clicked == True: 
+         #   print("hoi")
+>>>>>>> parent of 3457f29 (dingen)
             
             #self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
         #if clicked self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
@@ -484,6 +521,7 @@ class Ui(QtWidgets.QMainWindow):
         load_page(self, 2)
     def set_pageview_window3(self):
         print('changed window to page view')  
+<<<<<<< HEAD
         self.page_nr = 4
         load_page(self, 4)
     def set_pageview_window4(self):
@@ -519,6 +557,42 @@ class Ui(QtWidgets.QMainWindow):
         self.page_nr = 20
         load_page(self, 20)
     
+=======
+        self.page_nr = 3
+        load_page(self, 3)
+    def set_pageview_window4(self):
+        print('changed window to page view')  
+        self.page_nr = 4
+        load_page(self, 4)
+    def set_pageview_window5(self):
+        print('changed window to page view')  
+        self.page_nr = 5
+        load_page(self, 5)
+    def set_pageview_window6(self):
+        print('changed window to page view')  
+        self.page_nr = 6
+        load_page(self, 6)
+    def set_pageview_window7(self):
+        print('changed window to page view')  
+        self.page_nr = 7
+        load_page(self, 7)
+    def set_pageview_window8(self):
+        print('changed window to page view')  
+        self.page_nr = 8
+        load_page(self, 8)
+    def set_pageview_window9(self):
+        print('changed window to page view')  
+        self.page_nr = 9
+        load_page(self, 9)
+    def set_pageview_window10(self):
+        print('changed window to page view')  
+        self.page_nr = 10
+        load_page(self, 10)
+    def set_pageview_window11(self):
+        print('changed window to page view')  
+        self.page_nr = 11
+        load_page(self, 11)
+>>>>>>> parent of 3457f29 (dingen)
 
         
 
@@ -529,6 +603,10 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedwidget.setCurrentIndex(1)
     def set_page_window(self):
         self.stackedWidget.setCurrentIndex(2)
+<<<<<<< HEAD
+=======
+        self.foldin_menu()
+>>>>>>> parent of 3457f29 (dingen)
         print('changed window to pages')        
     def set_book_window(self):
         self.stackedWidget.setCurrentIndex(4)
@@ -571,9 +649,27 @@ class Ui(QtWidgets.QMainWindow):
         self.hamburger_img.setPixmap(QPixmap('images/menuknop.PNG'))
         self.hamburger.setEnabled(True)
         self.exit.setEnabled(False)
+<<<<<<< HEAD
     def capture_choice(self):
         print('capturing choice')
         self.thread2.start()
+=======
+        self.instellingen.setEnabled(False)
+        self.naar_klas.setEnabled(False)
+        self.naar_boeken.setEnabled(False)
+        self.naar_paginas.setEnabled(False)
+        #laat teksten knoppen verdwijnen
+        self.naar_klas.setText(' ')
+        self.naar_boeken.setText(' ')
+        self.naar_paginas.setText(' ')
+
+    def instellingen_menu(self):
+        print("dit zijn de instellingen")
+        #self.instellingen_open.show()
+        self.instellingen_open.setPixmap(QPixmap('images/instelling_backblack.PNG'))
+        self.foldin_menu()
+        
+>>>>>>> parent of 3457f29 (dingen)
 
 
 if __name__ == '__main__':

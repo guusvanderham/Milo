@@ -30,7 +30,11 @@
      </rect>
     </property>
     <property name="currentIndex">
+<<<<<<< HEAD
      <number>3</number>
+=======
+     <number>0</number>
+>>>>>>> parent of 3457f29 (dingen)
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1811,6 +1815,10 @@ QPushButton:clicked {
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/allessamen.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+<<<<<<< HEAD
+=======
+   <zorder>instellingen_open</zorder>
+>>>>>>> parent of 3457f29 (dingen)
    <zorder>background</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>gridLayoutWidget</zorder>
@@ -1818,6 +1826,11 @@ QPushButton:clicked {
    <zorder>hamburger_img</zorder>
    <zorder>hamburger</zorder>
    <zorder>exit</zorder>
+<<<<<<< HEAD
+=======
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>instellingen</zorder>
+>>>>>>> parent of 3457f29 (dingen)
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
