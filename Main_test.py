@@ -416,6 +416,7 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen.clicked.connect(self.instellingen_menu) 
 
         self.instellingen_open = self.findChild(QtWidgets.QLabel, 'instellingen_open')
+        self.instellingen_open.lower()
         self.instellingen_open.setPixmap(QPixmap('images/empty.JPEG'))
 
         self.naar_klas = self.findChild(QtWidgets.QPushButton, 'knop_klas')
@@ -433,10 +434,15 @@ class Ui(QtWidgets.QMainWindow):
         self.naar_paginas.setText(' ')
         self.naar_paginas.clicked.connect(self.set_page_window)
 
-        #instellingen labels
+        #instellingen labels en knoppen
+        self.instellingen_close = self.findChild(QtWidgets.QPushButton, 'instellingen_close')
+        self.instellingen_close.lower()
+        self.instellingen_close.setEnabled(False)
+        self.instellingen_close.clicked.connect(self.close_instellingen)
         self.instelling_grid = self.findChild(QtWidgets.QGridLayout, 'gridLayout_2')
         #self.instelling_grid.lower()
         #if self.hamburger.clicked == True: 
+        
    
             
             #self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
@@ -683,10 +689,17 @@ class Ui(QtWidgets.QMainWindow):
         print("dit zijn de instellingen")
         self.instellingen_open.raise_()
         self.instellingen_open.setPixmap(QPixmap('images/instelling_backblack.PNG'))
+        self.instellingen_close.raise_()
+        self.instellingen_close.setEnabled(True)
         self.foldin_menu()
     def capture_choice(self):
         print('capturing choice')
         self.thread2.start()
+    def close_instellingen(self):
+        self.instellingen_open.lower()
+        self.instellingen_open.setPixmap(QPixmap('images/empty.JPEG'))
+        self.instellingen_close.lower()
+        self.instellingen_close.setEnabled(False)
 
 
 if __name__ == '__main__':

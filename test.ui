@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1542,13 +1542,13 @@ QPushButton:clicked {
      <zorder>page10</zorder>
      <zorder>page11</zorder>
      <zorder>page2</zorder>
-     <zorder>page3</zorder>
      <zorder>page4</zorder>
      <zorder>page5</zorder>
      <zorder>page6</zorder>
      <zorder>page7</zorder>
      <zorder>page8</zorder>
      <zorder>page9</zorder>
+     <zorder>page3</zorder>
     </widget>
     <widget class="QWidget" name="Pageview">
      <widget class="QLabel" name="boek">
@@ -1757,13 +1757,13 @@ QPushButton:clicked {
      <zorder>pagenr</zorder>
      <zorder>videoplayer</zorder>
      <zorder>next_page_img</zorder>
-     <zorder>next_page</zorder>
      <zorder>opnieuw_img</zorder>
-     <zorder>opnieuw</zorder>
      <zorder>previous_page_img</zorder>
-     <zorder>previous_page</zorder>
      <zorder>camplayer</zorder>
      <zorder>capture</zorder>
+     <zorder>next_page</zorder>
+     <zorder>opnieuw</zorder>
+     <zorder>previous_page</zorder>
     </widget>
     <widget class="QWidget" name="Books">
      <widget class="QPushButton" name="book1">
@@ -1792,6 +1792,8 @@ QPushButton:clicked {
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <zorder>logo_2</zorder>
+     <zorder>book1</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="background">
@@ -2038,7 +2040,7 @@ color: grey
 }</string>
        </property>
        <property name="text">
-        <string>Lettertype grootte</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -2056,7 +2058,7 @@ color: grey
 }</string>
        </property>
        <property name="text">
-        <string>Knopgrootte</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -2074,7 +2076,7 @@ color: grey
 }</string>
        </property>
        <property name="text">
-        <string>Zichtbare knoppen</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -2092,25 +2094,48 @@ color: grey
 }</string>
        </property>
        <property name="text">
-        <string>Prikkelarme weergave </string>
+        <string/>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLabel" name="label_12">
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
       </widget>
      </item>
     </layout>
+    <zorder>label_12</zorder>
     <zorder>prikkelarm</zorder>
     <zorder>lettertype</zorder>
-    <zorder>label_12</zorder>
     <zorder>knopgrootte</zorder>
     <zorder>knop_zichtbaar</zorder>
    </widget>
+   <widget class="QPushButton" name="instellingen_close">
+    <property name="geometry">
+     <rect>
+      <x>1495</x>
+      <y>250</y>
+      <width>81</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>instellingen_open</zorder>
+   <zorder>instellingen_close</zorder>
    <zorder>background</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>hamburger_uit_img</zorder>
