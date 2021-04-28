@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -62,33 +62,6 @@
 
 
 Tim</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Tim_old">
-      <property name="geometry">
-       <rect>
-        <x>1150</x>
-        <y>640</y>
-        <width>171</width>
-        <height>161</height>
-       </rect>
-      </property>
-      <property name="whatsThis">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/kind/annemiek.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">  QPushButton {
-            color: grey;
-            border-image: url(:/kind/tim.png) 10 10 10 10;
-            border-top: 3px transparent;
-            border-bottom: 3px transparent;
-            border-right: 10px transparent;
-            border-left: 10px transparent;
-        }
-</string>
-      </property>
-      <property name="text">
-       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="logo">
@@ -400,23 +373,22 @@ Anne</string>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/add.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <zorder>Tim_old</zorder>
      <zorder>logo</zorder>
      <zorder>tim_img</zorder>
-     <zorder>kind2</zorder>
      <zorder>lieke_img</zorder>
-     <zorder>kind1</zorder>
      <zorder>jorik_img</zorder>
-     <zorder>kind3</zorder>
      <zorder>noraja_img</zorder>
-     <zorder>kind4</zorder>
      <zorder>annsophie_img</zorder>
-     <zorder>kind5</zorder>
      <zorder>arjan_img</zorder>
-     <zorder>kind6</zorder>
      <zorder>annemiek_img</zorder>
-     <zorder>kind7</zorder>
      <zorder>add</zorder>
+     <zorder>kind1</zorder>
+     <zorder>kind2</zorder>
+     <zorder>kind3</zorder>
+     <zorder>kind4</zorder>
+     <zorder>kind5</zorder>
+     <zorder>kind6</zorder>
+     <zorder>kind7</zorder>
     </widget>
     <widget class="QWidget" name="Instellingen">
      <widget class="QLabel" name="label">
@@ -2155,7 +2127,7 @@ color: grey
      <x>0</x>
      <y>0</y>
      <width>1920</width>
-     <height>26</height>
+     <height>18</height>
     </rect>
    </property>
    <property name="defaultUp">

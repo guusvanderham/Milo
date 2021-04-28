@@ -245,13 +245,15 @@ class Ui(QtWidgets.QMainWindow):
 
         #[m,c]=[0,1]
         #beginview: kinderen
-        self.child = self.findChild(QtWidgets.QPushButton, 'Tim_old')
-        self.child.clicked.connect(self.set_book_window)
+        #self.child = self.findChild(QtWidgets.QPushButton, 'Tim_old')
+        #self.child.clicked.connect(self.set_book_window)
 
         #kinderen connecten aan volgende pagina
         self.child1 = self.findChild(QtWidgets.QPushButton, 'kind1')
+        self.child1.clicked.connect(self.set_book_window)
         self.child1.clicked.connect(self.set_child1)
         self.child2 = self.findChild(QtWidgets.QPushButton, 'kind2')
+        self.child2.clicked.connect(self.set_book_window)
         self.child2.clicked.connect(self.set_child2)
         self.child3 = self.findChild(QtWidgets.QPushButton, 'kind3')
         self.child3.clicked.connect(self.set_book_window) 
@@ -691,5 +693,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 
