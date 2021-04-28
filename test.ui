@@ -2055,129 +2055,12 @@ QPushButton:clicked {
      <rect>
       <x>590</x>
       <y>300</y>
-      <width>761</width>
+      <width>281</width>
       <height>471</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0" columnstretch="0,0,0,0,0">
-     <item row="1" column="3">
-      <widget class="QLabel" name="label_12">
-       <property name="text">
-        <string>knop 2</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="knopgrootte">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{
-color: grey
-}</string>
-       </property>
-       <property name="text">
-        <string>Knopgrootte</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>knop 1</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="4">
-      <widget class="QLabel" name="label_13">
-       <property name="text">
-        <string>knop 3</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="label_20">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="knop_zichtbaar">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{
-color: grey
-}</string>
-       </property>
-       <property name="text">
-        <string>Zichtbare knoppen</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="lettertype">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{
-color: grey
-}</string>
-       </property>
-       <property name="text">
-        <string>Lettertype grootte</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
-      <widget class="QLabel" name="label_14">
-       <property name="text">
-        <string>Hier komt niks </string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="4">
-      <widget class="QLabel" name="label_19">
-       <property name="text">
-        <string>nog een</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="QLabel" name="label_18">
-       <property name="text">
-        <string>nog een</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="4">
-      <widget class="QLabel" name="label_16">
-       <property name="text">
-        <string>weer niks</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="4">
-      <widget class="QLabel" name="label_10">
-       <property name="text">
-        <string>knop groot</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
+    <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0" columnstretch="0,0">
+     <item row="3" column="0" colspan="2">
       <widget class="QLabel" name="prikkelarm">
        <property name="font">
         <font>
@@ -2195,31 +2078,57 @@ color: grey
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="label_8">
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="knopgrootte">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: grey
+}</string>
+       </property>
        <property name="text">
-        <string>kleinste knop</string>
+        <string>Knopgrootte</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
-      <widget class="QLabel" name="label_9">
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="knop_zichtbaar">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: grey
+}</string>
+       </property>
        <property name="text">
-        <string>medium knop</string>
+        <string>Zichtbare knoppen</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="2">
-      <widget class="QLabel" name="label_17">
-       <property name="text">
-        <string>knop voor button</string>
+     <item row="2" column="0" colspan="2">
+      <widget class="QLabel" name="lettertype">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>16</pointsize>
+        </font>
        </property>
-      </widget>
-     </item>
-     <item row="3" column="3">
-      <widget class="QLabel" name="label_15">
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+color: grey
+}</string>
+       </property>
        <property name="text">
-        <string>aan of uit switch</string>
+        <string>Lettertype grootte</string>
        </property>
       </widget>
      </item>
@@ -2228,19 +2137,166 @@ color: grey
     <zorder>lettertype</zorder>
     <zorder>knopgrootte</zorder>
     <zorder>knop_zichtbaar</zorder>
-    <zorder>label_8</zorder>
-    <zorder>label_9</zorder>
-    <zorder>label_10</zorder>
-    <zorder>label_11</zorder>
-    <zorder>label_12</zorder>
-    <zorder>label_13</zorder>
-    <zorder>label_14</zorder>
-    <zorder>label_15</zorder>
-    <zorder>label_16</zorder>
-    <zorder>label_17</zorder>
-    <zorder>label_18</zorder>
-    <zorder>label_19</zorder>
-    <zorder>label_20</zorder>
+   </widget>
+   <widget class="QWidget" name="instelling_widg" native="true">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>300</y>
+      <width>491</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_10">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>50</y>
+       <width>56</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_11">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>250</y>
+       <width>101</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+            color: orange;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
+     <property name="text">
+      <string>A</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>90</y>
+       <width>35</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>150</y>
+       <width>35</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>160</y>
+       <width>35</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_12">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>250</y>
+       <width>101</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+            color: grey;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
+     <property name="text">
+      <string>A</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_13">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>250</y>
+       <width>101</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+            color: grey;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
+     <property name="text">
+      <string>A</string>
+     </property>
+    </widget>
    </widget>
    <zorder>instellingen_open</zorder>
    <zorder>instellingen_close</zorder>
@@ -2253,6 +2309,7 @@ color: grey
    <zorder>gridLayoutWidget</zorder>
    <zorder>instellingen</zorder>
    <zorder>instelling_grid</zorder>
+   <zorder>instelling_widg</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

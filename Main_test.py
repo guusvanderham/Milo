@@ -441,13 +441,13 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.clicked.connect(self.close_instellingen)
         self.instelling_grid = self.findChild(QtWidgets.QWidget, 'instelling_grid')
         self.instelling_grid.lower()
-        #if self.hamburger.clicked == True: 
+        self.instelling_widg = self.findChild(QtWidgets.QWidget, 'instelling_widg')
+        self.instelling_widg.lower()
         
         
    
             
-            #self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
-        #if clicked self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
+            
 
 
         #plaatjes kinderen
@@ -694,6 +694,7 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.setEnabled(True)
         self.foldin_menu()
         self.instelling_grid.raise_()
+        self.instelling_widg.raise_()
     
     def capture_choice(self):
         print('capturing choice')
@@ -704,6 +705,7 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.lower()
         self.instellingen_close.setEnabled(False)
         self.instelling_grid.lower()
+        self.instelling_widg.lower()
         
 
 
