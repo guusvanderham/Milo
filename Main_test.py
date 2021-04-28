@@ -20,8 +20,8 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
-#[m,mf,c] = load_model()
-[m,mf,c] = ['dum', 'dummy','dumst']
+[m,mf,c] = load_model()
+#[m,mf,c] = ['dum', 'dummy','dumst']
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo ..., we lezen nu kijk eens wat een kleintje',
@@ -87,7 +87,7 @@ class Thread(QThread):
                 h, w, ch = rgbImage.shape
                 bytesPerLine = ch * w
                 convertToQtFormat = QImage(rgbImage.data, w, h, bytesPerLine, QImage.Format_RGB888)
-                p = convertToQtFormat.scaled(1200, 900, Qt.KeepAspectRatio) 
+                p = convertToQtFormat.scaled(1255, 950, Qt.KeepAspectRatio) 
                 #stuur update signaal
                 self.changePixmap.emit(p)
                 
