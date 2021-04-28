@@ -20,8 +20,8 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
-[m,mf,c] = load_model()
-#[m,mf,c] = ['dum', 'dummy','dumst']
+#[m,mf,c] = load_model()
+[m,mf,c] = ['dum', 'dummy','dumst']
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo ..., we lezen nu kijk eens wat een kleintje',
@@ -55,7 +55,7 @@ def load_page(self, pagenr):
     self.animationpath='Animations/pagina'+str(int(pagenr/2)+1)+'.mp4'
     self.thread.animationpath =self.animationpath
     set_caption(self, pagenr)
-    self.huidig_kind.pages_read.append(pagenr)
+    self.huidig_kind.pages_read.append(int(pagenr/2)+1)
     self.thread.kill()
     time.sleep(0.1)
     if pagenr % 2 == 0 or self.page_nr == 1:
@@ -439,9 +439,10 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.lower()
         self.instellingen_close.setEnabled(False)
         self.instellingen_close.clicked.connect(self.close_instellingen)
-        self.instelling_grid = self.findChild(QtWidgets.QGridLayout, 'gridLayout_2')
-        #self.instelling_grid.lower()
+        self.instelling_grid = self.findChild(QtWidgets.QWidget, 'instelling_grid')
+        self.instelling_grid.lower()
         #if self.hamburger.clicked == True: 
+        
         
    
             
@@ -692,6 +693,8 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.raise_()
         self.instellingen_close.setEnabled(True)
         self.foldin_menu()
+        self.instelling_grid.raise_()
+    
     def capture_choice(self):
         print('capturing choice')
         self.thread2.start()
@@ -700,6 +703,8 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_open.setPixmap(QPixmap('images/empty.JPEG'))
         self.instellingen_close.lower()
         self.instellingen_close.setEnabled(False)
+        self.instelling_grid.lower()
+        
 
 
 if __name__ == '__main__':
