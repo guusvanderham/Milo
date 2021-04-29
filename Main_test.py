@@ -351,6 +351,11 @@ class Ui(QtWidgets.QMainWindow):
         self.replay_img = self.findChild(QtWidgets.QLabel, 'opnieuw_img')
         self.replay_img.setPixmap(QPixmap('images/repeat.PNG'))
         self.replay.clicked.connect(self.replay_animation)
+
+        self.geluid = self.findChild(QtWidgets.QPushButton, 'geluid')
+        self.geluid_img = self.findChild(QtWidgets.QLabel, 'geluid_img')
+        self.geluid_img.setPixmap(QPixmap('images/sound.png'))
+        self.geluid.clicked.connect(self.play_sound)
         
         #Dit stukje gaat over de videoplayer, met self.thread.start() begint hij met het afspelen van de animatie
         self.videoplayer = self.findChild(QtWidgets.QLabel, 'videoplayer' )
@@ -663,6 +668,8 @@ class Ui(QtWidgets.QMainWindow):
         self.thread.start()
         #self.thread2.start()
         print('thread started')
+    def play_sound(self):
+        pass #deze is voor jou Gustav
     def turn_page_next(self):
         if(self.page_nr<21):
             self.page_nr+=1
@@ -756,12 +763,13 @@ class Ui(QtWidgets.QMainWindow):
         self.huidig_kind.geluid_zichtbaar += 1
         if (self.huidig_kind.geluid_zichtbaar%2) == 1:
             self.instelling_geluid.setPixmap(QPixmap('images/music_unactive.png'))
-            #label geluidsknop op pagina knop empty
-            #knop geluidsknop op pagina disabled
+            self.geluid_img.setPixmap(QPixmap('images/empty.JPEG'))
+            self.geluid.setEnabled(False)
+            
         else:
             self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
-            #label geluidsknop op pagina met plaatje
-            #knop geluidsknop op pagina abled
+            self.geluid_img.setPixmap(QPixmap('images/music.png'))
+            self.geluid.setEnabled(True)
 
     def opnieuw_aan_uit(self):
         self.huidig_kind.opnieuw_zichtbaar += 1
