@@ -16,6 +16,16 @@
     <file>Images/Image_16.png</file>
   </qresource>
   <qresource prefix="Buttons">
+    <file>Images/small.png</file>
+    <file>Images/small_unactive.png</file>
+    <file>Images/repeat_instelling.png</file>
+    <file>Images/repeat_unactive.png</file>
+    <file>Images/music.png</file>
+    <file>Images/music_unactive.png</file>
+    <file>Images/medium.png</file>
+    <file>Images/medium_unactive.png</file>
+    <file>Images/large.png</file>
+    <file>Images/large_unactive.png</file>
     <file>Images/checked.png</file>
     <file>Images/small.png</file>
     <file>Images/sound.png</file>

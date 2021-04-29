@@ -3,7 +3,7 @@ from PyQt5.QtGui import QPixmap
 import sys
 from PyQt5.QtWidgets import  QWidget, QLabel, QApplication
 from PyQt5.QtCore import QThread, Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtGui import QImage, QPixmap, QFont
 import cv2
 import threading
 from playsound import playsound
@@ -47,6 +47,8 @@ def set_caption(self, pagenr):
         'Milo: Wat een leuk verhaal was dat! Welk dier vond jij het leukst? '
         ]
     self.page_caption.setText(captions[pagenr-1])
+    self.page_caption.setFont(QFont('Segoe UI', self.huidig_kind.font_size))
+    #self.label_1.setFont(QFont('Arial', 10))
     
     
 def load_page(self, pagenr):
@@ -188,13 +190,15 @@ class Thread3(QThread):
         self.running = False
         print('received stop signal from window.(3)')
 class Child: 
-    def __init__(self, name, img, pages_read): #, img, button_size, fond_size, low_stim, pages_read):
+    def __init__(self, name, img, pages_read, font_size, geluid_zichtbaar, opnieuw_zichtbaar): #, img, button_size, font_size, low_stim, pages_read):
         self.name = name
         self.img = img
             #self.button_size = button_size
-            #self.fond_size = fond_size
             #self.low_stim = low_stim 
         self.pages_read = pages_read
+        self.font_size = font_size
+        self.geluid_zichtbaar = geluid_zichtbaar
+        self.opnieuw_zichtbaar = opnieuw_zichtbaar 
         
         #def show_kid(self):
             #pixmap = QPixmap(self.img)
@@ -237,11 +241,11 @@ class Ui(QtWidgets.QMainWindow):
         self.show()
         #laat eerst programma zien en laad dan pas het model
         #kinderen
-        self.dummy = Child('Dummy Tim', 'images/tim.png', [])
-        self.dummy2 = Child('Dummy Lieke', 'images/lieke.png', [])
+        self.dummy = Child('Dummy Tim', 'images/tim.png', [], 11, 0, 0)
+        self.dummy2 = Child('Dummy Lieke', 'images/lieke.png', [], 11, 0, 0)
 
         #huidig dummy kind
-        self.huidig_kind = Child('total dummy', 'images/arjan.png', []) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
+        self.huidig_kind = Child('total dummy', 'images/arjan.png', [], 11, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
 
         #[m,c]=[0,1]
         #beginview: kinderen
@@ -443,8 +447,25 @@ class Ui(QtWidgets.QMainWindow):
         self.instelling_grid.lower()
         self.instelling_widg = self.findChild(QtWidgets.QWidget, 'instelling_widg')
         self.instelling_widg.lower()
+
+        self.instelling_geluid = self.findChild(QtWidgets.QLabel, 'instelling_geluid')
+        self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
+        self.instelling_geluid_knop = self.findChild(QtWidgets.QPushButton, 'geluid_knop')
+        self.instelling_geluid_knop.clicked.connect(self.geluid_aan_uit)
+
+        self.instelling_opnieuw = self.findChild(QtWidgets.QLabel, 'instelling_opnieuw')
+        self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_instelling.png'))
+        self.instelling_opnieuw_knop = self.findChild(QtWidgets.QPushButton, 'opnieuw_knop')
+        self.instelling_opnieuw_knop.clicked.connect(self.opnieuw_aan_uit)
         
+        self.letters_klein = self.findChild(QtWidgets.QPushButton, 'letters_klein')
+        self.letters_klein.clicked.connect(self.font_small)
+        self.letters_medium = self.findChild(QtWidgets.QPushButton, 'letters_medium')
+        self.letters_medium.clicked.connect(self.font_medium)
+        self.letters_groot = self.findChild(QtWidgets.QPushButton, 'letters_groot')
+        self.letters_groot.clicked.connect(self.font_large)
         
+
    
             
             
@@ -543,12 +564,19 @@ class Ui(QtWidgets.QMainWindow):
         for pagina in self.vinkjeslijst:
             pagina.setPixmap(QPixmap('images/empty.JPEG')) 
             #nu reset ie wat er al is gelezen, maar dit moet dus opgeslagen worden bij het afsluiten en opstarten van het programma
+        self.huidig_kind.opnieuw_zichtbaar += -1
+        self.opnieuw_aan_uit()
+        self.huidig_kind.geluid_zichtbaar += -1
+        self.geluid_aan_uit()
 
     def set_child2(self):
         self.huidig_kind = self.dummy
         for pagina in self.vinkjeslijst:
-            pagina.setPixmap(QPixmap('images/empty.JPEG'))    
-            
+            pagina.setPixmap(QPixmap('images/empty.JPEG'))  
+        self.huidig_kind.opnieuw_zichtbaar += -1
+        self.opnieuw_aan_uit()  
+        self.huidig_kind.geluid_zichtbaar += -1
+        self.geluid_aan_uit()
     #verander de window
     def set_pageview_window(self):
         print('changed window to page view')  
@@ -655,7 +683,7 @@ class Ui(QtWidgets.QMainWindow):
         print('page set to: ' + str(self.page_nr))
     def foldout_menu(self):
         print("menu expanded")
-        self.thread3.start() #HAHA I found the quack
+        #self.thread3.start() #HAHA I found the quack
         #verander hamburgerknop in uitgeklapt menu
         self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
         self.hamburger_img.setPixmap(QPixmap('images/empty.JPEG'))
@@ -706,8 +734,46 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.setEnabled(False)
         self.instelling_grid.lower()
         self.instelling_widg.lower()
-        
+    #je moet wel nog een keer van pagina veranderen/herladen (of nog niet op een pagina zijn) voor de verandering doorzet
+    #hij onthoudt t per kind, whoop
+    def font_small(self):
+        self.huidig_kind.font_size = 11
+        self.letters_klein.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+    def font_medium(self):
+        self.huidig_kind.font_size = 13 
+        self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        self.letters_medium.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+    def font_large(self):
+        self.huidig_kind.font_size = 15
+        self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+    
+    def geluid_aan_uit(self):
+        self.huidig_kind.geluid_zichtbaar += 1
+        if (self.huidig_kind.geluid_zichtbaar%2) == 1:
+            self.instelling_geluid.setPixmap(QPixmap('images/music_unactive.png'))
+            #label geluidsknop op pagina knop empty
+            #knop geluidsknop op pagina disabled
+        else:
+            self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
+            #label geluidsknop op pagina met plaatje
+            #knop geluidsknop op pagina abled
 
+    def opnieuw_aan_uit(self):
+        self.huidig_kind.opnieuw_zichtbaar += 1
+        if (self.huidig_kind.opnieuw_zichtbaar%2) ==1:
+            self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_unactive.png'))
+            self.replay_img.setPixmap(QPixmap('images/empty.JPEG'))
+            self.replay.setEnabled(False)
+
+        else: 
+            self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_instelling.png'))
+            self.replay_img.setPixmap(QPixmap('images/repeat.png'))
+            self.replay.setEnabled(True)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

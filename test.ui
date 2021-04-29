@@ -2147,20 +2147,29 @@ color: grey
       <height>471</height>
      </rect>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="geluid_knop">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>50</y>
-       <width>56</width>
-       <height>17</height>
+       <x>120</x>
+       <y>140</y>
+       <width>71</width>
+       <height>61</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            color: orange;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
      <property name="text">
-      <string>PushButton</string>
+      <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_10">
+    <widget class="QPushButton" name="randompush">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -2173,7 +2182,7 @@ color: grey
       <string>PushButton</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_11">
+    <widget class="QPushButton" name="letters_klein">
      <property name="geometry">
       <rect>
        <x>50</x>
@@ -2215,33 +2224,20 @@ color: grey
       <string>TextLabel</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_9">
+    <widget class="QLabel" name="instelling_geluid">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>150</y>
-       <width>35</width>
-       <height>10</height>
+       <x>100</x>
+       <y>120</y>
+       <width>121</width>
+       <height>111</height>
       </rect>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/music.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_10">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>160</y>
-       <width>35</width>
-       <height>10</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_12">
+    <widget class="QPushButton" name="letters_medium">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -2269,7 +2265,7 @@ color: grey
       <string>A</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_13">
+    <widget class="QPushButton" name="letters_groot">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -2297,6 +2293,50 @@ color: grey
       <string>A</string>
      </property>
     </widget>
+    <widget class="QLabel" name="instelling_opnieuw">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>130</y>
+       <width>121</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/repeat_instelling.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="opnieuw_knop">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>140</y>
+       <width>71</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            color: orange;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>instelling_geluid</zorder>
+    <zorder>geluid_knop</zorder>
+    <zorder>randompush</zorder>
+    <zorder>letters_klein</zorder>
+    <zorder>label_8</zorder>
+    <zorder>letters_medium</zorder>
+    <zorder>letters_groot</zorder>
+    <zorder>instelling_opnieuw</zorder>
+    <zorder>opnieuw_knop</zorder>
    </widget>
    <zorder>instellingen_open</zorder>
    <zorder>instellingen_close</zorder>
