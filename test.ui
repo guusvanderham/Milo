@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1602,8 +1602,8 @@ QPushButton:clicked {
      <widget class="QLabel" name="videoplayer">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>50</y>
+        <x>473</x>
+        <y>45</y>
         <width>1241</width>
         <height>701</height>
        </rect>
