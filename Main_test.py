@@ -108,7 +108,7 @@ class Thread(QThread):
                 h, w, ch = rgbImage.shape
                 bytesPerLine = ch * w
                 convertToQtFormat = QImage(rgbImage.data, w, h, bytesPerLine, QImage.Format_RGB888)
-                p = convertToQtFormat.scaled(1255, 950, Qt.KeepAspectRatio) 
+                p = convertToQtFormat.scaled(1255, 960, Qt.KeepAspectRatio) 
                 #stuur update signaal
                 self.changePixmap.emit(p)
                 
