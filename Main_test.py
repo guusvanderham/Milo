@@ -194,15 +194,15 @@ class Thread3(QThread):
         self.running = False
         print('received stop signal from window.(3)')
 class Child: 
-    def __init__(self, name, img, pages_read, font_size, geluid_zichtbaar, opnieuw_zichtbaar): #, img, button_size, font_size, low_stim, pages_read):
+    def __init__(self, name, img, pages_read, font_size, geluid_zichtbaar, opnieuw_zichtbaar, prikkelarm, knopgr): 
         self.name = name
         self.img = img
-            #self.button_size = button_size
-            #self.low_stim = low_stim 
         self.pages_read = pages_read
         self.font_size = font_size
         self.geluid_zichtbaar = geluid_zichtbaar
         self.opnieuw_zichtbaar = opnieuw_zichtbaar 
+        self.prikkelarm = prikkelarm
+        self.knopgr = knopgr
         
         #def show_kid(self):
             #pixmap = QPixmap(self.img)
@@ -245,11 +245,11 @@ class Ui(QtWidgets.QMainWindow):
         self.show()
         #laat eerst programma zien en laad dan pas het model
         #kinderen
-        self.dummy = Child('Dummy Tim', 'images/tim.png', [], 11, 0, 0)
-        self.dummy2 = Child('Dummy Lieke', 'images/lieke.png', [], 11, 0, 0)
+        self.dummy = Child('Dummy Tim', 'images/tim.png', [], 11, 0, 0, 0, 0)
+        self.dummy2 = Child('Dummy Lieke', 'images/lieke.png', [], 11, 0, 0, 0, 0)
 
         #huidig dummy kind
-        self.huidig_kind = Child('total dummy', 'images/arjan.png', [], 11, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
+        self.huidig_kind = Child('total dummy', 'images/arjan.png', [], 11, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
 
         #[m,c]=[0,1]
         #beginview: kinderen
@@ -459,6 +459,19 @@ class Ui(QtWidgets.QMainWindow):
         self.instelling_widg = self.findChild(QtWidgets.QWidget, 'instelling_widg')
         self.instelling_widg.lower()
 
+        self.knopsmall_img = self.findChild(QtWidgets.QLabel, 'knopsmall_img')
+        self.knopsmall_img.setPixmap(QPixmap('images/small.png'))
+        self.knopsmall = self.findChild(QtWidgets.QPushButton, 'knopsmall')
+        self.knopsmall.clicked.connect(self.set_small_buttons)
+        self.knopmedium_img = self.findChild(QtWidgets.QLabel, 'knopmedium_img')
+        self.knopmedium_img.setPixmap(QPixmap('images/medium_unactive.png'))
+        self.knopmedium = self.findChild(QtWidgets.QPushButton, 'knopmedium')
+        self.knopmedium.clicked.connect(self.set_medium_buttons)
+        self.knoplarge_img = self.findChild(QtWidgets.QLabel, 'knoplarge_img')
+        self.knoplarge_img.setPixmap(QPixmap('images/large_unactive.png'))
+        self.knoplarge = self.findChild(QtWidgets.QPushButton, 'knoplarge')
+        self.knoplarge.clicked.connect(self.set_large_buttons)
+
         self.instelling_geluid = self.findChild(QtWidgets.QLabel, 'instelling_geluid')
         self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
         self.instelling_geluid_knop = self.findChild(QtWidgets.QPushButton, 'geluid_knop')
@@ -478,6 +491,8 @@ class Ui(QtWidgets.QMainWindow):
 
         self.aanuit_img = self.findChild(QtWidgets.QLabel, 'aanuit_img')
         self.aanuit_img.setPixmap(QPixmap('images/switch_on.png'))
+        self.aanuit_knop = self.findChild(QtWidgets.QPushButton, 'aanuit_knop')
+        self.aanuit_knop.clicked.connect(self.aanuit_prikkelarm)
         
 
    
@@ -582,6 +597,8 @@ class Ui(QtWidgets.QMainWindow):
         self.opnieuw_aan_uit()
         self.huidig_kind.geluid_zichtbaar += -1
         self.geluid_aan_uit()
+        self.huidig_kind.prikkelarm += -1
+        self.aanuit_prikkelarm()
 
     def set_child2(self):
         self.huidig_kind = self.dummy
@@ -591,6 +608,9 @@ class Ui(QtWidgets.QMainWindow):
         self.opnieuw_aan_uit()  
         self.huidig_kind.geluid_zichtbaar += -1
         self.geluid_aan_uit()
+        self.huidig_kind.prikkelarm += -1
+        self.aanuit_prikkelarm()
+
     #verander de window
     def set_pageview_window(self):
         print('changed window to page view')  
@@ -750,6 +770,33 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.setEnabled(False)
         self.instelling_grid.lower()
         self.instelling_widg.lower()
+
+    def set_small_buttons(self):
+        self.huidig_kind.knopgr = 0
+        self.knopsmall_img.setPixmap(QPixmap('images/small.png'))
+        self.knopmedium_img.setPixmap(QPixmap('images/medium_unactive.png'))
+        self.knoplarge_img.setPixmap(QPixmap('images/large_unactive.png'))
+        self.change_buttons()
+    def set_medium_buttons(self):
+        self.huidig_kind.knopgr = 1
+        self.knopsmall_img.setPixmap(QPixmap('images/small_unactive.png'))
+        self.knopmedium_img.setPixmap(QPixmap('images/medium.png'))
+        self.knoplarge_img.setPixmap(QPixmap('images/large_unactive.png'))
+        self.change_buttons()
+    def set_large_buttons(self):
+        self.huidig_kind.knopgr = 2
+        self.knopsmall_img.setPixmap(QPixmap('images/small_unactive.png'))
+        self.knopmedium_img.setPixmap(QPixmap('images/medium_unactive.png'))
+        self.knoplarge_img.setPixmap(QPixmap('images/large.png'))
+        self.change_buttons()
+
+    def change_buttons(self):
+        print("knoppen veranderen")
+        #if self.huidig_kind.knopgr == 0: small
+        #elif self.huidig_kind.knopgr ==1: medium
+        #else: large
+        #zorg dat knoppen veranderen --> manon stuurt nog ander formaat knoppen
+
     #je moet wel nog een keer van pagina veranderen/herladen (of nog niet op een pagina zijn) voor de verandering doorzet
     #hij onthoudt t per kind, whoop
     def font_small(self):
@@ -794,11 +841,19 @@ class Ui(QtWidgets.QMainWindow):
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_unactive.png'))
             self.replay_img.setPixmap(QPixmap('images/empty.JPEG'))
             self.replay.setEnabled(False)
-
         else: 
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_instelling.png'))
             self.replay_img.setPixmap(QPixmap('images/repeat.png'))
             self.replay.setEnabled(True)
+        
+    def aanuit_prikkelarm(self): #deze functie kan ook de "doorklikmogelijkheid" worden, of misschien iets van automatisch voorlezen?
+        self.huidig_kind.prikkelarm += 1
+        if (self.huidig_kind.prikkelarm%2) ==1:
+            self.aanuit_img.setPixmap(QPixmap('images/switch_off.png'))
+            #er moet iets gebeuren dat het prikkelarm wordt (of andere dingen die gebeuren)
+        else:
+            self.aanuit_img.setPixmap(QPixmap('images/switch_on.png'))
+        
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
