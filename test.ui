@@ -2114,7 +2114,7 @@ QPushButton:clicked {
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>300</y>
+      <y>330</y>
       <width>281</width>
       <height>471</height>
      </rect>
@@ -2202,7 +2202,7 @@ color: grey
     <property name="geometry">
      <rect>
       <x>890</x>
-      <y>250</y>
+      <y>280</y>
       <width>491</width>
       <height>521</height>
      </rect>
