@@ -66,6 +66,7 @@ def load_page(self, pagenr):
         self.thread.start()
         time.sleep(0.2)
         self.replay_img.setPixmap(QPixmap('images/repeat_unactive.PNG'))
+    #keuze vastleg knop alleen op bepaalde paginas
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
         self.capturebutton.setEnabled(True)
@@ -74,8 +75,8 @@ def load_page(self, pagenr):
         self.capturebutton.hide()
         self.capturebutton.setEnabled(False)
         self.capture_img.setPixmap(QPixmap('images/empty.jpeg'))
+    #geluidenknop aan of niet, en alleen op bepaalde paginas
     if np.isin(self.page_nr, [2,3,6,7,10,11,12,13,18,19]) and self.geluidknop: 
-        
         self.geluid.show()
         self.geluid.setEnabled(True)
         self.geluid_img.setPixmap(QPixmap('images/sound.png'))
@@ -83,7 +84,14 @@ def load_page(self, pagenr):
         self.geluid.hide()
         self.geluid.setEnabled(False)
         self.geluid_img.setPixmap(QPixmap('images/empty.jpeg'))
-        
+    if self.opnieuwknop == True:
+        self.replay.show()
+        self.replay.setEnabled(True)
+        self.replay_img.show()
+    else:
+        self.replay.hide()
+        self.replay.setEnabled(False)
+        self.replay_img.hide()
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -281,6 +289,7 @@ class Ui(QtWidgets.QMainWindow):
         self.page_nr=0
         self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
         self.geluidknop=True
+        self.opnieuwknop=True
         #laad de interface file
         uic.loadUi('test.ui', self)
         self.show()
@@ -953,11 +962,12 @@ class Ui(QtWidgets.QMainWindow):
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_unactive.png'))
             self.replay_img.setPixmap(QPixmap('images/empty.JPEG'))
             self.replay.setEnabled(False)
+            self.opnieuwknop = False
         else: 
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_instelling.png'))
             self.replay_img.setPixmap(QPixmap('images/repeat.png'))
             self.replay.setEnabled(True)
-        
+            self.opnieuwknop = True
     def aanuit_prikkelarm(self): #deze functie kan ook de "doorklikmogelijkheid" worden, of misschien iets van automatisch voorlezen?
         self.huidig_kind.prikkelarm += 1
         if (self.huidig_kind.prikkelarm%2) ==1:
