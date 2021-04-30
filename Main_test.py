@@ -475,6 +475,9 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_medium.clicked.connect(self.font_medium)
         self.letters_groot = self.findChild(QtWidgets.QPushButton, 'letters_groot')
         self.letters_groot.clicked.connect(self.font_large)
+
+        self.aanuit_img = self.findChild(QtWidgets.QLabel, 'aanuit_img')
+        self.aanuit_img.setPixmap(QPixmap('images/switch_on.png'))
         
 
    
@@ -754,17 +757,25 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_klein.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        # @Guus er moet zoiets bij, dat de caption insta groter/kleiner wordt en niet dat je de pagina moet herladen, kan jij hier naar kijken
+        #set_caption(self.pagenr)
+    
     def font_medium(self):
         self.huidig_kind.font_size = 13 
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
+        # @Guus hier ook
+        #set_caption(self.pagenr)
+    
     def font_large(self):
         self.huidig_kind.font_size = 15
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
-    
+        # @Guus hier ook
+        #set_caption(self.pagenr)
+
     def geluid_aan_uit(self):
         self.huidig_kind.geluid_zichtbaar += 1
         if (self.huidig_kind.geluid_zichtbaar%2) == 1:

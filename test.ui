@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -2271,17 +2271,17 @@ color: grey
       <string>A</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="aanuit_img">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>90</y>
-       <width>35</width>
-       <height>10</height>
+       <x>160</x>
+       <y>360</y>
+       <width>161</width>
+       <height>91</height>
       </rect>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/switch_on.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="instelling_geluid">
@@ -2392,7 +2392,7 @@ color: grey
     <zorder>geluid_knop</zorder>
     <zorder>randompush</zorder>
     <zorder>letters_klein</zorder>
-    <zorder>label_8</zorder>
+    <zorder>aanuit_img</zorder>
     <zorder>letters_medium</zorder>
     <zorder>letters_groot</zorder>
     <zorder>instelling_opnieuw</zorder>
