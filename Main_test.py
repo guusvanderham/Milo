@@ -66,6 +66,13 @@ def load_page(self, pagenr):
         self.thread.start()
         time.sleep(0.2)
         self.replay_img.setPixmap(QPixmap('images/repeat_unactive.PNG'))
+        if self.doorklikken==False:
+            self.previouspagebutton.hide()
+            self.previouspagebutton.setEnabled(False)
+            self.previouspagebutton_img.hide()
+            self.nextpagebutton.hide()
+            self.nextpagebutton.setEnabled(False)
+            self.nextpagebutton_img.hide()
     #keuze vastleg knop alleen op bepaalde paginas
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
@@ -84,6 +91,7 @@ def load_page(self, pagenr):
         self.geluid.hide()
         self.geluid.setEnabled(False)
         self.geluid_img.setPixmap(QPixmap('images/empty.jpeg'))
+    #opnieuwknop aan of niet
     if self.opnieuwknop == True:
         self.replay.show()
         self.replay.setEnabled(True)
@@ -92,6 +100,7 @@ def load_page(self, pagenr):
         self.replay.hide()
         self.replay.setEnabled(False)
         self.replay_img.hide()
+
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -270,6 +279,12 @@ class Ui(QtWidgets.QMainWindow):
     @pyqtSlot()
     def activate_replay_button(self):
         self.replay_img.setPixmap(QPixmap('images/repeat.PNG'))
+        self.previouspagebutton.show()
+        self.previouspagebutton.setEnabled(True)
+        self.previouspagebutton_img.show()
+        self.nextpagebutton.show()
+        self.nextpagebutton.setEnabled(True)
+        self.nextpagebutton_img.show()
 
 
         
@@ -290,6 +305,7 @@ class Ui(QtWidgets.QMainWindow):
         self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
         self.geluidknop=True
         self.opnieuwknop=True
+        self.doorklikken = True
         #laad de interface file
         uic.loadUi('test.ui', self)
         self.show()
@@ -807,6 +823,13 @@ class Ui(QtWidgets.QMainWindow):
             #knop doet niks tijdens afspelen
             return
         self.replay_img.setPixmap(QPixmap('images/repeat_unactive.png'))
+        if self.doorklikken==False:
+            self.previouspagebutton.hide()
+            self.previouspagebutton.setEnabled(False)
+            self.previouspagebutton_img.hide()
+            self.nextpagebutton.hide()
+            self.nextpagebutton.setEnabled(False)
+            self.nextpagebutton_img.hide()
         self.thread.start()
         #self.thread2.start()
         print('thread started')
@@ -973,8 +996,10 @@ class Ui(QtWidgets.QMainWindow):
         if (self.huidig_kind.prikkelarm%2) ==1:
             self.aanuit_img.setPixmap(QPixmap('images/switch_off.png'))
             #er moet iets gebeuren dat het prikkelarm wordt (of andere dingen die gebeuren)
+            self.doorklikken = False
         else:
             self.aanuit_img.setPixmap(QPixmap('images/switch_on.png'))
+            self.doorklikken = True
         
 
 if __name__ == '__main__':
