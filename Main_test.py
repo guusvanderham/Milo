@@ -52,6 +52,8 @@ def set_caption(self, pagenr):
     
     
 def load_page(self, pagenr):
+    if pagenr == 0:
+        return
     print('begin loading page:' + str(pagenr))
     self.stackedWidget.setCurrentIndex(3)
     self.animationpath='Animations/pagina'+str(int(pagenr/2)+1)+'.mp4'
@@ -64,7 +66,6 @@ def load_page(self, pagenr):
         self.thread.start()
         time.sleep(0.2)
         self.replay_img.setPixmap(QPixmap('images/repeat_unactive.PNG'))
-        print('unactive')
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
         self.capturebutton.setEnabled(True)
@@ -73,6 +74,14 @@ def load_page(self, pagenr):
         self.capturebutton.hide()
         self.capturebutton.setEnabled(False)
         self.capture_img.setPixmap(QPixmap('images/empty.jpeg'))
+    if np.isin(self.page_nr, [1,4,5,8,9,14,15,16,17,20,21]):
+        self.geluid.hide()
+        self.geluid.setEnabled(False)
+        self.geluid_img.setPixmap(QPixmap('images/empty.jpeg'))
+    else:
+        self.geluid.show()
+        self.geluid.setEnabled(True)
+        self.geluid_img.setPixmap(QPixmap('images/sound.png'))
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -110,7 +119,6 @@ class Thread(QThread):
             if ret == False:
                 print('video done')
                 self.activateReplayButton.emit()
-                print('activate1')
                 break
         self.running=False
     #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
@@ -195,8 +203,25 @@ class Thread2(QThread):
 class Thread3(QThread):    
     #blijft draaien zolang dit waar is
     running=True
-    soundpath='Sounds\eend.mp3'
+    soundpath='Sounds\\eend.mp3'
+    sounddict = {10 : "Sounds\\varken.mp3",
+             12 : "Sounds\\kuiken.mp3",
+             2 : "Sounds\\koe.mp3",
+             18 :"Sounds\\schaap.mp3",
+             6:"Sounds\\hond.mp3",
+             0: "Sounds\\eend.mp3",
+             11 : "Sounds\\varken.mp3",
+             13 : "Sounds\\kuiken.mp3",
+             3: "Sounds\\koe.mp3",
+             19 :"Sounds\\schaap.mp3",
+             7:"Sounds\\hond.mp3",
+             0: "Sounds\\eend.mp3"}
+    pagenr=0
+    
     def run(self):
+        
+        self.soundpath=self.sounddict[self.pagenr]
+        
         playsound(self.soundpath)
         print('quack')
         return
@@ -251,7 +276,7 @@ class Ui(QtWidgets.QMainWindow):
     def __init__(self, app):
         super(Ui, self).__init__()
         #global variables
-        self.page_nr=1
+        self.page_nr=0
         self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
         
         #laad de interface file
@@ -714,7 +739,9 @@ class Ui(QtWidgets.QMainWindow):
         #self.thread2.start()
         print('thread started')
     def play_sound(self):
-        pass #deze is voor jou Gustav
+        self.thread3.pagenr=self.page_nr
+        self.thread3.start()
+
     def turn_page_next(self):
         if(self.page_nr<21):
             self.page_nr+=1
@@ -791,7 +818,8 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.setEnabled(False)
         self.instelling_grid.lower()
         self.instelling_widg.lower()
-
+        load_page(self, self.page_nr)
+        
     def set_small_buttons(self):
         self.huidig_kind.knopgr = 0
         self.knopsmall_img.setPixmap(QPixmap('images/small.png'))
@@ -825,26 +853,22 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_klein.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
-        # @Guus er moet zoiets bij, dat de caption insta groter/kleiner wordt en niet dat je de pagina moet herladen, kan jij hier naar kijken
-        #set_caption(self.pagenr)
-        self.load_page(self, self.page_nr)
+        
     
     def font_medium(self):
         self.huidig_kind.font_size = 13 
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
-        # @Guus hier ook
-        #set_caption(self.pagenr)
-        self.load_page(self, self.page_nr)
+
+        
     def font_large(self):
         self.huidig_kind.font_size = 15
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
-        # @Guus hier ook
-        #set_caption(self.pagenr)
-        self.load_page(self, self.page_nr)
+
+        
     def geluid_aan_uit(self):
         self.huidig_kind.geluid_zichtbaar += 1
         if (self.huidig_kind.geluid_zichtbaar%2) == 1:
@@ -859,7 +883,6 @@ class Ui(QtWidgets.QMainWindow):
 
     def opnieuw_aan_uit(self):
         self.huidig_kind.opnieuw_zichtbaar += 1
-        print('iets wat rosa deed')
         if (self.huidig_kind.opnieuw_zichtbaar%2) ==1:
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_unactive.png'))
             self.replay_img.setPixmap(QPixmap('images/empty.JPEG'))
