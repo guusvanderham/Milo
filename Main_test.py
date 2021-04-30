@@ -818,8 +818,9 @@ class Ui(QtWidgets.QMainWindow):
         self.instellingen_close.setEnabled(False)
         self.instelling_grid.lower()
         self.instelling_widg.lower()
+
         load_page(self, self.page_nr)
-        
+
     def set_small_buttons(self):
         self.huidig_kind.knopgr = 0
         self.knopsmall_img.setPixmap(QPixmap('images/small.png'))
@@ -853,7 +854,7 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_klein.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
-        
+
     
     def font_medium(self):
         self.huidig_kind.font_size = 13 
@@ -868,7 +869,6 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
 
-        
     def geluid_aan_uit(self):
         self.huidig_kind.geluid_zichtbaar += 1
         if (self.huidig_kind.geluid_zichtbaar%2) == 1:
@@ -905,5 +905,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 
