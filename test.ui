@@ -1751,14 +1751,23 @@ QPushButton:clicked {
      <widget class="QPushButton" name="capture">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>760</y>
-        <width>401</width>
-        <height>91</height>
+        <x>70</x>
+        <y>780</y>
+        <width>281</width>
+        <height>51</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
       <property name="text">
-       <string>Leg keuze vast</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="geluid_img">
@@ -1796,6 +1805,19 @@ QPushButton:clicked {
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="capture_img">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>740</y>
+        <width>401</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/vastleggen.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
      <zorder>boek</zorder>
      <zorder>caption</zorder>
      <zorder>pagenr</zorder>
@@ -1804,12 +1826,13 @@ QPushButton:clicked {
      <zorder>opnieuw_img</zorder>
      <zorder>previous_page_img</zorder>
      <zorder>camplayer</zorder>
-     <zorder>capture</zorder>
      <zorder>opnieuw</zorder>
      <zorder>previous_page</zorder>
      <zorder>next_page</zorder>
      <zorder>geluid_img</zorder>
      <zorder>geluid</zorder>
+     <zorder>capture_img</zorder>
+     <zorder>capture</zorder>
     </widget>
     <widget class="QWidget" name="Books">
      <widget class="QPushButton" name="book1">

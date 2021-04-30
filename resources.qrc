@@ -16,6 +16,7 @@
     <file>Images/Image_16.png</file>
   </qresource>
   <qresource prefix="Buttons">
+    <file>Images/vastleggen.png</file>
     <file>Images/small.png</file>
     <file>Images/small_unactive.png</file>
     <file>Images/repeat_instelling.png</file>

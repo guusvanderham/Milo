@@ -64,8 +64,12 @@ def load_page(self, pagenr):
         self.thread.start()
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
+        self.capturebutton.setEnabled(True)
+        self.capture_img.setPixmap(QPixmap('images/vastleggen.png'))
     else:
         self.capturebutton.hide()
+        self.capturebutton.setEnabled(False)
+        self.capture_img.setPixmap(QPixmap('images/empty.jpeg'))
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -345,6 +349,8 @@ class Ui(QtWidgets.QMainWindow):
         
         self.capturebutton = self.findChild(QtWidgets.QPushButton, 'capture')
         self.capturebutton.clicked.connect(self.capture_choice)
+        self.capture_img = self.findChild(QtWidgets.QLabel, 'capture_img')
+        
         
         #@guus kan jij zorgen dat deze code pas 'happened' als de animatie is afgelopen?
         self.replay = self.findChild(QtWidgets.QPushButton, 'opnieuw')
