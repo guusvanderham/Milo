@@ -62,6 +62,9 @@ def load_page(self, pagenr):
     time.sleep(0.1)
     if pagenr % 2 == 0 or self.page_nr == 1:
         self.thread.start()
+        time.sleep(0.2)
+        self.replay_img.setPixmap(QPixmap('images/repeat_unactive.PNG'))
+        print('unactive')
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
         self.capturebutton.setEnabled(True)
@@ -76,6 +79,7 @@ def load_page(self, pagenr):
 class Thread(QThread):
     #signaalding om te sturen dat het scherm geupdate moet worden
     changePixmap = pyqtSignal(QImage)
+    activateReplayButton = pyqtSignal()
     #blijft draaien zolang dit waar is
     running=True
     animationpath='\Animations\pagina1.mp4'
@@ -99,15 +103,21 @@ class Thread(QThread):
                 
                 
             if self.running==False:
+
                 break
             #zorg dat je niet te snel afspeelt
             time.sleep(0.02)
             if ret == False:
                 print('video done')
+                self.activateReplayButton.emit()
+                print('activate1')
                 break
+        self.running=False
     #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
     def kill(self):
         self.running = False
+        self.activateReplayButton.emit()
+        print('activate1')
         print('received stop signal from window.(1)')
 
 class Thread2(QThread):
@@ -175,6 +185,7 @@ class Thread2(QThread):
                 break
             #zorg dat je niet te snel afspeelt
             #time.sleep(0.02)
+
             
     #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
     def kill(self):
@@ -221,6 +232,9 @@ class Ui(QtWidgets.QMainWindow):
     @pyqtSlot(int)
     def set_page_choice(self, pagechoice):
         load_page(self, pagechoice)
+    @pyqtSlot()
+    def activate_replay_button(self):
+        self.replay_img.setPixmap(QPixmap('images/repeat.PNG'))
 
 
         
@@ -351,8 +365,6 @@ class Ui(QtWidgets.QMainWindow):
         self.capturebutton.clicked.connect(self.capture_choice)
         self.capture_img = self.findChild(QtWidgets.QLabel, 'capture_img')
         
-        
-        #@guus kan jij zorgen dat deze code pas 'happened' als de animatie is afgelopen?
         self.replay = self.findChild(QtWidgets.QPushButton, 'opnieuw')
         self.replay_img = self.findChild(QtWidgets.QLabel, 'opnieuw_img')
         self.replay_img.setPixmap(QPixmap('images/repeat.PNG'))
@@ -368,6 +380,7 @@ class Ui(QtWidgets.QMainWindow):
         self.camplayer = self.findChild(QtWidgets.QLabel, 'camplayer' )
         self.thread = Thread(self)
         self.thread.changePixmap.connect(self.setImage)
+        self.thread.activateReplayButton.connect(self.activate_replay_button)
         self.thread2 = Thread2(self)
         self.thread2.load_model_please([self, m,mf,c])
         self.thread2.changecamPixmap.connect(self.setcamplayer)
@@ -672,8 +685,11 @@ class Ui(QtWidgets.QMainWindow):
         print('changed window to bookview')  
     def replay_animation(self):
         if self.thread.running == True:
-            self.thread.kill()
-            time.sleep(0.1)
+            #self.thread.kill()
+            #time.sleep(0.1)
+            #knop doet niks tijdens afspelen
+            return
+        self.replay_img.setPixmap(QPixmap('images/repeat_unactive.png'))
         self.thread.start()
         #self.thread2.start()
         print('thread started')
@@ -683,7 +699,9 @@ class Ui(QtWidgets.QMainWindow):
         if(self.page_nr<21):
             self.page_nr+=1
         self.pagenrlabel.setText(str(self.page_nr))
-        
+        if self.thread.running==True:
+            self.thread.kill()
+            time.sleep(0.1)
         load_page(self, self.page_order[self.page_nr-1])
         print('page set to: ' + str(self.page_nr))
     def turn_page_previous(self):
@@ -695,6 +713,9 @@ class Ui(QtWidgets.QMainWindow):
             else:
                 self.page_nr-=1
         self.pagenrlabel.setText(str(self.page_nr))
+        if self.thread.running==True:
+            self.thread.kill()
+            time.sleep(0.1)
         load_page(self, self.page_order[self.page_nr-1])
         print('page set to: ' + str(self.page_nr))
     def foldout_menu(self):
@@ -759,6 +780,7 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         # @Guus er moet zoiets bij, dat de caption insta groter/kleiner wordt en niet dat je de pagina moet herladen, kan jij hier naar kijken
         #set_caption(self.pagenr)
+        self.load_page(self, self.page_nr)
     
     def font_medium(self):
         self.huidig_kind.font_size = 13 
@@ -767,7 +789,7 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         # @Guus hier ook
         #set_caption(self.pagenr)
-    
+        self.load_page(self, self.page_nr)
     def font_large(self):
         self.huidig_kind.font_size = 15
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
@@ -775,7 +797,7 @@ class Ui(QtWidgets.QMainWindow):
         self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         # @Guus hier ook
         #set_caption(self.pagenr)
-
+        self.load_page(self, self.page_nr)
     def geluid_aan_uit(self):
         self.huidig_kind.geluid_zichtbaar += 1
         if (self.huidig_kind.geluid_zichtbaar%2) == 1:
@@ -790,6 +812,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def opnieuw_aan_uit(self):
         self.huidig_kind.opnieuw_zichtbaar += 1
+        print('iets wat rosa deed')
         if (self.huidig_kind.opnieuw_zichtbaar%2) ==1:
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_unactive.png'))
             self.replay_img.setPixmap(QPixmap('images/empty.JPEG'))
@@ -804,5 +827,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    #sys.exit()
-    sys.exit(app.exec_()) 
+    sys.exit()
+    #sys.exit(app.exec_()) 
