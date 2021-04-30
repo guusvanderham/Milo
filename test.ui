@@ -2202,16 +2202,16 @@ color: grey
     <property name="geometry">
      <rect>
       <x>890</x>
-      <y>300</y>
+      <y>250</y>
       <width>491</width>
-      <height>471</height>
+      <height>521</height>
      </rect>
     </property>
     <widget class="QPushButton" name="geluid_knop">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>140</y>
+       <x>80</x>
+       <y>200</y>
        <width>71</width>
        <height>61</height>
       </rect>
@@ -2229,24 +2229,33 @@ color: grey
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="randompush">
+    <widget class="QPushButton" name="aanuit_knop">
      <property name="geometry">
       <rect>
-       <x>210</x>
-       <y>50</y>
-       <width>56</width>
-       <height>17</height>
+       <x>80</x>
+       <y>440</y>
+       <width>121</width>
+       <height>51</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            color: orange;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
      <property name="text">
-      <string>PushButton</string>
+      <string/>
      </property>
     </widget>
     <widget class="QPushButton" name="letters_klein">
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>250</y>
+       <y>310</y>
        <width>101</width>
        <height>81</height>
       </rect>
@@ -2274,8 +2283,8 @@ color: grey
     <widget class="QLabel" name="aanuit_img">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>360</y>
+       <x>80</x>
+       <y>420</y>
        <width>161</width>
        <height>91</height>
       </rect>
@@ -2287,8 +2296,8 @@ color: grey
     <widget class="QLabel" name="instelling_geluid">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>120</y>
+       <x>60</x>
+       <y>180</y>
        <width>121</width>
        <height>111</height>
       </rect>
@@ -2301,7 +2310,7 @@ color: grey
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>250</y>
+       <y>310</y>
        <width>101</width>
        <height>81</height>
       </rect>
@@ -2329,7 +2338,7 @@ color: grey
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>250</y>
+       <y>310</y>
        <width>101</width>
        <height>81</height>
       </rect>
@@ -2356,10 +2365,10 @@ color: grey
     <widget class="QLabel" name="instelling_opnieuw">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>130</y>
+       <x>190</x>
+       <y>180</y>
        <width>121</width>
-       <height>111</height>
+       <height>121</height>
       </rect>
      </property>
      <property name="text">
@@ -2369,8 +2378,8 @@ color: grey
     <widget class="QPushButton" name="opnieuw_knop">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>140</y>
+       <x>210</x>
+       <y>200</y>
        <width>71</width>
        <height>61</height>
       </rect>
@@ -2388,15 +2397,126 @@ color: grey
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="knopsmall_img">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>70</y>
+       <width>111</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/small.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="knopmedium_img">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>40</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/medium.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="knoplarge_img">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>10</y>
+       <width>181</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/large.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="knopsmall">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>80</y>
+       <width>61</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            color: orange;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="knopmedium">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>50</y>
+       <width>91</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            color: orange;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="knoplarge">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>20</y>
+       <width>101</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+            color: orange;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>instelling_geluid</zorder>
     <zorder>geluid_knop</zorder>
-    <zorder>randompush</zorder>
     <zorder>letters_klein</zorder>
     <zorder>aanuit_img</zorder>
     <zorder>letters_medium</zorder>
     <zorder>letters_groot</zorder>
     <zorder>instelling_opnieuw</zorder>
     <zorder>opnieuw_knop</zorder>
+    <zorder>aanuit_knop</zorder>
+    <zorder>knopsmall_img</zorder>
+    <zorder>knopmedium_img</zorder>
+    <zorder>knoplarge_img</zorder>
+    <zorder>knopsmall</zorder>
+    <zorder>knopmedium</zorder>
+    <zorder>knoplarge</zorder>
    </widget>
    <zorder>instellingen_open</zorder>
    <zorder>instellingen_close</zorder>
