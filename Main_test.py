@@ -74,14 +74,16 @@ def load_page(self, pagenr):
         self.capturebutton.hide()
         self.capturebutton.setEnabled(False)
         self.capture_img.setPixmap(QPixmap('images/empty.jpeg'))
-    if np.isin(self.page_nr, [1,4,5,8,9,14,15,16,17,20,21]):
-        self.geluid.hide()
-        self.geluid.setEnabled(False)
-        self.geluid_img.setPixmap(QPixmap('images/empty.jpeg'))
-    else:
+    if np.isin(self.page_nr, [2,3,6,7,10,11,12,13,18,19]) and self.geluidknop: 
+        
         self.geluid.show()
         self.geluid.setEnabled(True)
         self.geluid_img.setPixmap(QPixmap('images/sound.png'))
+    else:
+        self.geluid.hide()
+        self.geluid.setEnabled(False)
+        self.geluid_img.setPixmap(QPixmap('images/empty.jpeg'))
+        
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -278,7 +280,7 @@ class Ui(QtWidgets.QMainWindow):
         #global variables
         self.page_nr=0
         self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
-        
+        self.geluidknop=True
         #laad de interface file
         uic.loadUi('test.ui', self)
         self.show()
@@ -936,11 +938,14 @@ class Ui(QtWidgets.QMainWindow):
             self.instelling_geluid.setPixmap(QPixmap('images/music_unactive.png'))
             self.geluid_img.setPixmap(QPixmap('images/empty.JPEG'))
             self.geluid.setEnabled(False)
+            self.geluidknop=False
             
         else:
             self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
             self.geluid_img.setPixmap(QPixmap('images/music.png'))
             self.geluid.setEnabled(True)
+            self.geluidknop=True
+        
 
     def opnieuw_aan_uit(self):
         self.huidig_kind.opnieuw_zichtbaar += 1
@@ -966,5 +971,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    #sys.exit()
-    sys.exit(app.exec_()) 
+    sys.exit()
+    #sys.exit(app.exec_()) 
