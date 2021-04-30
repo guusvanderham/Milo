@@ -259,11 +259,16 @@ class Ui(QtWidgets.QMainWindow):
         self.show()
         #laat eerst programma zien en laad dan pas het model
         #kinderen
-        self.dummy = Child('Dummy Tim', 'images/tim.png', [], 11, 0, 0, 0, 0)
-        self.dummy2 = Child('Dummy Lieke', 'images/lieke.png', [], 11, 0, 0, 0, 0)
+        self.dummy = Child('Tim', 'images/sdier1.png', [], 11, 0, 0, 0, 0)
+        self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 11, 0, 0, 0, 0)
+        self.dummy3 = Child('Jorik','images/sdier3.png', [], 11, 0, 0, 0, 0)
+        self.dummy4 = Child('Noraja','images/sdier4.png', [], 11, 0, 0, 0, 0)
+        self.dummy5 = Child('Sophie','images/sdier7.png', [], 11, 0, 0, 0, 0)
+        self.dummy6 = Child('Arjan','images/sdier6.png', [], 11, 0, 0, 0, 0)
+        self.dummy7 = Child('Anne','images/sdier5.png', [], 11, 0, 0, 0, 0)
 
         #huidig dummy kind
-        self.huidig_kind = Child('total dummy', 'images/arjan.png', [], 11, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
+        self.huidig_kind = Child('Dummy', 'images/arjan.png', [], 11, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
 
         #[m,c]=[0,1]
         #beginview: kinderen
@@ -274,19 +279,30 @@ class Ui(QtWidgets.QMainWindow):
         self.child1 = self.findChild(QtWidgets.QPushButton, 'kind1')
         self.child1.clicked.connect(self.set_book_window)
         self.child1.clicked.connect(self.set_child1)
+
         self.child2 = self.findChild(QtWidgets.QPushButton, 'kind2')
         self.child2.clicked.connect(self.set_book_window)
         self.child2.clicked.connect(self.set_child2)
+
         self.child3 = self.findChild(QtWidgets.QPushButton, 'kind3')
-        self.child3.clicked.connect(self.set_book_window) 
+        self.child3.clicked.connect(self.set_book_window)
+        self.child3.clicked.connect(self.set_child3) 
+
         self.child4 = self.findChild(QtWidgets.QPushButton, 'kind4')
         self.child4.clicked.connect(self.set_book_window) 
+        self.child4.clicked.connect(self.set_child4)
+
         self.child5 = self.findChild(QtWidgets.QPushButton, 'kind5')
         self.child5.clicked.connect(self.set_book_window) 
+        self.child5.clicked.connect(self.set_child5)
+
         self.child6 = self.findChild(QtWidgets.QPushButton, 'kind6')
-        self.child6.clicked.connect(self.set_book_window) 
+        self.child6.clicked.connect(self.set_book_window)
+        self.child6.clicked.connect(self.set_child6)
+
         self.child7 = self.findChild(QtWidgets.QPushButton, 'kind7')
         self.child7.clicked.connect(self.set_book_window)
+        self.child7.clicked.connect(self.set_child7)
 
         #view met de verschillende boeken
         self.book1 = self.findChild(QtWidgets.QPushButton, 'book1')
@@ -515,41 +531,30 @@ class Ui(QtWidgets.QMainWindow):
 
         #plaatjes kinderen
         self.child1_img = self.findChild(QtWidgets.QLabel, 'tim_img')
-        pixmap4 = QPixmap('images/tim.PNG')
-        self.child1_img.setPixmap(pixmap4)
+        self.child1_img.setPixmap(QPixmap('images/dier1.PNG'))
 
         self.child2_img = self.findChild(QtWidgets.QLabel, 'lieke_img')
-        pixmap5 = QPixmap('images/lieke.PNG')
-        self.child2_img.setPixmap(pixmap5)
-
-        #dit moet kind_pagina overzicht worden als label, dat ik de pixmap kan pakken van t goeie kind
-        #self.child2_img_2 = self.findChild(QtWidgets.QLabel, 'lieke_img_2')
-        #self.child2_img_2.setPixmap(pixmap5)
+        self.child2_img.setPixmap(QPixmap('images/dier2.PNG'))
 
         self.child3_img = self.findChild(QtWidgets.QLabel, 'jorik_img')
-        pixmap6 = QPixmap('images/jorik.PNG')
-        self.child3_img.setPixmap(pixmap6)
+        self.child3_img.setPixmap(QPixmap('images/dier3.PNG'))
 
         self.child4_img = self.findChild(QtWidgets.QLabel, 'noraja_img')
-        pixmap7 = QPixmap('images/noraja.PNG')
-        self.child4_img.setPixmap(pixmap7)
+        self.child4_img.setPixmap(QPixmap('images/dier4.PNG'))
 
         self.child5_img = self.findChild(QtWidgets.QLabel, 'annsophie_img')
-        pixmap8 = QPixmap('images/annsophie.PNG')
-        self.child5_img.setPixmap(pixmap8)
+        self.child5_img.setPixmap(QPixmap('images/dier7.PNG'))
 
         self.child6_img = self.findChild(QtWidgets.QLabel, 'annemiek_img')
-        pixmap9 = QPixmap('images/annemiek.PNG')
-        self.child6_img.setPixmap(pixmap9)
+        self.child6_img.setPixmap(QPixmap('images/dier5.PNG'))
 
         self.child7_img = self.findChild(QtWidgets.QLabel, 'arjan_img')
-        pixmap10 = QPixmap('images/arjan.PNG')
-        self.child7_img.setPixmap(pixmap10)
+        self.child7_img.setPixmap(QPixmap('images/dier6.PNG'))
 
-        #plaatjes buttons
-        self.add = self.findChild(QtWidgets.QLabel, 'add')
-        pixmap11 = QPixmap('images/add.PNG')
-        self.add.setPixmap(pixmap11)
+        #add kind knop
+        #self.add = self.findChild(QtWidgets.QLabel, 'add')
+        #pixmap11 = QPixmap('images/add.PNG')
+        #self.add.setPixmap(pixmap11)
 
         #plaatjes paginaoverzicht
         self.page1_img = self.findChild(QtWidgets.QLabel, 'page1_img')
@@ -623,6 +628,62 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+
+    def set_child3(self):
+        self.huidig_kind = self.dummy3
+        for pagina in self.vinkjeslijst:
+            pagina.setPixmap(QPixmap('images/empty.JPEG'))  
+        self.huidig_kind.opnieuw_zichtbaar += -1
+        self.opnieuw_aan_uit()  
+        self.huidig_kind.geluid_zichtbaar += -1
+        self.geluid_aan_uit()
+        self.huidig_kind.prikkelarm += -1
+        self.aanuit_prikkelarm()
+
+    def set_child4(self):
+        self.huidig_kind = self.dummy4
+        for pagina in self.vinkjeslijst:
+            pagina.setPixmap(QPixmap('images/empty.JPEG'))  
+        self.huidig_kind.opnieuw_zichtbaar += -1
+        self.opnieuw_aan_uit()  
+        self.huidig_kind.geluid_zichtbaar += -1
+        self.geluid_aan_uit()
+        self.huidig_kind.prikkelarm += -1
+        self.aanuit_prikkelarm()
+    
+    def set_child5(self):
+        self.huidig_kind = self.dummy5
+        for pagina in self.vinkjeslijst:
+            pagina.setPixmap(QPixmap('images/empty.JPEG'))  
+        self.huidig_kind.opnieuw_zichtbaar += -1
+        self.opnieuw_aan_uit()  
+        self.huidig_kind.geluid_zichtbaar += -1
+        self.geluid_aan_uit()
+        self.huidig_kind.prikkelarm += -1
+        self.aanuit_prikkelarm()
+    
+    def set_child6(self):
+        self.huidig_kind = self.dummy6
+        for pagina in self.vinkjeslijst:
+            pagina.setPixmap(QPixmap('images/empty.JPEG'))  
+        self.huidig_kind.opnieuw_zichtbaar += -1
+        self.opnieuw_aan_uit()  
+        self.huidig_kind.geluid_zichtbaar += -1
+        self.geluid_aan_uit()
+        self.huidig_kind.prikkelarm += -1
+        self.aanuit_prikkelarm()
+    
+    def set_child7(self):
+        self.huidig_kind = self.dummy7
+        for pagina in self.vinkjeslijst:
+            pagina.setPixmap(QPixmap('images/empty.JPEG'))  
+        self.huidig_kind.opnieuw_zichtbaar += -1
+        self.opnieuw_aan_uit()  
+        self.huidig_kind.geluid_zichtbaar += -1
+        self.geluid_aan_uit()
+        self.huidig_kind.prikkelarm += -1
+        self.aanuit_prikkelarm()
+    
 
     #verander de window
     def set_pageview_window(self):
@@ -859,7 +920,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def opnieuw_aan_uit(self):
         self.huidig_kind.opnieuw_zichtbaar += 1
-        print('iets wat rosa deed')
+        print('iets wat rosa deed') #@Guus wat doet dit hier?
         if (self.huidig_kind.opnieuw_zichtbaar%2) ==1:
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_unactive.png'))
             self.replay_img.setPixmap(QPixmap('images/empty.JPEG'))

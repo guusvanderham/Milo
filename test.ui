@@ -25,7 +25,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1800</width>
+      <width>1980</width>
       <height>900</height>
      </rect>
     </property>
@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -373,7 +373,7 @@ Anne</string>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/add.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <zorder>logo</zorder>
@@ -656,8 +656,8 @@ QPushButton:clicked {
        <rect>
         <x>260</x>
         <y>0</y>
-        <width>191</width>
-        <height>151</height>
+        <width>201</width>
+        <height>161</height>
        </rect>
       </property>
       <property name="text">
@@ -2004,6 +2004,9 @@ QPushButton:clicked {
          <bold>true</bold>
         </font>
        </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
             color: white;
@@ -2530,32 +2533,6 @@ color: grey
    <zorder>instellingen</zorder>
    <zorder>instelling_grid</zorder>
    <zorder>instelling_widg</zorder>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1920</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="defaultUp">
-    <bool>false</bool>
-   </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Menu</string>
-    </property>
-    <addaction name="separator"/>
-    <addaction name="actionKinderen"/>
-    <addaction name="actionBoeken"/>
-    <addaction name="actionPaginas"/>
-    <addaction name="separator"/>
-    <addaction name="actionInstellingen"/>
-    <addaction name="separator"/>
-   </widget>
-   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionKinderen">
