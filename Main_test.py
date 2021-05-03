@@ -299,6 +299,7 @@ class Ui(QtWidgets.QMainWindow):
         #self.destory()
         
     def __init__(self, app):
+        print('hoi1')
         super(Ui, self).__init__()
         #global variables
         self.page_nr=0
@@ -318,7 +319,7 @@ class Ui(QtWidgets.QMainWindow):
         self.dummy5 = Child('Sophie','images/sdier7.png', [], 11, 0, 0, 0, 0)
         self.dummy6 = Child('Arjan','images/sdier6.png', [], 11, 0, 0, 0, 0)
         self.dummy7 = Child('Anne','images/sdier5.png', [], 11, 0, 0, 0, 0)
-
+        print('hoi2')
         #huidig dummy kind
         self.huidig_kind = Child('Dummy', 'images/arjan.png', [], 11, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
 
@@ -362,6 +363,8 @@ class Ui(QtWidgets.QMainWindow):
         
         #view met alle paginas van een boek + connect aan pageview
         self.page1 = self.findChild(QtWidgets.QPushButton, 'page1')
+        
+        print('hoi3')
         #weer iets als if clicked:
         # video = video 1 (in set_pageview_window) die window is verder hetzelfde
         # caption = ... (bij het label caption)
@@ -411,7 +414,7 @@ class Ui(QtWidgets.QMainWindow):
         self.page_read10.setPixmap(QPixmap('images/empty.JPEG'))
         self.page_read11 = self.findChild(QtWidgets.QLabel, 'page_read11')
         self.page_read11.setPixmap(QPixmap('images/empty.JPEG'))
-
+        print('hoi4')
         self.vinkjeslijst = [self.page_read1, self.page_read2, self.page_read3, self.page_read4, self.page_read5, self.page_read6, self.page_read7, self.page_read8, self.page_read9, self.page_read10, self.page_read11]
         #view van één pagina
         self.boek = self.findChild(QtWidgets.QLabel, 'boek')
@@ -457,7 +460,7 @@ class Ui(QtWidgets.QMainWindow):
         
         #self.thread.start()
 
-        
+        print('hoi5')
         
         
         #menubar
@@ -529,7 +532,7 @@ class Ui(QtWidgets.QMainWindow):
         self.naar_paginas.setEnabled(False)
         self.naar_paginas.setText(' ')
         self.naar_paginas.clicked.connect(self.set_page_window)
-
+        print('hoi6')
         #instellingen labels en knoppen
         self.instellingen_close = self.findChild(QtWidgets.QPushButton, 'instellingen_close')
         self.instellingen_close.lower()
@@ -574,7 +577,7 @@ class Ui(QtWidgets.QMainWindow):
         self.aanuit_img.setPixmap(QPixmap('images/switch_on.png'))
         self.aanuit_knop = self.findChild(QtWidgets.QPushButton, 'aanuit_knop')
         self.aanuit_knop.clicked.connect(self.aanuit_prikkelarm)
-        
+        print('hoi7')
 
    
             
@@ -655,7 +658,7 @@ class Ui(QtWidgets.QMainWindow):
         
         self.name_kid = self.findChild(QtWidgets.QLabel, 'name_kid')
         self.img_kid = self.findChild(QtWidgets.QLabel, 'img_kid')
-    
+        print('hoi8')
         
     #verander kind
     def set_child1(self):
