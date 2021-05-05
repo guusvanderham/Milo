@@ -1,2 +1,2 @@
-"C:\Users\guusv\anaconda3\envs\tf-gpu\python.exe" "C:\Users\guusv\Documents\GitHub\Milo\Main_test.py"
+"C:\Users\Laptop CA\.conda\envs\milo\python.exe" "C:\Users\Laptop CA\Documents\GitHub\Milo\Main_test.py"
 pause

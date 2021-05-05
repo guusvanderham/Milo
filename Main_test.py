@@ -134,7 +134,7 @@ class Thread(QThread):
 
                 break
             #zorg dat je niet te snel afspeelt
-            time.sleep(0.02)
+            time.sleep(0.005)
             if ret == False:
                 print('video done')
                 self.activateReplayButton.emit()
