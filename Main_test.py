@@ -87,7 +87,18 @@ def load_page(self, pagenr):
     if np.isin(self.page_nr, [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]) and self.geluidknop: 
         self.geluid.show()
         self.geluid.setEnabled(True)
-        self.geluid_img.setPixmap(QPixmap('images/sound.png'))
+        if self.page_nr == 2 or self.page_nr ==3:
+            self.geluid_img.setPixmap(QPixmap('images/koe.png'))
+        elif self.page_nr == 6 or self.page_nr ==7:
+            self.geluid_img.setPixmap(QPixmap('images/hond.png'))
+        elif self.page_nr == 10 or self.page_nr ==11:
+            self.geluid_img.setPixmap(QPixmap('images/varken.png'))
+        elif self.page_nr == 12 or self.page_nr ==13:
+            self.geluid_img.setPixmap(QPixmap('images/kuiken.png'))
+        elif self.page_nr == 18 or self.page_nr ==19:
+            self.geluid_img.setPixmap(QPixmap('images/schaap.png'))
+        else:
+            self.geluid_img.setPixmap(QPixmap('images/sound.png'))
     else:
         self.geluid.hide()
         self.geluid.setEnabled(False)
@@ -323,7 +334,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
         #laat eerst programma zien en laad dan pas het model
-        [m,mf,c] = load_model()
+        #[m,mf,c] = load_model()
         #kinderen
         self.dummy = Child('Tim', 'images/sdier1.png', [], 11, 0, 0, 0, 0)
         self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 11, 0, 0, 0, 0)
