@@ -146,7 +146,7 @@ class Thread(QThread):
 
                 break
             #zorg dat je niet te snel afspeelt
-            time.sleep(0.005)
+            time.sleep(0.009)
             if ret == False:
                 print('video done')
                 self.activateReplayButton.emit()
@@ -1024,5 +1024,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 
