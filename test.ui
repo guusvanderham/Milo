@@ -1589,8 +1589,8 @@ QPushButton:clicked {
      <widget class="QLabel" name="pagenr">
       <property name="geometry">
        <rect>
-        <x>1454</x>
-        <y>530</y>
+        <x>1800</x>
+        <y>900</y>
         <width>21</width>
         <height>51</height>
        </rect>
