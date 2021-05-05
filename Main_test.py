@@ -334,7 +334,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
         #laat eerst programma zien en laad dan pas het model
-        #[m,mf,c] = load_model()
+        [m,mf,c] = load_model()
         #kinderen
         self.dummy = Child('Tim', 'images/sdier1.png', [], 11, 0, 0, 0, 0)
         self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 11, 0, 0, 0, 0)
@@ -1024,5 +1024,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 
