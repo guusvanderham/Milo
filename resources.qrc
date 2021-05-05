@@ -60,6 +60,8 @@
     <file>arjan.png</file>
   </qresource>
   <qresource prefix="background">
+    <file>Images/boek_cover.png</file>
+    <file>Images/boek_cover_s.png</file>
     <file>Images/instelling_backblack.png</file>
     <file>Images/background.jpeg</file>
   </qresource>

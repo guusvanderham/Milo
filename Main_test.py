@@ -7,6 +7,7 @@ from PyQt5.QtGui import QImage, QPixmap, QFont
 import cv2
 import threading
 from playsound import playsound
+import pickle
 
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
@@ -319,6 +320,16 @@ class Ui(QtWidgets.QMainWindow):
         #sla settings van kind op -> in vervolg -> open kinderen met settings
         print("Closing")
         print("Je mag dit scherm nu afsluiten.")
+
+        with open('data_kinderen.pkl', 'wb') as output:
+            pickle.dump(self.dummy, output, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.dummy2, output, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.dummy3, output, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.dummy4, output, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.dummy5, output, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.dummy6, output, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.dummy7, output, pickle.HIGHEST_PROTOCOL)
+
         #self.destory()
         
     def __init__(self, app):
@@ -336,16 +347,30 @@ class Ui(QtWidgets.QMainWindow):
         #laat eerst programma zien en laad dan pas het model
         #[m,mf,c] = load_model()
         #kinderen
-        self.dummy = Child('Tim', 'images/sdier1.png', [], 11, 0, 0, 0, 0)
-        self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 11, 0, 0, 0, 0)
-        self.dummy3 = Child('Jorik','images/sdier3.png', [], 11, 0, 0, 0, 0)
-        self.dummy4 = Child('Noraja','images/sdier4.png', [], 11, 0, 0, 0, 0)
-        self.dummy5 = Child('Sophie','images/sdier7.png', [], 11, 0, 0, 0, 0)
-        self.dummy6 = Child('Arjan','images/sdier6.png', [], 11, 0, 0, 0, 0)
-        self.dummy7 = Child('Anne','images/sdier5.png', [], 11, 0, 0, 0, 0)
-
+        self.dummy = Child('Tim', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
+        self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
+        self.dummy3 = Child('Jorik','images/sdier3.png', [], 13, 0, 0, 0, 0)
+        self.dummy4 = Child('Noraja','images/sdier4.png', [], 13, 0, 0, 0, 0)
+        self.dummy5 = Child('Sophie','images/sdier7.png', [], 13, 0, 0, 0, 0)
+        self.dummy6 = Child('Arjan','images/sdier6.png', [], 13, 0, 0, 0, 0)
+        self.dummy7 = Child('Anne','images/sdier5.png', [], 13, 0, 0, 0, 0)
+        
+         #comment dit stuk weg als je weer from scratch wil beginnen
+         #met alle instellingen gedelete
+        with open('data_kinderen.pkl', 'rb') as input:
+            self.dummy = pickle.load(input)
+            print(self.dummy.name)
+            self.dummy2 = pickle.load(input)
+            print(self.dummy2.name)
+            self.dummy3 = pickle.load(input)
+            self.dummy4 = pickle.load(input)
+            self.dummy5 = pickle.load(input)
+            self.dummy6 = pickle.load(input)
+            self.dummy7 = pickle.load(input)
+        
+        
         #huidig dummy kind
-        self.huidig_kind = Child('Dummy', 'images/arjan.png', [], 11, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
+        self.huidig_kind = Child('Dummy', 'images/arjan.png', [], 13, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
 
         #[m,c]=[0,1]
         #beginview: kinderen
@@ -384,6 +409,8 @@ class Ui(QtWidgets.QMainWindow):
         #view met de verschillende boeken
         self.book1 = self.findChild(QtWidgets.QPushButton, 'book1')
         self.book1.clicked.connect(self.set_page_window) 
+        self.boek1_cover = self.findChild(QtWidgets.QLabel, 'boek_cover')
+        self.boek1_cover.setPixmap(QPixmap('images/boek_cover.png'))
         
         #view met alle paginas van een boek + connect aan pageview
         self.page1 = self.findChild(QtWidgets.QPushButton, 'page1')
@@ -687,6 +714,13 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+        if self.huidig_kind.font_size == 13:
+            self.font_small()
+        elif self.huidig_kind.font_size == 17:
+            self.font_medium()
+        else:
+            self.font_large()
+
 
     def set_child2(self):
         self.huidig_kind = self.dummy
@@ -698,6 +732,12 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+        if self.huidig_kind.font_size == 13:
+            self.font_small()
+        elif self.huidig_kind.font_size == 17:
+            self.font_medium()
+        else:
+            self.font_large()
 
     def set_child3(self):
         self.huidig_kind = self.dummy3
@@ -709,6 +749,12 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+        if self.huidig_kind.font_size == 13:
+            self.font_small()
+        elif self.huidig_kind.font_size == 17:
+            self.font_medium()
+        else:
+            self.font_large()
 
     def set_child4(self):
         self.huidig_kind = self.dummy4
@@ -720,6 +766,12 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+        if self.huidig_kind.font_size == 13:
+            self.font_small()
+        elif self.huidig_kind.font_size == 17:
+            self.font_medium()
+        else:
+            self.font_large()
     
     def set_child5(self):
         self.huidig_kind = self.dummy5
@@ -731,6 +783,12 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+        if self.huidig_kind.font_size == 13:
+            self.font_small()
+        elif self.huidig_kind.font_size == 17:
+            self.font_medium()
+        else:
+            self.font_large()
     
     def set_child6(self):
         self.huidig_kind = self.dummy6
@@ -742,6 +800,12 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+        if self.huidig_kind.font_size == 13:
+            self.font_small()
+        elif self.huidig_kind.font_size == 17:
+            self.font_medium()
+        else:
+            self.font_large()
     
     def set_child7(self):
         self.huidig_kind = self.dummy7
@@ -753,6 +817,12 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_aan_uit()
         self.huidig_kind.prikkelarm += -1
         self.aanuit_prikkelarm()
+        if self.huidig_kind.font_size == 13:
+            self.font_small()
+        elif self.huidig_kind.font_size == 17:
+            self.font_medium()
+        else:
+            self.font_large()
     
 
     #verander de window
