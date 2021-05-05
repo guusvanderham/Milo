@@ -47,6 +47,7 @@ def set_caption(self, pagenr):
         'Milo: Wat een leuk verhaal was dat! Welk dier vond jij het leukst? '
         ]
     self.page_caption.setText(captions[pagenr-1])
+    self.page_caption.setAlignment(Qt.AlignCenter)
     self.page_caption.setFont(QFont('Segoe UI', self.huidig_kind.font_size))
     #self.label_1.setFont(QFont('Arial', 10))
     
@@ -83,7 +84,7 @@ def load_page(self, pagenr):
         self.capturebutton.setEnabled(False)
         self.capture_img.setPixmap(QPixmap('images/empty.jpeg'))
     #geluidenknop aan of niet, en alleen op bepaalde paginas
-    if np.isin(self.page_nr, [2,3,6,7,10,11,12,13,18,19]) and self.geluidknop: 
+    if np.isin(self.page_nr, [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]) and self.geluidknop: 
         self.geluid.show()
         self.geluid.setEnabled(True)
         self.geluid_img.setPixmap(QPixmap('images/sound.png'))
@@ -158,7 +159,11 @@ class Thread2(QThread):
                  "kuiken" : "Sounds\kuiken.mp3",
                  "koe" : "Sounds\koe.mp3",
                  "schaap" :"Sounds\schaap.mp3",
-                 "hond":"Sounds\hond.mp3"}
+                 "hond":"Sounds\hond.mp3",
+                 "geit": "Sounds\geit.mp3",
+                 "vogel": "Sounds\vogel.mp3", 
+                 "kip": "Sounds\kip.mp3",
+                 "haan": "Sounds\haan.mp3"}
     pagedict = {"varken" : 10,
                 "kuiken" : 12,
                 "koe" : 2,
@@ -213,7 +218,7 @@ class Thread2(QThread):
             #time.sleep(0.02)
 
             
-    #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een teringzooi
+    #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een gedoe
     def kill(self):
         self.running = False
         print('received stop signal from window.(2)')
@@ -233,7 +238,15 @@ class Thread3(QThread):
              3: "Sounds\\koe.mp3",
              19 :"Sounds\\schaap.mp3",
              7:"Sounds\\hond.mp3",
-             0: "Sounds\\eend.mp3"}
+             0: "Sounds\\eend.mp3",
+             14: "Sounds\\geit.mp3",
+             15: "Sounds\\geit.mp3",
+             8: "Sounds\\vogel.mp3", 
+             9: "Sounds\\vogel.mp3", 
+             16: "Sounds\\kip.mp3",
+             17: "Sounds\\kip.mp3",
+             4: "Sounds\\haan.mp3",
+             5: "Sounds\\haan.mp3"}
     pagenr=0
     
     def run(self):
@@ -310,6 +323,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
         #laat eerst programma zien en laad dan pas het model
+        [m,mf,c] = load_model()
         #kinderen
         self.dummy = Child('Tim', 'images/sdier1.png', [], 11, 0, 0, 0, 0)
         self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 11, 0, 0, 0, 0)
@@ -938,21 +952,21 @@ class Ui(QtWidgets.QMainWindow):
     #je moet wel nog een keer van pagina veranderen/herladen (of nog niet op een pagina zijn) voor de verandering doorzet
     #hij onthoudt t per kind, whoop
     def font_small(self):
-        self.huidig_kind.font_size = 11
+        self.huidig_kind.font_size = 13
         self.letters_klein.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
 
     
     def font_medium(self):
-        self.huidig_kind.font_size = 13 
+        self.huidig_kind.font_size = 17 
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
 
         
     def font_large(self):
-        self.huidig_kind.font_size = 15
+        self.huidig_kind.font_size = 21
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
