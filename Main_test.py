@@ -359,9 +359,7 @@ class Ui(QtWidgets.QMainWindow):
          #met alle instellingen gedelete
         with open('data_kinderen.pkl', 'rb') as input:
             self.dummy = pickle.load(input)
-            print(self.dummy.name)
             self.dummy2 = pickle.load(input)
-            print(self.dummy2.name)
             self.dummy3 = pickle.load(input)
             self.dummy4 = pickle.load(input)
             self.dummy5 = pickle.load(input)
@@ -1024,14 +1022,16 @@ class Ui(QtWidgets.QMainWindow):
         self.change_buttons()
 
     def change_buttons(self):
-        print("knoppen veranderen")
-        #if self.huidig_kind.knopgr == 0: small
-        #elif self.huidig_kind.knopgr ==1: medium
-        #else: large
+        #print("knoppen veranderen")
+        if self.huidig_kind.knopgr == 0: 
+            print("de knoppen zijn nu klein")
+        elif self.huidig_kind.knopgr ==1:
+            print("de knoppen zijn nu medium groot")
+        else:
+            print("de knoppen zijn nu groot")
         #zorg dat knoppen veranderen --> manon stuurt nog ander formaat knoppen
 
-    #je moet wel nog een keer van pagina veranderen/herladen (of nog niet op een pagina zijn) voor de verandering doorzet
-    #hij onthoudt t per kind, whoop
+    
     def font_small(self):
         self.huidig_kind.font_size = 13
         self.letters_klein.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
