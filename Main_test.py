@@ -45,7 +45,8 @@ def set_caption(self, pagenr):
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar is het lammetje, met zijn kopje zo zacht. En daar mama schaap, die lief op hem wacht.',
         'Milo: Welke dieren vind jij zacht?',
         'Zie Milo en Lana eens vrolijk zwaaien! Ze mogen van de boer alle dieren aaien. \n Wat een fijne lente-dag was dat, Met al die grote en kleine dieren op pad!',
-        'Milo: Wat een leuk verhaal was dat! Welk dier vond jij het leukst? '
+        'Milo: Wat een leuk verhaal was dat! Welk dier vond jij het leukst? ',
+        'Hallo'
         ]
     self.page_caption.setText(captions[pagenr-1])
     self.page_caption.setAlignment(Qt.AlignCenter)
@@ -113,6 +114,10 @@ def load_page(self, pagenr):
         self.replay.hide()
         self.replay.setEnabled(False)
         self.replay_img.hide()
+    #if self.page_nr ==21:
+     #   self.nextpagebutton.clicked.connect(self.set_page_window)
+      #  self.terug_overzicht.setText("Terug naar het pagina overzicht")
+
 
 
 #%%
@@ -337,7 +342,7 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__()
         #global variables
         self.page_nr=0
-        self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
+        self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])
         self.geluidknop=True
         self.opnieuwknop=True
         self.doorklikken = True
@@ -493,6 +498,9 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid_img = self.findChild(QtWidgets.QLabel, 'geluid_img')
         self.geluid_img.setPixmap(QPixmap('images/sound.png'))
         self.geluid.clicked.connect(self.play_sound)
+
+        self.terug_overzicht = self.findChild(QtWidgets.QLabel, 'terug_overzicht')
+
         
         #Dit stukje gaat over de videoplayer, met self.thread.start() begint hij met het afspelen van de animatie
         self.videoplayer = self.findChild(QtWidgets.QLabel, 'videoplayer' )
@@ -888,11 +896,8 @@ class Ui(QtWidgets.QMainWindow):
         self.name_kid.setText(self.huidig_kind.name) 
         self.img_kid.setPixmap(QPixmap(self.huidig_kind.img))
         self.apply_checked()
-        #bij page_view --> apply_checked(kind.pages_read) (functie die kind meeneemt) 
-        # (pages read is dan een lijst met page_read labels) --> kan ik self.page_read{self.pagenr}?
-        #apply_checked functie, for elk e in kind.pages_read -> e.setPixmap(QPixmap('images/checked.PNG'))     
-        #  
-        print('changed window to pages')     
+        print('changed window to pages')  
+
     def apply_checked(self):
         #print(self.huidig_kind.pages_read)
         for pagina in self.huidig_kind.pages_read:
@@ -923,15 +928,22 @@ class Ui(QtWidgets.QMainWindow):
         self.thread3.pagenr=self.page_nr
         self.thread3.start()
 
-    def turn_page_next(self):
-        if(self.page_nr<21):
+    def turn_page_next(self):        
+        if(self.page_nr<22):
             self.page_nr+=1
+            if self.page_nr==21:
+                self.terug_overzicht.setText("Terug naar pagina overzicht")
+            else:
+                self.terug_overzicht.setText(" ")
         self.pagenrlabel.setText(str(self.page_nr))
         if self.thread.running==True:
             self.thread.kill()
             time.sleep(0.1)
-        load_page(self, self.page_order[self.page_nr-1])
-        print('page set to: ' + str(self.page_nr))
+        if self.page_nr==22:
+            self.set_page_window()
+        else:
+            load_page(self, self.page_order[self.page_nr-1])
+            print('page set to: ' + str(self.page_nr))
     def turn_page_previous(self):
         if(self.page_nr>1):
             if self.page_nr % 2 == 0 :
@@ -946,6 +958,7 @@ class Ui(QtWidgets.QMainWindow):
             time.sleep(0.1)
         load_page(self, self.page_order[self.page_nr-1])
         print('page set to: ' + str(self.page_nr))
+        
     def foldout_menu(self):
         print("menu expanded")
         #self.thread3.start() #HAHA I found the quack

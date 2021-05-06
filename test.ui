@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1818,6 +1818,25 @@ QPushButton:clicked {
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/vastleggen.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="terug_overzicht">
+      <property name="geometry">
+       <rect>
+        <x>1500</x>
+        <y>890</y>
+        <width>291</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ink Free</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>boek</zorder>
      <zorder>caption</zorder>
      <zorder>pagenr</zorder>
@@ -1833,6 +1852,7 @@ QPushButton:clicked {
      <zorder>geluid</zorder>
      <zorder>capture_img</zorder>
      <zorder>capture</zorder>
+     <zorder>terug_overzicht</zorder>
     </widget>
     <widget class="QWidget" name="Books">
      <widget class="QPushButton" name="book1">
