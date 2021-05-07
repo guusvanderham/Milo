@@ -76,6 +76,9 @@ def load_page(self, pagenr):
             self.nextpagebutton.hide()
             self.nextpagebutton.setEnabled(False)
             self.nextpagebutton_img.hide()
+        self.milo.setPixmap(QPixmap('images/empty.jpeg'))
+    else:
+        self.milo.setPixmap(QPixmap('images/milo.png'))
     #keuze vastleg knop alleen op bepaalde paginas
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
@@ -506,6 +509,7 @@ class Ui(QtWidgets.QMainWindow):
         self.geluid.clicked.connect(self.play_sound)
 
         self.terug_overzicht = self.findChild(QtWidgets.QLabel, 'terug_overzicht')
+        self.milo = self.findChild(QtWidgets.QLabel, 'milo')
 
         
         #Dit stukje gaat over de videoplayer, met self.thread.start() begint hij met het afspelen van de animatie
