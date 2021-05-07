@@ -100,7 +100,12 @@ def load_page(self, pagenr):
         elif self.page_nr == 18 or self.page_nr ==19:
             self.geluid_img.setPixmap(QPixmap('images/schaap.png'))
         else:
-            self.geluid_img.setPixmap(QPixmap('images/sound.png'))
+            if self.huidig_kind.knopgr ==0:
+                self.geluid_img.setPixmap(QPixmap('images/sizes/music_s.png'))
+            elif self.huidig_kind.knopgr ==1:
+                self.geluid_img.setPixmap(QPixmap('images/sizes/music_m.png'))
+            else: 
+                self.geluid_img.setPixmap(QPixmap('images/sizes/music_l.png'))
     else:
         self.geluid.hide()
         self.geluid.setEnabled(False)
@@ -1169,7 +1174,7 @@ class Ui(QtWidgets.QMainWindow):
             
         else:
             self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
-            self.geluid_img.setPixmap(QPixmap('images/music.png'))
+            self.change_buttons()
             self.geluid.setEnabled(True)
             self.geluidknop=True
         
