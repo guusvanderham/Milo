@@ -114,11 +114,7 @@ def load_page(self, pagenr):
         self.replay.hide()
         self.replay.setEnabled(False)
         self.replay_img.hide()
-    #if self.page_nr ==21:
-     #   self.nextpagebutton.clicked.connect(self.set_page_window)
-      #  self.terug_overzicht.setText("Terug naar het pagina overzicht")
-
-
+    
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -306,7 +302,12 @@ class Ui(QtWidgets.QMainWindow):
         load_page(self, pagechoice)
     @pyqtSlot()
     def activate_replay_button(self):
-        self.replay_img.setPixmap(QPixmap('images/repeat.PNG'))
+        if self.huidig_kind.knopgr ==0:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s.PNG'))
+        elif self.huidig_kind.knopgr ==1:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_m.PNG'))
+        else:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_l.PNG'))
         self.previouspagebutton.show()
         self.previouspagebutton.setEnabled(True)
         self.previouspagebutton_img.show()
@@ -611,7 +612,7 @@ class Ui(QtWidgets.QMainWindow):
         self.knoplarge.clicked.connect(self.set_large_buttons)
 
         self.instelling_geluid = self.findChild(QtWidgets.QLabel, 'instelling_geluid')
-        self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
+        self.instelling_geluid.setPixmap(QPixmap('images/sizes/music_s.png'))
         self.instelling_geluid_knop = self.findChild(QtWidgets.QPushButton, 'geluid_knop')
         self.instelling_geluid_knop.clicked.connect(self.geluid_aan_uit)
 
@@ -726,6 +727,12 @@ class Ui(QtWidgets.QMainWindow):
             self.font_medium()
         else:
             self.font_large()
+        if self.huidig_kind.knopgr ==0:
+            self.set_small_buttons()
+        elif self.huidig_kind.knopgr ==1:
+            self.set_medium_buttons()
+        else:
+            self.set_large_buttons()
 
 
     def set_child2(self):
@@ -744,6 +751,12 @@ class Ui(QtWidgets.QMainWindow):
             self.font_medium()
         else:
             self.font_large()
+        if self.huidig_kind.knopgr ==0:
+            self.set_small_buttons()
+        elif self.huidig_kind.knopgr ==1:
+            self.set_medium_buttons()
+        else:
+            self.set_large_buttons()    
 
     def set_child3(self):
         self.huidig_kind = self.dummy3
@@ -761,6 +774,13 @@ class Ui(QtWidgets.QMainWindow):
             self.font_medium()
         else:
             self.font_large()
+        self.change_buttons()
+        if self.huidig_kind.knopgr ==0:
+            self.set_small_buttons()
+        elif self.huidig_kind.knopgr ==1:
+            self.set_medium_buttons()
+        else:
+            self.set_large_buttons()
 
     def set_child4(self):
         self.huidig_kind = self.dummy4
@@ -778,7 +798,14 @@ class Ui(QtWidgets.QMainWindow):
             self.font_medium()
         else:
             self.font_large()
-    
+        self.change_buttons()
+        if self.huidig_kind.knopgr ==0:
+            self.set_small_buttons()
+        elif self.huidig_kind.knopgr ==1:
+            self.set_medium_buttons()
+        else:
+            self.set_large_buttons()
+
     def set_child5(self):
         self.huidig_kind = self.dummy5
         for pagina in self.vinkjeslijst:
@@ -795,7 +822,14 @@ class Ui(QtWidgets.QMainWindow):
             self.font_medium()
         else:
             self.font_large()
-    
+        self.change_buttons()
+        if self.huidig_kind.knopgr ==0:
+            self.set_small_buttons()
+        elif self.huidig_kind.knopgr ==1:
+            self.set_medium_buttons()
+        else:
+            self.set_large_buttons()
+
     def set_child6(self):
         self.huidig_kind = self.dummy6
         for pagina in self.vinkjeslijst:
@@ -812,7 +846,14 @@ class Ui(QtWidgets.QMainWindow):
             self.font_medium()
         else:
             self.font_large()
-    
+        self.change_buttons()
+        if self.huidig_kind.knopgr ==0:
+            self.set_small_buttons()
+        elif self.huidig_kind.knopgr ==1:
+            self.set_medium_buttons()
+        else:
+            self.set_large_buttons()
+
     def set_child7(self):
         self.huidig_kind = self.dummy7
         for pagina in self.vinkjeslijst:
@@ -829,7 +870,14 @@ class Ui(QtWidgets.QMainWindow):
             self.font_medium()
         else:
             self.font_large()
-    
+        self.change_buttons()
+        if self.huidig_kind.knopgr ==0:
+            self.set_small_buttons()
+        elif self.huidig_kind.knopgr ==1:
+            self.set_medium_buttons()
+        else:
+            self.set_large_buttons()
+            
 
     #verander de window
     def set_pageview_window(self):
@@ -1038,11 +1086,57 @@ class Ui(QtWidgets.QMainWindow):
         #print("knoppen veranderen")
         if self.huidig_kind.knopgr == 0: 
             print("de knoppen zijn nu klein")
+            self.previouspagebutton_img.resize(151,131)
+            self.previouspagebutton_img.setPixmap(QPixmap('images/sizes/back_s.png'))
+            self.previouspagebutton.setGeometry(540,950,71,81)
+
+            self.nextpagebutton_img.resize(151,131)
+            self.nextpagebutton_img.setPixmap(QPixmap('images/sizes/next_s.png'))
+            self.nextpagebutton.setGeometry(1600,950,71,81)
+
+            self.replay_img.resize(141,121)
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s.png'))
+            self.replay.setGeometry(1050,950,71,81)
+
+            self.geluid_img.setGeometry(470,30,181,151)
+            self.geluid_img.setPixmap(QPixmap('images/sizes/music_s.png'))
+            self.geluid.setGeometry(470,30,151,121)
+
+            
         elif self.huidig_kind.knopgr ==1:
             print("de knoppen zijn nu medium groot")
+            self.previouspagebutton_img.resize(151,131)
+            self.previouspagebutton_img.setPixmap(QPixmap('images/sizes/back_m.png'))
+            self.previouspagebutton.setGeometry(540,950,81,91)
+
+            self.nextpagebutton_img.resize(151,131)
+            self.nextpagebutton_img.setPixmap(QPixmap('images/sizes/next_m.png'))
+            self.nextpagebutton.setGeometry(1600,950,81,91)
+
+            self.replay_img.resize(141,121)
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_m.png'))
+            self.replay.setGeometry(1050,950,81,91)
+
+            self.geluid_img.setGeometry(470,30,181,151)
+            self.geluid_img.setPixmap(QPixmap('images/sizes/music_m.png'))
+            self.geluid.setGeometry(470,30,151,121)
         else:
             print("de knoppen zijn nu groot")
-        #zorg dat knoppen veranderen --> manon stuurt nog ander formaat knoppen
+            self.previouspagebutton_img.setGeometry(510,910,171,161)
+            self.previouspagebutton_img.setPixmap(QPixmap('images/sizes/back_l.png'))
+            self.previouspagebutton.setGeometry(530,920,121,121)
+
+            self.nextpagebutton_img.setGeometry(1570,910,171,161)
+            self.nextpagebutton_img.setPixmap(QPixmap('images/sizes/next_l.png'))
+            self.nextpagebutton.setGeometry(1590,920,121,121)
+
+            self.replay_img.setGeometry(1010,910,171,161)
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_l.png'))
+            self.replay.setGeometry(1030,920,121,121)
+
+            self.geluid_img.setGeometry(470,50,181,161)
+            self.geluid_img.setPixmap(QPixmap('images/sizes/music_l.png'))
+            self.geluid.setGeometry(480,60,151,131)
 
     
     def font_small(self):
@@ -1089,7 +1183,7 @@ class Ui(QtWidgets.QMainWindow):
             self.opnieuwknop = False
         else: 
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_instelling.png'))
-            self.replay_img.setPixmap(QPixmap('images/repeat.png'))
+            self.change_buttons()
             self.replay.setEnabled(True)
             self.opnieuwknop = True
     def aanuit_prikkelarm(self): #deze functie kan ook de "doorklikmogelijkheid" worden, of misschien iets van automatisch voorlezen?

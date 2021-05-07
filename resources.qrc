@@ -2,6 +2,16 @@
   <qresource prefix="fakevideo">
     <file>Images/boek.png</file>
   </qresource>
+  <qresource/>
+  <qresource prefix="buttons_m">
+    <file>Images/sizes/music_l.png</file>
+    <file>Images/sizes/music_m.png</file>
+    <file>Images/sizes/repeat_l.png</file>
+    <file>Images/sizes/repeat_m.png</file>
+    <file>Images/sizes/next_m.png</file>
+    <file>Images/sizes/music_m.png</file>
+    <file>Images/sizes/back_m.png</file>
+  </qresource>
   <qresource prefix="pagina's">
     <file>Images/Image_1.png</file>
     <file>Images/Image_7.png</file>
