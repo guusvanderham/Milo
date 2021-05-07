@@ -77,8 +77,16 @@ def load_page(self, pagenr):
             self.nextpagebutton.setEnabled(False)
             self.nextpagebutton_img.hide()
         self.milo.setPixmap(QPixmap('images/empty.jpeg'))
+        self.boek.setPixmap(QPixmap('images/boek.PNG'))
+        self.ditzietmilo.setPixmap(QPixmap('images/empty.jpeg'))
     else:
         self.milo.setPixmap(QPixmap('images/milo.png'))
+        self.boek.setPixmap(QPixmap('images/empty.jpeg'))
+        self.ditzietmilo.setPixmap(QPixmap('images/ditiswatmiloziet.png'))
+    if pagenr ==2:
+        self.drukopmij.setPixmap(QPixmap('images/drukopmij.png'))
+    else:
+        self.drukopmij.setPixmap(QPixmap('images/empty.jpeg'))
     #keuze vastleg knop alleen op bepaalde paginas
     if np.isin(self.page_nr, [7,9,17]):
         self.capturebutton.show()
@@ -510,6 +518,8 @@ class Ui(QtWidgets.QMainWindow):
 
         self.terug_overzicht = self.findChild(QtWidgets.QLabel, 'terug_overzicht')
         self.milo = self.findChild(QtWidgets.QLabel, 'milo')
+        self.drukopmij = self.findChild(QtWidgets.QLabel, 'drukopmij')
+        self.ditzietmilo = self.findChild(QtWidgets.QLabel,'ditzietmilo')
 
         
         #Dit stukje gaat over de videoplayer, met self.thread.start() begint hij met het afspelen van de animatie
@@ -1098,14 +1108,18 @@ class Ui(QtWidgets.QMainWindow):
             self.previouspagebutton_img.resize(151,131)
             self.previouspagebutton_img.setPixmap(QPixmap('images/sizes/back_s.png'))
             self.previouspagebutton.setGeometry(540,950,71,81)
+            self.previouspagebutton.raise_()
 
             self.nextpagebutton_img.resize(151,131)
             self.nextpagebutton_img.setPixmap(QPixmap('images/sizes/next_s.png'))
+            self.nextpagebutton_img.raise_()
             self.nextpagebutton.setGeometry(1600,950,71,81)
+            self.nextpagebutton.raise_()
 
             self.replay_img.resize(141,121)
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s.png'))
             self.replay.setGeometry(1050,950,71,81)
+            self.replay.raise_()
 
             self.geluid_img.setGeometry(470,30,181,151)
             self.geluid_img.setPixmap(QPixmap('images/sizes/music_s.png'))
@@ -1117,14 +1131,18 @@ class Ui(QtWidgets.QMainWindow):
             self.previouspagebutton_img.resize(151,131)
             self.previouspagebutton_img.setPixmap(QPixmap('images/sizes/back_m.png'))
             self.previouspagebutton.setGeometry(540,950,81,91)
+            self.previouspagebutton.raise_()
 
             self.nextpagebutton_img.resize(151,131)
             self.nextpagebutton_img.setPixmap(QPixmap('images/sizes/next_m.png'))
+            self.nextpagebutton_img.raise_()
             self.nextpagebutton.setGeometry(1600,950,81,91)
+            self.nextpagebutton.raise_()
 
             self.replay_img.resize(141,121)
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_m.png'))
             self.replay.setGeometry(1050,950,81,91)
+            self.replay.raise_()
 
             self.geluid_img.setGeometry(470,30,181,151)
             self.geluid_img.setPixmap(QPixmap('images/sizes/music_m.png'))
@@ -1134,14 +1152,18 @@ class Ui(QtWidgets.QMainWindow):
             self.previouspagebutton_img.setGeometry(510,910,171,161)
             self.previouspagebutton_img.setPixmap(QPixmap('images/sizes/back_l.png'))
             self.previouspagebutton.setGeometry(530,920,121,121)
+            self.previouspagebutton.raise_()
 
             self.nextpagebutton_img.setGeometry(1570,910,171,161)
             self.nextpagebutton_img.setPixmap(QPixmap('images/sizes/next_l.png'))
+            self.nextpagebutton_img.raise_()
             self.nextpagebutton.setGeometry(1590,920,121,121)
+            self.nextpagebutton.raise_()
 
             self.replay_img.setGeometry(1010,910,171,161)
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_l.png'))
             self.replay.setGeometry(1030,920,121,121)
+            self.replay.raise_()
 
             self.geluid_img.setGeometry(470,50,181,161)
             self.geluid_img.setPixmap(QPixmap('images/sizes/music_l.png'))

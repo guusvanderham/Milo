@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1840,14 +1840,40 @@ QPushButton:clicked {
      <widget class="QLabel" name="milo">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>610</y>
+        <x>500</x>
+        <y>650</y>
         <width>1361</width>
         <height>341</height>
        </rect>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/Images/milo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="drukopmij">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>90</y>
+        <width>231</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fakevideo/Images/drukopmij.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ditzietmilo">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>320</y>
+        <width>421</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <zorder>boek</zorder>
@@ -1859,14 +1885,16 @@ QPushButton:clicked {
      <zorder>camplayer</zorder>
      <zorder>opnieuw</zorder>
      <zorder>previous_page</zorder>
-     <zorder>next_page</zorder>
      <zorder>geluid_img</zorder>
-     <zorder>geluid</zorder>
      <zorder>capture_img</zorder>
      <zorder>capture</zorder>
      <zorder>terug_overzicht</zorder>
      <zorder>milo</zorder>
      <zorder>caption</zorder>
+     <zorder>next_page</zorder>
+     <zorder>drukopmij</zorder>
+     <zorder>geluid</zorder>
+     <zorder>ditzietmilo</zorder>
     </widget>
     <widget class="QWidget" name="Books">
      <widget class="QPushButton" name="book1">
