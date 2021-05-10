@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1745,7 +1745,7 @@ QPushButton:clicked {
        </rect>
       </property>
       <property name="text">
-       <string>vid2</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="capture">

@@ -22,11 +22,10 @@ import sys
 sys.path.insert(1, 'Detection')
 from inference import *
 #[m,mf,c] = load_model()
-[m,mf,c] = ['dum', 'dummy','dumst']
+#[m,mf,c] = ['dum', 'dummy','dumst']
 global Nathalie
 Nathalie=multiprocessing.Process(target=playsound, args=("Sounds\\pagina1.mp3",))
 #Nathalie.start()
-print(Nathalie)
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo! Vandaag lezen we \'Kijk eens wat een kleintje!\'',
@@ -60,7 +59,7 @@ def set_caption(self, pagenr):
     #self.label_1.setFont(QFont('Arial', 10))
     
     
-def load_page(self, pagenr):
+def load_page(self, pagenr,playnathalie=True):
     if pagenr == 0:
         return
     print('begin loading page:' + str(pagenr))
@@ -72,7 +71,6 @@ def load_page(self, pagenr):
     self.thread.kill()
     self.thread3.kill()
     global Nathalie
-    print(Nathalie)
     try:
         Nathalie.terminate()
     except:
@@ -102,7 +100,7 @@ def load_page(self, pagenr):
         #self.boek.setPixmap(QPixmap('images/empty.jpeg'))
         #self.ditzietmilo.setPixmap(QPixmap('images/ditiswatmiloziet.png'))
         
-    if np.isin(self.page_nr, [1,3,5,7,9,11,13,15,17,19,21]):   
+    if np.isin(self.page_nr, [1,3,5,7,9,11,13,15,17,19,21]) and playnathalie:   
         #playsound("Sounds\\pagina1.mp3")
         print('hoi1')
         #self.thread3.pagenr=self.page_nr+100
@@ -358,7 +356,7 @@ class Ui(QtWidgets.QMainWindow):
         self.camplayer.setPixmap(QPixmap.fromImage(image))
     @pyqtSlot(int)
     def set_page_choice(self, pagechoice):
-        load_page(self, pagechoice)
+        load_page(self, pagechoice, playnathalie=False)
     @pyqtSlot()
     def activate_replay_button(self):
         if self.huidig_kind.knopgr ==0:
@@ -415,7 +413,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
         #laat eerst programma zien en laad dan pas het model
-        #[m,mf,c] = load_model()
+        [m,mf,c] = load_model()
         #kinderen
         self.dummy = Child('Tim', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
         self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
