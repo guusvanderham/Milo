@@ -73,7 +73,7 @@ def load_page(self, pagenr):
         if self.huidig_kind.knopgr ==0:
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s_na.PNG'))
         elif self.huidig_kind.knopgr ==1:
-            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s_na.PNG'))
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_m_na.PNG'))
         else:
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_l_na.PNG'))
         if self.doorklikken==False:
@@ -979,7 +979,12 @@ class Ui(QtWidgets.QMainWindow):
             #time.sleep(0.1)
             #knop doet niks tijdens afspelen
             return
-        self.replay_img.setPixmap(QPixmap('images/repeat_unactive.png'))
+        if self.huidig_kind.knopgr ==0:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s_na.PNG'))
+        elif self.huidig_kind.knopgr ==1:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_m_na.PNG'))
+        else:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_l_na.PNG'))
         if self.doorklikken==False:
             self.previouspagebutton.hide()
             self.previouspagebutton.setEnabled(False)
@@ -1115,7 +1120,7 @@ class Ui(QtWidgets.QMainWindow):
             self.nextpagebutton.setGeometry(1600,950,71,81)
             self.nextpagebutton.raise_()
 
-            self.replay_img.resize(141,121)
+            self.replay_img.resize(151,121)
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s.png'))
             self.replay.setGeometry(1050,950,71,81)
             self.replay.raise_()
@@ -1138,7 +1143,7 @@ class Ui(QtWidgets.QMainWindow):
             self.nextpagebutton.setGeometry(1600,950,81,91)
             self.nextpagebutton.raise_()
 
-            self.replay_img.resize(151,121)
+            self.replay_img.resize(151,141)
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_m.png'))
             self.replay.setGeometry(1050,950,81,91)
             self.replay.raise_()
