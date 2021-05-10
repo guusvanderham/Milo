@@ -2075,7 +2075,7 @@ QPushButton:clicked {
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="0">
+     <item row="2" column="0" alignment="Qt::AlignRight">
       <widget class="QPushButton" name="knop_paginas">
        <property name="font">
         <font>
@@ -2099,7 +2099,7 @@ QPushButton:clicked {
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
+     <item row="0" column="0" alignment="Qt::AlignLeft">
       <widget class="QPushButton" name="knop_klas">
        <property name="font">
         <font>
@@ -2126,7 +2126,7 @@ QPushButton:clicked {
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="1" column="0" alignment="Qt::AlignRight">
       <widget class="QPushButton" name="knop_boeken">
        <property name="font">
         <font>
