@@ -1,6 +1,17 @@
 <RCC>
   <qresource prefix="fakevideo">
+    <file>Images/drukopmij.png</file>
     <file>Images/boek.png</file>
+  </qresource>
+  <qresource/>
+  <qresource prefix="buttons_m">
+    <file>Images/sizes/music_l.png</file>
+    <file>Images/sizes/music_m.png</file>
+    <file>Images/sizes/repeat_l.png</file>
+    <file>Images/sizes/repeat_m.png</file>
+    <file>Images/sizes/next_m.png</file>
+    <file>Images/sizes/music_m.png</file>
+    <file>Images/sizes/back_m.png</file>
   </qresource>
   <qresource prefix="pagina's">
     <file>Images/Image_1.png</file>
@@ -60,10 +71,14 @@
     <file>arjan.png</file>
   </qresource>
   <qresource prefix="background">
+    <file>Images/boek_cover.png</file>
+    <file>Images/boek_cover_s.png</file>
     <file>Images/instelling_backblack.png</file>
     <file>Images/background.jpeg</file>
   </qresource>
   <qresource prefix="logo">
+    <file>Images/milo.png</file>
+    <file>Images/milo.png</file>
     <file>Images/logo.png</file>
     <file>logo.png</file>
   </qresource>

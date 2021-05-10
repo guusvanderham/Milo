@@ -1156,9 +1156,9 @@ QPushButton:clicked {
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>500</x>
+        <x>404</x>
         <y>360</y>
-        <width>35</width>
+        <width>131</width>
         <height>41</height>
        </rect>
       </property>
@@ -1169,15 +1169,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Introductie&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_22">
       <property name="geometry">
        <rect>
-        <x>920</x>
+        <x>864</x>
         <y>360</y>
-        <width>35</width>
+        <width>91</width>
         <height>41</height>
        </rect>
       </property>
@@ -1188,15 +1188,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Koeien&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_23">
       <property name="geometry">
        <rect>
-        <x>1340</x>
+        <x>1304</x>
         <y>360</y>
-        <width>35</width>
+        <width>71</width>
         <height>41</height>
        </rect>
       </property>
@@ -1207,15 +1207,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Haan&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_24">
       <property name="geometry">
        <rect>
-        <x>1760</x>
+        <x>1634</x>
         <y>360</y>
-        <width>35</width>
+        <width>161</width>
         <height>41</height>
        </rect>
       </property>
@@ -1226,15 +1226,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Hond en poes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_25">
       <property name="geometry">
        <rect>
-        <x>1760</x>
+        <x>1734</x>
         <y>610</y>
-        <width>35</width>
+        <width>61</width>
         <height>41</height>
        </rect>
       </property>
@@ -1245,15 +1245,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;8&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Geit&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_26">
       <property name="geometry">
        <rect>
-        <x>1340</x>
+        <x>1284</x>
         <y>610</y>
-        <width>35</width>
+        <width>91</width>
         <height>41</height>
        </rect>
       </property>
@@ -1264,15 +1264,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;7&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Eenden&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_27">
       <property name="geometry">
        <rect>
-        <x>920</x>
+        <x>864</x>
         <y>610</y>
-        <width>35</width>
+        <width>91</width>
         <height>41</height>
        </rect>
       </property>
@@ -1283,15 +1283,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;6&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Varkens&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_28">
       <property name="geometry">
        <rect>
-        <x>500</x>
+        <x>454</x>
         <y>610</y>
-        <width>35</width>
+        <width>81</width>
         <height>41</height>
        </rect>
       </property>
@@ -1302,15 +1302,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Vogel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_29">
       <property name="geometry">
        <rect>
-        <x>500</x>
+        <x>474</x>
         <y>860</y>
-        <width>35</width>
+        <width>61</width>
         <height>41</height>
        </rect>
       </property>
@@ -1321,15 +1321,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;9&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Kip&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_30">
       <property name="geometry">
        <rect>
-        <x>910</x>
+        <x>854</x>
         <y>860</y>
-        <width>35</width>
+        <width>91</width>
         <height>41</height>
        </rect>
       </property>
@@ -1340,15 +1340,15 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;10&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Schapen&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_31">
       <property name="geometry">
        <rect>
-        <x>1330</x>
+        <x>1254</x>
         <y>860</y>
-        <width>35</width>
+        <width>111</width>
         <height>41</height>
        </rect>
       </property>
@@ -1359,16 +1359,16 @@ QPushButton:clicked {
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;11&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#7e7e7e;&quot;&gt;Tot ziens!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="page_read1">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>210</y>
-        <width>101</width>
-        <height>111</height>
+        <x>200</x>
+        <y>180</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1378,10 +1378,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read2">
       <property name="geometry">
        <rect>
-        <x>750</x>
-        <y>210</y>
-        <width>101</width>
-        <height>111</height>
+        <x>620</x>
+        <y>180</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1391,10 +1391,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read3">
       <property name="geometry">
        <rect>
-        <x>1170</x>
-        <y>210</y>
-        <width>101</width>
-        <height>111</height>
+        <x>1040</x>
+        <y>180</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1404,10 +1404,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read5">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>460</y>
-        <width>101</width>
-        <height>111</height>
+        <x>200</x>
+        <y>430</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1417,10 +1417,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read6">
       <property name="geometry">
        <rect>
-        <x>750</x>
-        <y>450</y>
-        <width>101</width>
-        <height>111</height>
+        <x>620</x>
+        <y>430</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1430,10 +1430,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read7">
       <property name="geometry">
        <rect>
-        <x>1170</x>
-        <y>460</y>
-        <width>101</width>
-        <height>111</height>
+        <x>1040</x>
+        <y>430</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1443,10 +1443,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read8">
       <property name="geometry">
        <rect>
-        <x>1590</x>
-        <y>460</y>
-        <width>101</width>
-        <height>111</height>
+        <x>1460</x>
+        <y>430</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1456,10 +1456,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read9">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>720</y>
-        <width>101</width>
-        <height>111</height>
+        <x>200</x>
+        <y>680</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1469,10 +1469,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read10">
       <property name="geometry">
        <rect>
-        <x>750</x>
-        <y>710</y>
-        <width>101</width>
-        <height>111</height>
+        <x>620</x>
+        <y>680</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1482,10 +1482,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read11">
       <property name="geometry">
        <rect>
-        <x>1170</x>
-        <y>720</y>
-        <width>101</width>
-        <height>111</height>
+        <x>1040</x>
+        <y>680</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1495,10 +1495,10 @@ QPushButton:clicked {
      <widget class="QLabel" name="page_read4">
       <property name="geometry">
        <rect>
-        <x>1590</x>
-        <y>210</y>
-        <width>91</width>
-        <height>111</height>
+        <x>1460</x>
+        <y>180</y>
+        <width>321</width>
+        <height>181</height>
        </rect>
       </property>
       <property name="text">
@@ -1615,10 +1615,10 @@ QPushButton:clicked {
      <widget class="QPushButton" name="opnieuw">
       <property name="geometry">
        <rect>
-        <x>1050</x>
-        <y>950</y>
-        <width>61</width>
-        <height>61</height>
+        <x>1030</x>
+        <y>920</y>
+        <width>121</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="font">
@@ -1643,36 +1643,36 @@ QPushButton:clicked {
      <widget class="QLabel" name="opnieuw_img">
       <property name="geometry">
        <rect>
-        <x>1020</x>
-        <y>930</y>
-        <width>141</width>
-        <height>121</height>
+        <x>1010</x>
+        <y>910</y>
+        <width>171</width>
+        <height>161</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/repeat.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/buttons_m/Images/sizes/repeat_l.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="next_page_img">
       <property name="geometry">
        <rect>
         <x>1570</x>
-        <y>920</y>
-        <width>141</width>
-        <height>131</height>
+        <y>910</y>
+        <width>171</width>
+        <height>161</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/next.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/buttons_m/Images/sizes/repeat_l.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="next_page">
       <property name="geometry">
        <rect>
-        <x>1600</x>
-        <y>950</y>
-        <width>61</width>
-        <height>61</height>
+        <x>1590</x>
+        <y>920</y>
+        <width>121</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="font">
@@ -1698,22 +1698,22 @@ QPushButton:clicked {
       <property name="geometry">
        <rect>
         <x>510</x>
-        <y>920</y>
-        <width>151</width>
-        <height>131</height>
+        <y>910</y>
+        <width>171</width>
+        <height>161</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/back.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/buttons_m/Images/sizes/repeat_l.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="previous_page">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>950</y>
-        <width>61</width>
-        <height>61</height>
+        <x>530</x>
+        <y>920</y>
+        <width>121</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="font">
@@ -1745,7 +1745,7 @@ QPushButton:clicked {
        </rect>
       </property>
       <property name="text">
-       <string>vid2</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="capture">
@@ -1774,22 +1774,22 @@ QPushButton:clicked {
       <property name="geometry">
        <rect>
         <x>470</x>
-        <y>30</y>
+        <y>50</y>
         <width>181</width>
-        <height>151</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/sound.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/buttons_m/Images/sizes/music_l.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="geluid">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>70</y>
+        <x>480</x>
+        <y>40</y>
         <width>151</width>
-        <height>121</height>
+        <height>131</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1818,8 +1818,65 @@ QPushButton:clicked {
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Buttons/Images/vastleggen.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="terug_overzicht">
+      <property name="geometry">
+       <rect>
+        <x>1520</x>
+        <y>880</y>
+        <width>291</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ink Free</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="milo">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>540</y>
+        <width>1361</width>
+        <height>341</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/Images/milo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="drukopmij">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>90</y>
+        <width>231</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fakevideo/Images/drukopmij.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ditzietmilo">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>320</y>
+        <width>421</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>boek</zorder>
-     <zorder>caption</zorder>
      <zorder>pagenr</zorder>
      <zorder>videoplayer</zorder>
      <zorder>next_page_img</zorder>
@@ -1828,24 +1885,38 @@ QPushButton:clicked {
      <zorder>camplayer</zorder>
      <zorder>opnieuw</zorder>
      <zorder>previous_page</zorder>
-     <zorder>next_page</zorder>
      <zorder>geluid_img</zorder>
-     <zorder>geluid</zorder>
      <zorder>capture_img</zorder>
      <zorder>capture</zorder>
+     <zorder>terug_overzicht</zorder>
+     <zorder>milo</zorder>
+     <zorder>caption</zorder>
+     <zorder>next_page</zorder>
+     <zorder>drukopmij</zorder>
+     <zorder>geluid</zorder>
+     <zorder>ditzietmilo</zorder>
     </widget>
     <widget class="QWidget" name="Books">
      <widget class="QPushButton" name="book1">
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>190</y>
+        <y>310</y>
         <width>451</width>
-        <height>601</height>
+        <height>491</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">  QPushButton {
+            color: black;
+            border-top: 3px transparent;
+            border-bottom: 3px transparent;
+            border-right: 10px transparent;
+            border-left: 10px transparent;
+        }</string>
+      </property>
       <property name="text">
-       <string>Milo en Lana op de kinderboerderij</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="logo_2">
@@ -1861,8 +1932,69 @@ QPushButton:clicked {
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="boek_cover">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>240</y>
+        <width>651</width>
+        <height>631</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/background/Images/boek_cover.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>210</y>
+        <width>451</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Milo en Lana op de kinderboerderij</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="boeken_titel">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>65</y>
+        <width>311</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>28</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+color: white
+}</string>
+      </property>
+      <property name="text">
+       <string>Boeken</string>
+      </property>
+     </widget>
      <zorder>logo_2</zorder>
+     <zorder>boek_cover</zorder>
+     <zorder>label_8</zorder>
      <zorder>book1</zorder>
+     <zorder>boeken_titel</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="background">
@@ -1970,7 +2102,7 @@ QPushButton:clicked {
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="0">
+     <item row="2" column="0" alignment="Qt::AlignRight">
       <widget class="QPushButton" name="knop_paginas">
        <property name="font">
         <font>
@@ -1994,7 +2126,7 @@ QPushButton:clicked {
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
+     <item row="0" column="0" alignment="Qt::AlignLeft">
       <widget class="QPushButton" name="knop_klas">
        <property name="font">
         <font>
@@ -2021,7 +2153,7 @@ QPushButton:clicked {
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="1" column="0" alignment="Qt::AlignRight">
       <widget class="QPushButton" name="knop_boeken">
        <property name="font">
         <font>
@@ -2128,7 +2260,7 @@ QPushButton:clicked {
        <property name="font">
         <font>
          <family>Segoe UI</family>
-         <pointsize>14</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="styleSheet">
