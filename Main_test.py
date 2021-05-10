@@ -8,7 +8,7 @@ import cv2
 import threading
 from playsound import playsound
 import pickle
-
+import multiprocessing
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
     QHBoxLayout, QPushButton
@@ -23,6 +23,10 @@ sys.path.insert(1, 'Detection')
 from inference import *
 #[m,mf,c] = load_model()
 [m,mf,c] = ['dum', 'dummy','dumst']
+global Nathalie
+Nathalie=multiprocessing.Process(target=playsound, args=("Sounds\\pagina1.mp3",))
+#Nathalie.start()
+print(Nathalie)
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo! Vandaag lezen we \'Kijk eens wat een kleintje!\'',
@@ -33,7 +37,7 @@ def set_caption(self, pagenr):
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De hond, die blaft hard voor zijn hok En ...miauw! De poes: die schrok!',
         'Milo: Oh! Ik schrok ook! Naar welk dier zou jij nu heen willen gaan?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar vliegt de vogel, in de lucht heel snel. En de boer op de grond, die zet hem wel!',
-        'Milo: *Opmerking over vogels*  Welk dier vind jij het liefst? Laten we daar naartoe gaan!',
+        'Milo: Welk dier vind jij het liefst? Laten we daar naartoe gaan!',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Moeder varken en de kleine biggen. Gaan achter het hek in de modder liggen.',
         'Een lekker modderbadje daar heb ik ook wel zin in. Wat zou jij doen op de boerderij?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Een kuiken dat piept, hij zwemt in het water. En mama eend? Die komt wat later.',
@@ -66,6 +70,13 @@ def load_page(self, pagenr):
     set_caption(self, pagenr)
     self.huidig_kind.pages_read.append(int(pagenr/2)+1)
     self.thread.kill()
+    self.thread3.kill()
+    global Nathalie
+    print(Nathalie)
+    try:
+        Nathalie.terminate()
+    except:
+        print('Nathalie is interminable')
     time.sleep(0.1)
     if pagenr % 2 == 0 or self.page_nr == 1:
         self.thread.start()
@@ -85,6 +96,17 @@ def load_page(self, pagenr):
         self.milo.setPixmap(QPixmap('images/milo.png'))
         #self.boek.setPixmap(QPixmap('images/empty.jpeg'))
         #self.ditzietmilo.setPixmap(QPixmap('images/ditiswatmiloziet.png'))
+        
+    if np.isin(self.page_nr, [1,3,5,7,9,11,13,15,17,19,21]):   
+        #playsound("Sounds\\pagina1.mp3")
+        print('hoi1')
+        #self.thread3.pagenr=self.page_nr+100
+        #time.sleep(0.2)
+        #self.thread3.start()
+        
+        Nathalie = multiprocessing.Process(target=playsound, args=(self.thread3.sounddict[self.page_nr+100],))
+        Nathalie.start()
+        
     if pagenr ==2:
         self.drukopmij.setPixmap(QPixmap('images/drukopmij.png'))
     else:
@@ -132,7 +154,8 @@ def load_page(self, pagenr):
         self.replay.hide()
         self.replay.setEnabled(False)
         self.replay_img.hide()
-    
+def none():
+    return
 
 #%%
 #Dit is het paralelle proces waarin de video wordt afgespeeld
@@ -279,11 +302,22 @@ class Thread3(QThread):
              16: "Sounds\\kip.mp3",
              17: "Sounds\\kip.mp3",
              4: "Sounds\\haan.mp3",
-             5: "Sounds\\haan.mp3"}
+             5: "Sounds\\haan.mp3",
+             101: "Sounds\\pagina1.mp3",
+             103: "Sounds\\pagina2.mp3",
+             105: "Sounds\\pagina3.mp3",
+             107: "Sounds\\pagina4.mp3",
+             109: "Sounds\\pagina5.mp3",
+             111: "Sounds\\pagina6.mp3",
+             113: "Sounds\\pagina7.mp3",
+             115: "Sounds\\pagina8.mp3",
+             117: "Sounds\\pagina9.mp3",
+             119: "Sounds\\pagina10.mp3",
+             121: "Sounds\\pagina11.mp3"}
     pagenr=0
     
     def run(self):
-        
+        print(self.pagenr)
         self.soundpath=self.sounddict[self.pagenr]
         
         playsound(self.soundpath)
@@ -343,6 +377,10 @@ class Ui(QtWidgets.QMainWindow):
         self.thread.kill()
         self.thread2.kill()
         self.thread3.kill()
+        try:
+            Nathalie.terminate()
+        except:
+            print('')
         #sla settings van kind op -> in vervolg -> open kinderen met settings
         print("Closing")
         print("Je mag dit scherm nu afsluiten.")
@@ -367,6 +405,7 @@ class Ui(QtWidgets.QMainWindow):
         self.geluidknop=True
         self.opnieuwknop=True
         self.doorklikken = True
+        
         #laad de interface file
         uic.loadUi('test.ui', self)
         self.show()
@@ -730,7 +769,8 @@ class Ui(QtWidgets.QMainWindow):
         
         self.name_kid = self.findChild(QtWidgets.QLabel, 'name_kid')
         self.img_kid = self.findChild(QtWidgets.QLabel, 'img_kid')
-
+        
+        
         
     #verander kind
     def set_child1(self):
@@ -1236,5 +1276,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    #sys.exit()
-    sys.exit(app.exec_()) 
+    sys.exit()
+    #sys.exit(app.exec_()) 
