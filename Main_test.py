@@ -22,7 +22,7 @@ import sys
 sys.path.insert(1, 'Detection')
 from inference import *
 #[m,mf,c] = load_model()
-#[m,mf,c] = ['dum', 'dummy','dumst']
+[m,mf,c] = ['dum', 'dummy','dumst']
 global Nathalie
 Nathalie=multiprocessing.Process(target=playsound, args=("Sounds\\pagina1.mp3",))
 #Nathalie.start()
