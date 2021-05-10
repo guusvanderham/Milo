@@ -70,7 +70,12 @@ def load_page(self, pagenr):
     if pagenr % 2 == 0 or self.page_nr == 1:
         self.thread.start()
         time.sleep(0.2)
-        self.replay_img.setPixmap(QPixmap('images/repeat_unactive.PNG'))
+        if self.huidig_kind.knopgr ==0:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s_na.PNG'))
+        elif self.huidig_kind.knopgr ==1:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_s_na.PNG'))
+        else:
+            self.replay_img.setPixmap(QPixmap('images/sizes/repeat_l_na.PNG'))
         if self.doorklikken==False:
             self.previouspagebutton.hide()
             self.previouspagebutton.setEnabled(False)
@@ -435,6 +440,8 @@ class Ui(QtWidgets.QMainWindow):
         self.book1.clicked.connect(self.set_page_window) 
         self.boek1_cover = self.findChild(QtWidgets.QLabel, 'boek_cover')
         self.boek1_cover.setPixmap(QPixmap('images/boek_cover.png'))
+        self.boeken_titel = self.findChild(QtWidgets.QLabel, 'boeken_titel')
+        #self.boeken_titel.setFont(QFont(bold=True))
         
         #view met alle paginas van een boek + connect aan pageview
         self.page1 = self.findChild(QtWidgets.QPushButton, 'page1')
@@ -553,18 +560,6 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedWidget.setCurrentIndex(0)
         
         
-        
-        
-        #voor plaatjes
-        #self.screen = self.findChild(QtWidgets.QLabel, 'screen' )
-        #pixmap = QPixmap('video.PNG')
-        #self.screen.setPixmap(pixmap)
-
-        #lijst met images
-        #lijst met widths
-        #lijst met hights 
-        #lijst met channels, whatever dat is 
-        #nieuwe lijst met pixmaps die nog op de goeie plek moeten komen en nu leeg is
 
         #if Qlabels name is iets met logo (dus logo of logo_2 of logo_3) : dan deze pixmap 
         self.logo = self.findChild(QtWidgets.QLabel, 'logo')
@@ -1143,7 +1138,7 @@ class Ui(QtWidgets.QMainWindow):
             self.nextpagebutton.setGeometry(1600,950,81,91)
             self.nextpagebutton.raise_()
 
-            self.replay_img.resize(141,121)
+            self.replay_img.resize(151,121)
             self.replay_img.setPixmap(QPixmap('images/sizes/repeat_m.png'))
             self.replay.setGeometry(1050,950,81,91)
             self.replay.raise_()
