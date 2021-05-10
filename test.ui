@@ -1840,8 +1840,8 @@ QPushButton:clicked {
      <widget class="QLabel" name="milo">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>650</y>
+        <x>390</x>
+        <y>540</y>
         <width>1361</width>
         <height>341</height>
        </rect>

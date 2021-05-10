@@ -78,6 +78,7 @@
   </qresource>
   <qresource prefix="logo">
     <file>Images/milo.png</file>
+    <file>Images/milo.png</file>
     <file>Images/logo.png</file>
     <file>logo.png</file>
   </qresource>

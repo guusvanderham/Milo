@@ -25,7 +25,7 @@ from inference import *
 [m,mf,c] = ['dum', 'dummy','dumst']
 #%%
 def set_caption(self, pagenr):
-    captions = ['Hallo ..., we lezen nu kijk eens wat een kleintje',
+    captions = ['Hallo! Vandaag lezen we \'Kijk eens wat een kleintje!\'',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Het kleine kalfje en moeder koe. Lopen samen naar de boerderij toe.',
         'Milo: Wat een schattig kalfje. Hoe vind jij het om naar de boerderij te gaan?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komt daar voorbij? \n Daar loopt de haan, wat hoor ik nu? De haan roept heel hard: kukeleku!',
@@ -51,6 +51,8 @@ def set_caption(self, pagenr):
     self.page_caption.setText(captions[pagenr-1])
     self.page_caption.setAlignment(Qt.AlignCenter)
     self.page_caption.setFont(QFont('Segoe UI', self.huidig_kind.font_size))
+    if self.page_nr % 2 == 1 and not self.page_nr == 1:
+        self.page_caption.setFont(QFont('Segoe UI', self.huidig_kind.font_size, italic=True))
     #self.label_1.setFont(QFont('Arial', 10))
     
     
@@ -81,8 +83,8 @@ def load_page(self, pagenr):
         self.ditzietmilo.setPixmap(QPixmap('images/empty.jpeg'))
     else:
         self.milo.setPixmap(QPixmap('images/milo.png'))
-        self.boek.setPixmap(QPixmap('images/empty.jpeg'))
-        self.ditzietmilo.setPixmap(QPixmap('images/ditiswatmiloziet.png'))
+        #self.boek.setPixmap(QPixmap('images/empty.jpeg'))
+        #self.ditzietmilo.setPixmap(QPixmap('images/ditiswatmiloziet.png'))
     if pagenr ==2:
         self.drukopmij.setPixmap(QPixmap('images/drukopmij.png'))
     else:
@@ -140,9 +142,11 @@ class Thread(QThread):
     activateReplayButton = pyqtSignal()
     #blijft draaien zolang dit waar is
     running=True
+    #width = 1255
+    #height = 960 
     animationpath='\Animations\pagina1.mp4'
     def run(self):
-        self.running =True       
+        self.running =True     
         cap = cv2.VideoCapture(self.animationpath) 
         
         #loop oneindig 
