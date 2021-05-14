@@ -1039,7 +1039,7 @@ class Ui(QtWidgets.QMainWindow):
         #self.thread2.start()
         print('thread started')
     def play_sound(self):
-        self.thread3.pagenr=self.page_nr
+        #self.thread3.pagenr=self.page_nr
         self.thread3.start()
 
     def turn_page_next(self):        
