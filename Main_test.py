@@ -413,7 +413,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
         #laat eerst programma zien en laad dan pas het model
-        [m,mf,c] = load_model()
+        #[m,mf,c] = load_model()
         #kinderen
         self.dummy = Child('Tim', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
         self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
@@ -437,7 +437,7 @@ class Ui(QtWidgets.QMainWindow):
         
         #huidig dummy kind
         self.huidig_kind = Child('Dummy', 'images/arjan.png', [], 13, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
-
+        
         #[m,c]=[0,1]
         #beginview: kinderen
         #self.child = self.findChild(QtWidgets.QPushButton, 'Tim_old')

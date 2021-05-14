@@ -16,13 +16,19 @@ class Child:
         self.prikkelarm = prikkelarm
         self.knopgr = knopgr
 dummy = Child('Tim', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
+dummy2 = Child('Lieke', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
+dummy3 = Child('Jorik','images/sdier3.png', [], 13, 0, 0, 0, 0)
+dummy4 = Child('Noraja','images/sdier4.png', [], 13, 0, 0, 0, 0)
+dummy5 = Child('Sophie','images/sdier7.png', [], 13, 0, 0, 0, 0)
+dummy6 = Child('Arjan','images/sdier6.png', [], 13, 0, 0, 0, 0)
+dummy7 = Child('Anne','images/sdier5.png', [], 13, 0, 0, 0, 0)
 
 with open('data_kinderen.pkl', 'wb') as output:
     
     pickle.dump(dummy, output, pickle.HIGHEST_PROTOCOL)
-    pickle.dump(dummy, output, pickle.HIGHEST_PROTOCOL)
-    pickle.dump(dummy, output, pickle.HIGHEST_PROTOCOL)
-    pickle.dump(dummy, output, pickle.HIGHEST_PROTOCOL)
-    pickle.dump(dummy, output, pickle.HIGHEST_PROTOCOL)
-    pickle.dump(dummy, output, pickle.HIGHEST_PROTOCOL)
-    pickle.dump(dummy, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(dummy2, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(dummy3, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(dummy4, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(dummy5, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(dummy6, output, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(dummy7, output, pickle.HIGHEST_PROTOCOL)
