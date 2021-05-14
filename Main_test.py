@@ -70,6 +70,7 @@ def load_page(self, pagenr,playnathalie=True):
     #self.thread2.kill()
     if playnathalie:
         self.thread3.kill()
+        self.camplayer.setPixmap(QPixmap('images/empty.jpeg'))
     self.thread3.pagenr=pagenr
     time.sleep(0.1)
     if pagenr % 2 == 0 or self.page_nr == 1:
