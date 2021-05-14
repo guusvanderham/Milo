@@ -6,9 +6,8 @@ from PyQt5.QtCore import QThread, Qt, pyqtSignal, pyqtSlot
 from PyQt5.QtGui import QImage, QPixmap, QFont
 import cv2
 import threading
-from playsound import playsound
+import winsound
 import pickle
-import multiprocessing
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
     QHBoxLayout, QPushButton
@@ -22,10 +21,9 @@ import sys
 sys.path.insert(1, 'Detection')
 from inference import *
 #[m,mf,c] = load_model()
-#[m,mf,c] = ['dum', 'dummy','dumst']
-global Nathalie
-Nathalie=multiprocessing.Process(target=playsound, args=("Sounds\\pagina1.mp3",))
-#Nathalie.start()
+[m,mf,c] = ['dum', 'dummy','dumst']
+
+
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo! Vandaag lezen we \'Kijk eens wat een kleintje!\'',
@@ -69,12 +67,10 @@ def load_page(self, pagenr,playnathalie=True):
     set_caption(self, pagenr)
     self.huidig_kind.pages_read.append(int(pagenr/2)+1)
     self.thread.kill()
-    self.thread3.kill()
-    global Nathalie
-    try:
-        Nathalie.terminate()
-    except:
-        print('Nathalie is interminable')
+    #self.thread2.kill()
+    if playnathalie:
+        self.thread3.kill()
+    self.thread3.pagenr=pagenr
     time.sleep(0.1)
     if pagenr % 2 == 0 or self.page_nr == 1:
         self.thread.start()
@@ -103,12 +99,11 @@ def load_page(self, pagenr,playnathalie=True):
     if np.isin(self.page_nr, [1,3,5,7,9,11,13,15,17,19,21]) and playnathalie:   
         #playsound("Sounds\\pagina1.mp3")
         print('hoi1')
-        #self.thread3.pagenr=self.page_nr+100
+        self.thread3.pagenr=self.page_nr+100
         #time.sleep(0.2)
-        #self.thread3.start()
+        self.thread3.start()
         
-        Nathalie = multiprocessing.Process(target=playsound, args=(self.thread3.sounddict[self.page_nr+100],))
-        Nathalie.start()
+
         
     if pagenr ==2:
         self.drukopmij.setPixmap(QPixmap('images/drukopmij.png'))
@@ -124,18 +119,18 @@ def load_page(self, pagenr,playnathalie=True):
         self.capturebutton.setEnabled(False)
         self.capture_img.setPixmap(QPixmap('images/empty.jpeg'))
     #geluidenknop aan of niet, en alleen op bepaalde paginas
-    if np.isin(self.page_nr, [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]) and self.geluidknop: 
+    if np.isin(pagenr, [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]) and self.geluidknop: 
         self.geluid.show()
         self.geluid.setEnabled(True)
-        if self.page_nr == 2 or self.page_nr ==3:
+        if pagenr == 2 or pagenr ==3:
             self.geluid_img.setPixmap(QPixmap('images/koe.png'))
-        elif self.page_nr == 6 or self.page_nr ==7:
+        elif pagenr == 6 or pagenr ==7:
             self.geluid_img.setPixmap(QPixmap('images/hond.png'))
-        elif self.page_nr == 10 or self.page_nr ==11:
+        elif pagenr == 10 or pagenr ==11:
             self.geluid_img.setPixmap(QPixmap('images/varken.png'))
-        elif self.page_nr == 12 or self.page_nr ==13:
+        elif pagenr == 12 or pagenr ==13:
             self.geluid_img.setPixmap(QPixmap('images/kuiken.png'))
-        elif self.page_nr == 18 or self.page_nr ==19:
+        elif pagenr == 18 or pagenr ==19:
             self.geluid_img.setPixmap(QPixmap('images/schaap.png'))
         else:
             if self.huidig_kind.knopgr ==0:
@@ -194,7 +189,7 @@ class Thread(QThread):
 
                 break
             #zorg dat je niet te snel afspeelt
-            time.sleep(0.009)
+            time.sleep(0.005)
             if ret == False:
                 print('video done')
                 self.activateReplayButton.emit()
@@ -214,20 +209,24 @@ class Thread2(QThread):
     changepage = pyqtSignal(int)
     #blijft draaien zolang dit waar is
     running=True
-    sounddict = {"varken" : "Sounds\\varken.mp3",
-                 "kuiken" : "Sounds\kuiken.mp3",
-                 "koe" : "Sounds\koe.mp3",
-                 "schaap" :"Sounds\schaap.mp3",
-                 "hond":"Sounds\hond.mp3",
-                 "geit": "Sounds\geit.mp3",
-                 "vogel": "Sounds\vogel.mp3", 
-                 "kip": "Sounds\kip.mp3",
-                 "haan": "Sounds\haan.mp3"}
+    sounddict = {"varken" : "Sounds\\varken.wav",
+                 "kuiken" : "Sounds\\kuiken.wav",
+                 "koe" : "Sounds\\koe.wav",
+                 "schaap" :"Sounds\\schaap.wav",
+                 "hond":"Sounds\\hond.wav",
+                 "geit": "Sounds\\geit.wav",
+                 "vogel": "Sounds\\vogel.wav", 
+                 "kip": "Sounds\\kip.wav",
+                 "haan": "Sounds\\haan.wav",
+                 "paard": "Sounds\\hond.wav",
+                 "ezel": "Sounds\\kuiken.wav"}
     pagedict = {"varken" : 10,
                 "kuiken" : 12,
                 "koe" : 2,
                 "schaap" : 18,
-                "hond" : 6}
+                "hond" : 6,
+                "paard" : 6,
+                "ezel" : 12}
     def load_model_please(self,package):
         self.model = package[1]
         self.model_fn = package[2]
@@ -241,7 +240,9 @@ class Thread2(QThread):
         start = time.time()
         detections=[]
         #loop oneindig 
+        print('starting detection')
         while self.running:
+            
             #pak de volgende frame
             ret, frame = cap.read()
             if ret:
@@ -260,7 +261,8 @@ class Thread2(QThread):
                     occurence_count = Counter(detections)
                     final_detection=occurence_count.most_common(1)[0][0]
                     print(final_detection)
-                    playsound(self.sounddict[final_detection])
+                    #playsound(self.sounddict[final_detection])
+                    winsound.PlaySound(self.sounddict[final_detection], winsound.SND_ASYNC)
                     self.changepage.emit(self.pagedict[final_detection])
                     break
                 
@@ -280,54 +282,57 @@ class Thread2(QThread):
     #stop het proces zodat je pc niet vastloopt en je spyder honderduizend keer moet opstarten wat een gedoe
     def kill(self):
         self.running = False
+        winsound.PlaySound(None, winsound.SND_PURGE)
         print('received stop signal from window.(2)')
         
 class Thread3(QThread):    
     #blijft draaien zolang dit waar is
     running=True
-    soundpath='Sounds\\eend.mp3'
-    sounddict = {10 : "Sounds\\varken.mp3",
-             12 : "Sounds\\kuiken.mp3",
-             2 : "Sounds\\koe.mp3",
-             18 :"Sounds\\schaap.mp3",
-             6:"Sounds\\hond.mp3",
-             0: "Sounds\\eend.mp3",
-             11 : "Sounds\\varken.mp3",
-             13 : "Sounds\\kuiken.mp3",
-             3: "Sounds\\koe.mp3",
-             19 :"Sounds\\schaap.mp3",
-             7:"Sounds\\hond.mp3",
-             0: "Sounds\\eend.mp3",
-             14: "Sounds\\geit.mp3",
-             15: "Sounds\\geit.mp3",
-             8: "Sounds\\vogel.mp3", 
-             9: "Sounds\\vogel.mp3", 
-             16: "Sounds\\kip.mp3",
-             17: "Sounds\\kip.mp3",
-             4: "Sounds\\haan.mp3",
-             5: "Sounds\\haan.mp3",
-             101: "Sounds\\pagina1.mp3",
-             103: "Sounds\\pagina2.mp3",
-             105: "Sounds\\pagina3.mp3",
-             107: "Sounds\\pagina4.mp3",
-             109: "Sounds\\pagina5.mp3",
-             111: "Sounds\\pagina6.mp3",
-             113: "Sounds\\pagina7.mp3",
-             115: "Sounds\\pagina8.mp3",
-             117: "Sounds\\pagina9.mp3",
-             119: "Sounds\\pagina10.mp3",
-             121: "Sounds\\pagina11.mp3"}
+    soundpath='Sounds\\eend.wav'
+    sounddict = {10 : "Sounds\\varken.wav",
+             12 : "Sounds\\kuiken.wav",
+             2 : "Sounds\\koe.wav",
+             18 :"Sounds\\schaap.wav",
+             6:"Sounds\\hond.wav",
+             0: "Sounds\\eend.wav",
+             11 : "Sounds\\varken.wav",
+             13 : "Sounds\\kuiken.wav",
+             3: "Sounds\\koe.wav",
+             19 :"Sounds\\schaap.wav",
+             7:"Sounds\\hond.wav",
+             0: "Sounds\\eend.wav",
+             14: "Sounds\\geit.wav",
+             15: "Sounds\\geit.wav",
+             8: "Sounds\\vogel.wav", 
+             9: "Sounds\\vogel.wav", 
+             16: "Sounds\\kip.wav",
+             17: "Sounds\\kip.wav",
+             4: "Sounds\\haan.wav",
+             5: "Sounds\\haan.wav",
+             101: "Sounds\\pagina1.wav",
+             103: "Sounds\\pagina2.wav",
+             105: "Sounds\\pagina3.wav",
+             107: "Sounds\\pagina4.wav",
+             109: "Sounds\\pagina5.wav",
+             111: "Sounds\\pagina6.wav",
+             113: "Sounds\\pagina7.wav",
+             115: "Sounds\\pagina8.wav",
+             117: "Sounds\\pagina9.wav",
+             119: "Sounds\\pagina10.wav",
+             121: "Sounds\\pagina11.wav"}
     pagenr=0
     
     def run(self):
         print(self.pagenr)
         self.soundpath=self.sounddict[self.pagenr]
         
-        playsound(self.soundpath)
+        #playsound(self.soundpath)
+        winsound.PlaySound(self.soundpath, winsound.SND_ASYNC)
         return
     #stop het proces zodat je pc niet vastloopt en je spyder honderdduizend keer moet opstarten wat een teringzooi
     def kill(self):
         self.running = False
+        winsound.PlaySound(None, winsound.SND_PURGE)
         print('received stop signal from window.(3)')
 class Child: 
     def __init__(self, name, img, pages_read, font_size, geluid_zichtbaar, opnieuw_zichtbaar, prikkelarm, knopgr): 
@@ -437,7 +442,7 @@ class Ui(QtWidgets.QMainWindow):
         
         #huidig dummy kind
         self.huidig_kind = Child('Dummy', 'images/arjan.png', [], 13, 0, 0, 0, 0) #wordt bepaald in een functie aan de hand van welk kind er geklikt is.
-
+        
         #[m,c]=[0,1]
         #beginview: kinderen
         #self.child = self.findChild(QtWidgets.QPushButton, 'Tim_old')
@@ -1034,7 +1039,7 @@ class Ui(QtWidgets.QMainWindow):
         #self.thread2.start()
         print('thread started')
     def play_sound(self):
-        self.thread3.pagenr=self.page_nr
+        #self.thread3.pagenr=self.page_nr
         self.thread3.start()
 
     def turn_page_next(self):        
