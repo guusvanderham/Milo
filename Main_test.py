@@ -217,12 +217,16 @@ class Thread2(QThread):
                  "geit": "Sounds\geit.wav",
                  "vogel": "Sounds\vogel.wav", 
                  "kip": "Sounds\kip.wav",
-                 "haan": "Sounds\haan.wav"}
+                 "haan": "Sounds\haan.wav",
+                 "paard": "Sounds\hond.wav",
+                 "ezel": "Sounds\kuiken.wav"}
     pagedict = {"varken" : 10,
                 "kuiken" : 12,
                 "koe" : 2,
                 "schaap" : 18,
-                "hond" : 6}
+                "hond" : 6,
+                "paard" : 6,
+                "ezel" : 12}
     def load_model_please(self,package):
         self.model = package[1]
         self.model_fn = package[2]
