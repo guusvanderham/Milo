@@ -68,8 +68,8 @@ def load_page(self, pagenr,playnathalie=True):
     self.huidig_kind.pages_read.append(int(pagenr/2)+1)
     self.thread.kill()
     #self.thread2.kill()
-    
-    self.thread3.kill()
+    if playnathalie:
+        self.thread3.kill()
     self.thread3.pagenr=pagenr
     time.sleep(0.1)
     if pagenr % 2 == 0 or self.page_nr == 1:
@@ -210,16 +210,16 @@ class Thread2(QThread):
     #blijft draaien zolang dit waar is
     running=True
     sounddict = {"varken" : "Sounds\\varken.wav",
-                 "kuiken" : "Sounds\kuiken.wav",
-                 "koe" : "Sounds\koe.wav",
-                 "schaap" :"Sounds\schaap.wav",
-                 "hond":"Sounds\hond.wav",
-                 "geit": "Sounds\geit.wav",
-                 "vogel": "Sounds\vogel.wav", 
-                 "kip": "Sounds\kip.wav",
-                 "haan": "Sounds\haan.wav",
-                 "paard": "Sounds\hond.wav",
-                 "ezel": "Sounds\kuiken.wav"}
+                 "kuiken" : "Sounds\\kuiken.wav",
+                 "koe" : "Sounds\\koe.wav",
+                 "schaap" :"Sounds\\schaap.wav",
+                 "hond":"Sounds\\hond.wav",
+                 "geit": "Sounds\\geit.wav",
+                 "vogel": "Sounds\\vogel.wav", 
+                 "kip": "Sounds\\kip.wav",
+                 "haan": "Sounds\\haan.wav",
+                 "paard": "Sounds\\hond.wav",
+                 "ezel": "Sounds\\kuiken.wav"}
     pagedict = {"varken" : 10,
                 "kuiken" : 12,
                 "koe" : 2,
