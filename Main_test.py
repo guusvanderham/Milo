@@ -20,8 +20,10 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
-#[m,mf,c] = load_model()
-[m,mf,c] = ['dum', 'dummy','dumst']
+print('We gaan het programma laden, dit kan ongeveer 2 minuten duren. Sluit dit scherm niet af.')
+
+[m,mf,c] = load_model()
+#[m,mf,c] = ['dum', 'dummy','dumst']
 
 
 #%%
@@ -71,6 +73,7 @@ def load_page(self, pagenr,playnathalie=True):
     if playnathalie:
         self.thread3.kill()
         self.camplayer.setPixmap(QPixmap('images/empty.jpeg'))
+        print('empty cam')
     self.thread3.pagenr=pagenr
     time.sleep(0.1)
     if pagenr % 2 == 0 or self.page_nr == 1:
@@ -419,7 +422,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
         #laat eerst programma zien en laad dan pas het model
-        [m,mf,c] = load_model()
+        #[m,mf,c] = load_model()
         #kinderen
         self.dummy = Child('Tim', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
         self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
@@ -544,6 +547,7 @@ class Ui(QtWidgets.QMainWindow):
         self.boek = self.findChild(QtWidgets.QLabel, 'boek')
         self.boek.setPixmap(QPixmap('images/boek.PNG'))
         self.pagenrlabel = self.findChild(QtWidgets.QLabel, 'pagenr' )
+        self.pagenrlabel.setText('')
         self.page_caption = self.findChild(QtWidgets.QLabel, 'caption')
         
         self.nextpagebutton = self.findChild(QtWidgets.QPushButton, 'next_page')
@@ -1050,7 +1054,7 @@ class Ui(QtWidgets.QMainWindow):
                 self.terug_overzicht.setText("Terug naar pagina overzicht")
             else:
                 self.terug_overzicht.setText(" ")
-        self.pagenrlabel.setText(str(self.page_nr))
+        #self.pagenrlabel.setText(str(self.page_nr))
         if self.thread.running==True:
             self.thread.kill()
             time.sleep(0.1)
@@ -1067,7 +1071,7 @@ class Ui(QtWidgets.QMainWindow):
                     self.page_nr =1
             else:
                 self.page_nr-=1
-        self.pagenrlabel.setText(str(self.page_nr))
+        #self.pagenrlabel.setText(str(self.page_nr))
         if self.thread.running==True:
             self.thread.kill()
             time.sleep(0.1)
@@ -1128,7 +1132,7 @@ class Ui(QtWidgets.QMainWindow):
         self.instelling_grid.lower()
         self.instelling_widg.lower()
 
-        load_page(self, self.page_nr)
+        load_page(self, self.page_nr,playnathalie=False)
 
     def set_small_buttons(self):
         self.huidig_kind.knopgr = 0
@@ -1226,14 +1230,14 @@ class Ui(QtWidgets.QMainWindow):
 
     
     def font_medium(self):
-        self.huidig_kind.font_size = 17 
+        self.huidig_kind.font_size = 15 
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
 
         
     def font_large(self):
-        self.huidig_kind.font_size = 21
+        self.huidig_kind.font_size = 18
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
