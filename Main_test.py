@@ -1188,9 +1188,9 @@ class Ui(QtWidgets.QMainWindow):
             self.replay.setGeometry(1050,950,71,81)
             self.replay.raise_()
 
-            self.geluid_img.setGeometry(470,30,181,151)
+            self.geluid_img.setGeometry(470,50,181,161)
             self.geluid_img.setPixmap(QPixmap('images/sizes/music_s.png'))
-            self.geluid.setGeometry(470,30,151,121)
+            self.geluid.setGeometry(480,60,151,131)
 
             
         elif self.huidig_kind.knopgr ==1:
@@ -1211,9 +1211,9 @@ class Ui(QtWidgets.QMainWindow):
             self.replay.setGeometry(1050,950,81,91)
             self.replay.raise_()
 
-            self.geluid_img.setGeometry(470,30,181,151)
+            self.geluid_img.setGeometry(470,50,181,161)
             self.geluid_img.setPixmap(QPixmap('images/sizes/music_m.png'))
-            self.geluid.setGeometry(470,30,151,121)
+            self.geluid.setGeometry(480,60,151,131)
         else:
             print("de knoppen zijn nu groot")
             self.previouspagebutton_img.setGeometry(510,910,171,161)
