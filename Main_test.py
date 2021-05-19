@@ -364,6 +364,7 @@ class Ui(QtWidgets.QMainWindow):
     @pyqtSlot(int)
     def set_page_choice(self, pagechoice):
         load_page(self, pagechoice, playnathalie=False)
+        self.page_caption.setFont(QFont('Segoe UI', self.huidig_kind.font_size, italic=False))
     @pyqtSlot()
     def activate_replay_button(self):
         if self.huidig_kind.knopgr ==0:
