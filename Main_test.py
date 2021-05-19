@@ -125,15 +125,15 @@ def load_page(self, pagenr,playnathalie=True):
         self.geluid.show()
         self.geluid.setEnabled(True)
         if pagenr == 2 or pagenr ==3:
-            self.geluid_img.setPixmap(QPixmap('images/koe.png'))
+            self.geluid_img.setPixmap(QPixmap('images/koe_knop.png'))
         elif pagenr == 6 or pagenr ==7:
-            self.geluid_img.setPixmap(QPixmap('images/hond.png'))
+            self.geluid_img.setPixmap(QPixmap('images/hond_knop.png'))
         elif pagenr == 10 or pagenr ==11:
-            self.geluid_img.setPixmap(QPixmap('images/varken.png'))
+            self.geluid_img.setPixmap(QPixmap('images/varken_knop.png'))
         elif pagenr == 12 or pagenr ==13:
-            self.geluid_img.setPixmap(QPixmap('images/kuiken.png'))
+            self.geluid_img.setPixmap(QPixmap('images/kuiken_knop.png'))
         elif pagenr == 18 or pagenr ==19:
-            self.geluid_img.setPixmap(QPixmap('images/schaap.png'))
+            self.geluid_img.setPixmap(QPixmap('images/schaap_knop.png'))
         else:
             if self.huidig_kind.knopgr ==0:
                 self.geluid_img.setPixmap(QPixmap('images/sizes/music_s.png'))
@@ -485,6 +485,23 @@ class Ui(QtWidgets.QMainWindow):
         self.book1.clicked.connect(self.set_page_window) 
         self.boek1_cover = self.findChild(QtWidgets.QLabel, 'boek_cover')
         self.boek1_cover.setPixmap(QPixmap('images/boek_cover.png'))
+
+        #self.boek2 = self.findChild(QtWidgets.QPushButton, 'book2')
+        #self.boek2.clicked.connect(self.set_page_window) #page window voor eventueel ander boek 
+        self.boek2_cover = self.findChild(QtWidgets.QLabel, 'boek_cover_2')
+        self.boek2_cover.setPixmap(QPixmap('images/boek_cover_2.png'))
+        self.boek2_cover.setGeometry(630,240,651,631)
+        self.titel_2 = self.findChild(QtWidgets.QLabel, 'titel_2')
+        self.titel_2.setGeometry(630,210,451,101)
+
+        #self.book1 = self.findChild(QtWidgets.QPushButton, 'book1')
+        #self.book1.clicked.connect(self.set_page_window) #page window voor eventueel ander boek
+        self.boek3_cover = self.findChild(QtWidgets.QLabel, 'boek_cover_3')
+        self.boek3_cover.setPixmap(QPixmap('images/boek_cover_3.png'))
+        self.boek3_cover.setGeometry(1130,240,651,631)
+        self.titel_3 = self.findChild(QtWidgets.QLabel, 'titel_3')
+        self.titel_3.setGeometry(1130,210,451,101)
+    
         self.boeken_titel = self.findChild(QtWidgets.QLabel, 'boeken_titel')
         #self.boeken_titel.setFont(QFont(bold=True))
         
@@ -1282,5 +1299,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 
