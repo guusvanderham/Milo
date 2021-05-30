@@ -7,6 +7,7 @@ from PyQt5.QtGui import QImage, QPixmap, QFont
 import cv2
 import threading
 import winsound
+import pandas as pd
 import pickle
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
@@ -99,7 +100,6 @@ def load_page(self, pagenr,playnathalie=True):
         
     if np.isin(self.page_nr, [1,3,5,7,9,11,13,15,17,19,21]) and playnathalie:   
         #playsound("Sounds\\pagina1.mp3")
-        print('hoi1')
         self.thread3.pagenr=self.page_nr+100
         
         self.thread3.start()
@@ -365,6 +365,7 @@ class Ui(QtWidgets.QMainWindow):
     def set_page_choice(self, pagechoice):
         load_page(self, pagechoice, playnathalie=False)
         self.page_caption.setFont(QFont('Segoe UI', self.huidig_kind.font_size, italic=False))
+        self.log.append(str(self.starttime-time.time())+"keuze="+str(pagechoice))
     @pyqtSlot()
     def activate_replay_button(self):
         if self.huidig_kind.knopgr ==0:
@@ -392,10 +393,15 @@ class Ui(QtWidgets.QMainWindow):
             Nathalie.terminate()
         except:
             print('')
+        
         #sla settings van kind op -> in vervolg -> open kinderen met settings
         print("Closing")
         print("Je mag dit scherm nu afsluiten.")
-
+        self.log.append(str(self.starttime-time.time())+"closing")
+        print(np.array(self.log))
+        totallog = np.array(self.log)
+        np.savetxt('test.txt', np.array(self.log), delimiter=',', fmt="%s")
+        pd.DataFrame(np.array(self.log)).to_csv("file.csv")
         with open('data_kinderen.pkl', 'wb') as output:
             pickle.dump(self.dummy, output, pickle.HIGHEST_PROTOCOL)
             pickle.dump(self.dummy2, output, pickle.HIGHEST_PROTOCOL)
@@ -411,6 +417,10 @@ class Ui(QtWidgets.QMainWindow):
 
         super(Ui, self).__init__()
         #global variables
+        self.starttime=time.time()
+        self.log=[]
+        self.log.append(str(self.starttime-time.time())+"startup")
+        print(str(self.starttime-time.time())+"startup")
         self.page_nr=0
         self.page_order = np.array([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])
         self.geluidknop=True
@@ -815,6 +825,7 @@ class Ui(QtWidgets.QMainWindow):
             self.set_medium_buttons()
         else:
             self.set_large_buttons()
+        self.log.append(str(self.starttime-time.time())+"kind1")
 
 
     def set_child2(self):
@@ -839,6 +850,7 @@ class Ui(QtWidgets.QMainWindow):
             self.set_medium_buttons()
         else:
             self.set_large_buttons()    
+        self.log.append(str(self.starttime-time.time())+"kind2")
 
     def set_child3(self):
         self.huidig_kind = self.dummy3
@@ -863,6 +875,7 @@ class Ui(QtWidgets.QMainWindow):
             self.set_medium_buttons()
         else:
             self.set_large_buttons()
+        self.log.append(str(self.starttime-time.time())+"kind3")
 
     def set_child4(self):
         self.huidig_kind = self.dummy4
@@ -887,6 +900,7 @@ class Ui(QtWidgets.QMainWindow):
             self.set_medium_buttons()
         else:
             self.set_large_buttons()
+        self.log.append(str(self.starttime-time.time())+"kind4")
 
     def set_child5(self):
         self.huidig_kind = self.dummy5
@@ -911,6 +925,7 @@ class Ui(QtWidgets.QMainWindow):
             self.set_medium_buttons()
         else:
             self.set_large_buttons()
+        self.log.append(str(self.starttime-time.time())+"kind5")
 
     def set_child6(self):
         self.huidig_kind = self.dummy6
@@ -935,6 +950,7 @@ class Ui(QtWidgets.QMainWindow):
             self.set_medium_buttons()
         else:
             self.set_large_buttons()
+        self.log.append(str(self.starttime-time.time())+"kind6")
 
     def set_child7(self):
         self.huidig_kind = self.dummy7
@@ -959,54 +975,67 @@ class Ui(QtWidgets.QMainWindow):
             self.set_medium_buttons()
         else:
             self.set_large_buttons()
+        self.log.append(str(self.starttime-time.time())+"kind7")
             
 
     #verander de window
     def set_pageview_window(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view"+str(self.page_nr))
         load_page(self, self.page_nr)
     def set_pageview_window1(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view1")
         self.page_nr = 1
         load_page(self, 1)
     def set_pageview_window2(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view2")
         self.page_nr = 2
         load_page(self, 2)
     def set_pageview_window3(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view4")
         self.page_nr = 4
         load_page(self, 4)
     def set_pageview_window4(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view6")
         self.page_nr = 6
         load_page(self, 6)
     def set_pageview_window5(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view8")
         self.page_nr = 8
         load_page(self, 8)
     def set_pageview_window6(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view10")
         self.page_nr = 10
         load_page(self, 10)
     def set_pageview_window7(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view12")
         self.page_nr = 12
         load_page(self, 12)
     def set_pageview_window8(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view14")
         self.page_nr = 14
         load_page(self, 14)
     def set_pageview_window9(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view16")
         self.page_nr = 16
         load_page(self, 16)
     def set_pageview_window10(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view18")
         self.page_nr = 18
         load_page(self, 18)
     def set_pageview_window11(self):
         print('changed window to page view')  
+        self.log.append(str(self.starttime-time.time())+"changed window to page view20")
         self.page_nr = 20
         load_page(self, 20)
     
@@ -1017,6 +1046,7 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedWidget.setCurrentIndex(0)
         self.foldin_menu()
         print('changed window to children')
+        self.log.append(str(self.starttime-time.time())+"changed window to children")
     def set_instellingen_window(self):
         self.stackedwidget.setCurrentIndex(1)
         self.foldin_menu()
@@ -1027,6 +1057,7 @@ class Ui(QtWidgets.QMainWindow):
         self.img_kid.setPixmap(QPixmap(self.huidig_kind.img))
         self.apply_checked()
         print('changed window to pages')  
+        self.log.append(str(self.starttime-time.time())+"changed window to pages")
 
     def apply_checked(self):
         #print(self.huidig_kind.pages_read)
@@ -1037,7 +1068,9 @@ class Ui(QtWidgets.QMainWindow):
         self.stackedWidget.setCurrentIndex(4)
         self.foldin_menu()
         print('changed window to bookview')  
+        self.log.append(str(self.starttime-time.time())+"changed window to bookview")
     def replay_animation(self):
+        self.log.append(str(self.starttime-time.time())+"replay animation")
         if self.thread.running == True:
             #self.thread.kill()
             #time.sleep(0.1)
@@ -1064,12 +1097,15 @@ class Ui(QtWidgets.QMainWindow):
     def play_sound(self):
         #self.thread3.pagenr=self.page_nr
         self.thread3.start()
+        self.log.append(str(self.starttime-time.time())+"play sound")
 
-    def turn_page_next(self):        
+    def turn_page_next(self):       
+        
         if(self.page_nr<22):
             self.page_nr+=1
             if self.page_nr==21:
                 self.terug_overzicht.setText("Terug naar pagina overzicht")
+                self.log.append(str(self.starttime-time.time())+"terug naar pagina overzicht")
             else:
                 self.terug_overzicht.setText(" ")
         self.pagenrlabel.setText(str(self.page_nr))
@@ -1081,7 +1117,9 @@ class Ui(QtWidgets.QMainWindow):
         else:
             load_page(self, self.page_order[self.page_nr-1])
             print('page set to: ' + str(self.page_nr))
+        self.log.append(str(self.starttime-time.time())+"turn next"+str(self.page_nr))
     def turn_page_previous(self):
+        
         if(self.page_nr>1):
             if self.page_nr % 2 == 0 :
                 self.page_nr-=2
@@ -1095,9 +1133,10 @@ class Ui(QtWidgets.QMainWindow):
             time.sleep(0.1)
         load_page(self, self.page_order[self.page_nr-1])
         print('page set to: ' + str(self.page_nr))
-        
+        self.log.append(str(self.starttime-time.time())+"turn previous"+str(self.page_nr))
     def foldout_menu(self):
         print("menu expanded")
+        self.log.append(str(self.starttime-time.time())+"menu expanded")
         #self.thread3.start() #HAHA I found the quack
         #verander hamburgerknop in uitgeklapt menu
         self.hamburger_uit_img.setPixmap(QPixmap('images/allessamen.PNG'))
@@ -1115,6 +1154,7 @@ class Ui(QtWidgets.QMainWindow):
         self.naar_paginas.setText('Pagina Overzicht')
     def foldin_menu(self):
         print("menu ingeklapt")
+        self.log.append(str(self.starttime-time.time())+"menu ingeklapt")
         #verander terug in menuknop
         self.hamburger_uit_img.setPixmap(QPixmap('images/empty.JPEG'))
         self.hamburger_img.setPixmap(QPixmap('images/menuknop.PNG'))
@@ -1131,6 +1171,7 @@ class Ui(QtWidgets.QMainWindow):
         self.naar_paginas.setText(' ')
     def instellingen_menu(self):
         print("dit zijn de instellingen")
+        self.log.append(str(self.starttime-time.time())+"open instellingen")
         self.instellingen_open.raise_()
         self.instellingen_open.setPixmap(QPixmap('images/instelling_backblack.PNG'))
         self.instellingen_close.raise_()
@@ -1141,8 +1182,10 @@ class Ui(QtWidgets.QMainWindow):
     
     def capture_choice(self):
         print('capturing choice')
+        self.log.append(str(self.starttime-time.time())+"keuze vastleggen")
         self.thread2.start()
     def close_instellingen(self):
+        self.log.append(str(self.starttime-time.time())+"instellingen afsluiten")
         self.instellingen_open.lower()
         self.instellingen_open.setPixmap(QPixmap('images/empty.JPEG'))
         self.instellingen_close.lower()
@@ -1150,21 +1193,24 @@ class Ui(QtWidgets.QMainWindow):
         self.instelling_grid.lower()
         self.instelling_widg.lower()
 
-        load_page(self, self.page_nr)
+        load_page(self, self.page_nr,playnathalie=False)
 
     def set_small_buttons(self):
+        self.log.append(str(self.starttime-time.time())+"kleine knop")
         self.huidig_kind.knopgr = 0
         self.knopsmall_img.setPixmap(QPixmap('images/small.png'))
         self.knopmedium_img.setPixmap(QPixmap('images/medium_unactive.png'))
         self.knoplarge_img.setPixmap(QPixmap('images/large_unactive.png'))
         self.change_buttons()
     def set_medium_buttons(self):
+        self.log.append(str(self.starttime-time.time())+"medium knop")
         self.huidig_kind.knopgr = 1
         self.knopsmall_img.setPixmap(QPixmap('images/small_unactive.png'))
         self.knopmedium_img.setPixmap(QPixmap('images/medium.png'))
         self.knoplarge_img.setPixmap(QPixmap('images/large_unactive.png'))
         self.change_buttons()
     def set_large_buttons(self):
+        self.log.append(str(self.starttime-time.time())+"grote knop")
         self.huidig_kind.knopgr = 2
         self.knopsmall_img.setPixmap(QPixmap('images/small_unactive.png'))
         self.knopmedium_img.setPixmap(QPixmap('images/medium_unactive.png'))
@@ -1241,6 +1287,7 @@ class Ui(QtWidgets.QMainWindow):
 
     
     def font_small(self):
+        self.log.append(str(self.starttime-time.time())+"tekst small")
         self.huidig_kind.font_size = 13
         self.letters_klein.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
@@ -1248,6 +1295,7 @@ class Ui(QtWidgets.QMainWindow):
 
     
     def font_medium(self):
+        self.log.append(str(self.starttime-time.time())+"tekst medium")
         self.huidig_kind.font_size = 17 
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
@@ -1255,6 +1303,7 @@ class Ui(QtWidgets.QMainWindow):
 
         
     def font_large(self):
+        self.log.append(str(self.starttime-time.time())+"tekst large")
         self.huidig_kind.font_size = 21
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
@@ -1263,12 +1312,14 @@ class Ui(QtWidgets.QMainWindow):
     def geluid_aan_uit(self):
         self.huidig_kind.geluid_zichtbaar += 1
         if (self.huidig_kind.geluid_zichtbaar%2) == 1:
+            self.log.append(str(self.starttime-time.time())+"geluid uit")
             self.instelling_geluid.setPixmap(QPixmap('images/music_unactive.png'))
             self.geluid_img.setPixmap(QPixmap('images/empty.JPEG'))
             self.geluid.setEnabled(False)
             self.geluidknop=False
             
         else:
+            self.log.append(str(self.starttime-time.time())+"geluid aan")
             self.instelling_geluid.setPixmap(QPixmap('images/music.png'))
             self.change_buttons()
             self.geluid.setEnabled(True)
@@ -1278,11 +1329,13 @@ class Ui(QtWidgets.QMainWindow):
     def opnieuw_aan_uit(self):
         self.huidig_kind.opnieuw_zichtbaar += 1
         if (self.huidig_kind.opnieuw_zichtbaar%2) ==1:
+            self.log.append(str(self.starttime-time.time())+"repeat uit")
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_unactive.png'))
             self.replay_img.setPixmap(QPixmap('images/empty.JPEG'))
             self.replay.setEnabled(False)
             self.opnieuwknop = False
         else: 
+            self.log.append(str(self.starttime-time.time())+"repeat aan")
             self.instelling_opnieuw.setPixmap(QPixmap('images/repeat_instelling.png'))
             self.change_buttons()
             self.replay.setEnabled(True)
@@ -1290,10 +1343,12 @@ class Ui(QtWidgets.QMainWindow):
     def aanuit_prikkelarm(self): #deze functie kan ook de "doorklikmogelijkheid" worden, of misschien iets van automatisch voorlezen?
         self.huidig_kind.prikkelarm += 1
         if (self.huidig_kind.prikkelarm%2) ==1:
+            self.log.append(str(self.starttime-time.time())+"doorbladeren uit")
             self.aanuit_img.setPixmap(QPixmap('images/switch_off.png'))
             #er moet iets gebeuren dat het prikkelarm wordt (of andere dingen die gebeuren)
             self.doorklikken = False
         else:
+            self.log.append(str(self.starttime-time.time())+"doorbladeren aan")
             self.aanuit_img.setPixmap(QPixmap('images/switch_on.png'))
             self.doorklikken = True
         
@@ -1302,5 +1357,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    #sys.exit()
-    sys.exit(app.exec_()) 
+    sys.exit()
+    #sys.exit(app.exec_()) 
