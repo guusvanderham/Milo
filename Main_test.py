@@ -398,10 +398,11 @@ class Ui(QtWidgets.QMainWindow):
         print("Closing")
         print("Je mag dit scherm nu afsluiten.")
         self.log.append(str(self.starttime-time.time())+"closing")
-        print(np.array(self.log))
+        #print(np.array(self.log))
         totallog = np.array(self.log)
-        np.savetxt('test.txt', np.array(self.log), delimiter=',', fmt="%s")
-        pd.DataFrame(np.array(self.log)).to_csv("file.csv")
+        print(str(self.huidig_kind.name)+str(time.time())+'.txt')
+        np.savetxt(str(self.huidig_kind.name)+str(time.time())+'.txt', np.array(self.log), delimiter=',', fmt="%s")
+        
         with open('data_kinderen.pkl', 'wb') as output:
             pickle.dump(self.dummy, output, pickle.HIGHEST_PROTOCOL)
             pickle.dump(self.dummy2, output, pickle.HIGHEST_PROTOCOL)
