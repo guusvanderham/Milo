@@ -1057,6 +1057,8 @@ class Ui(QtWidgets.QMainWindow):
             self.nextpagebutton.setEnabled(False)
             self.nextpagebutton_img.hide()
         self.thread.start()
+        if self.page_nr % 2 == 1: #and not self.page_nr == 1:
+            load_page(self, self.page_nr)
         #self.thread2.start()
         print('thread started')
     def play_sound(self):

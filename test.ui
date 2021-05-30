@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -2106,6 +2106,44 @@ color: white
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Milo en Lana naar het circus&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="niet_beschikbaar">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>590</y>
+        <width>291</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Niet beschikbaar</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="niet_beschikbaar_2">
+      <property name="geometry">
+       <rect>
+        <x>1240</x>
+        <y>590</y>
+        <width>291</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Niet beschikbaar</string>
+      </property>
+     </widget>
      <zorder>logo_2</zorder>
      <zorder>boek_cover</zorder>
      <zorder>titel_1</zorder>
@@ -2115,6 +2153,8 @@ color: white
      <zorder>boek_cover_3</zorder>
      <zorder>titel_2</zorder>
      <zorder>titel_3</zorder>
+     <zorder>niet_beschikbaar</zorder>
+     <zorder>niet_beschikbaar_2</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="background">
