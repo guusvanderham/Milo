@@ -7,7 +7,6 @@ from PyQt5.QtGui import QImage, QPixmap, QFont
 import cv2
 import threading
 import winsound
-import pandas as pd
 import pickle
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
