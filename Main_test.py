@@ -312,17 +312,17 @@ class Thread3(QThread):
              17: "Sounds\\kip.wav",
              4: "Sounds\\haan.wav",
              5: "Sounds\\haan.wav",
-             101: "Sounds\\pagina1.wav",
-             103: "Sounds\\pagina2.wav",
-             105: "Sounds\\pagina3.wav",
-             107: "Sounds\\pagina4.wav",
-             109: "Sounds\\pagina5.wav",
-             111: "Sounds\\pagina6.wav",
-             113: "Sounds\\pagina7.wav",
-             115: "Sounds\\pagina8.wav",
-             117: "Sounds\\pagina9.wav",
-             119: "Sounds\\pagina10.wav",
-             121: "Sounds\\pagina11.wav"}
+             101: "Sounds\\Nathalie\\pagina1.wav",
+             103: "Sounds\\Nathalie\\pagina2.wav",
+             105: "Sounds\\Nathalie\\pagina3.wav",
+             107: "Sounds\\Nathalie\\pagina4.wav",
+             109: "Sounds\\Nathalie\\pagina5.wav",
+             111: "Sounds\\Nathalie\\pagina6.wav",
+             113: "Sounds\\Nathalie\\pagina7.wav",
+             115: "Sounds\\Nathalie\\pagina8.wav",
+             117: "Sounds\\Nathalie\\pagina9.wav",
+             119: "Sounds\\Nathalie\\pagina10.wav",
+             121: "Sounds\\Nathalie\\pagina11.wav"}
     pagenr=0
     
     def run(self):
@@ -446,14 +446,14 @@ class Ui(QtWidgets.QMainWindow):
          #comment dit stuk weg als je weer from scratch wil beginnen
          #met alle instellingen gedelete
          
-        #with open('data_kinderen.pkl', 'rb') as input:
-         #   self.dummy = pickle.load(input)
-          #  self.dummy2 = pickle.load(input)
-           # self.dummy3 = pickle.load(input)
-            #self.dummy4 = pickle.load(input)
-            #self.dummy5 = pickle.load(input)
-            #self.dummy6 = pickle.load(input)
-            #self.dummy7 = pickle.load(input)
+        with open('data_kinderen.pkl', 'rb') as input:
+            self.dummy = pickle.load(input)
+            self.dummy2 = pickle.load(input)
+            self.dummy3 = pickle.load(input)
+            self.dummy4 = pickle.load(input)
+            self.dummy5 = pickle.load(input)
+            self.dummy6 = pickle.load(input)
+            self.dummy7 = pickle.load(input)
         
         
         #huidig dummy kind
