@@ -402,7 +402,7 @@ class Ui(QtWidgets.QMainWindow):
         #print(np.array(self.log))
         totallog = np.array(self.log)
         print(str(self.huidig_kind.name)+str(time.time())+'.txt')
-        np.savetxt(str(self.huidig_kind.name)+str(time.time())+'.txt', np.array(self.log), delimiter=',', fmt="%s")
+        np.savetxt('C:/Users/Laptop CA/Desktop/Log bestanden Milo app/'+str(self.huidig_kind.name)+str(time.time())+'.txt', np.array(self.log), delimiter=',', fmt="%s")
         
         with open('data_kinderen.pkl', 'wb') as output:
             pickle.dump(self.dummy, output, pickle.HIGHEST_PROTOCOL)
