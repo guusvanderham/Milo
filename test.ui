@@ -33,7 +33,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Children">
      <widget class="QPushButton" name="kind2">
@@ -1623,9 +1623,9 @@ color: white
       <property name="geometry">
        <rect>
         <x>530</x>
-        <y>750</y>
+        <y>727</y>
         <width>1141</width>
-        <height>111</height>
+        <height>150</height>
        </rect>
       </property>
       <property name="font">
