@@ -433,24 +433,25 @@ class Ui(QtWidgets.QMainWindow):
         #laat eerst programma zien en laad dan pas het model
         #[m,mf,c] = load_model()
         #kinderen
-        self.dummy = Child('Tim', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
-        self.dummy2 = Child('Lieke', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
-        self.dummy3 = Child('Jorik','images/sdier3.png', [], 13, 0, 0, 0, 0)
-        self.dummy4 = Child('Noraja','images/sdier4.png', [], 13, 0, 0, 0, 0)
+        self.dummy = Child('Fem', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
+        self.dummy2 = Child('Damian', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
+        self.dummy3 = Child('June','images/sdier3.png', [], 13, 0, 0, 0, 0)
+        self.dummy4 = Child('Lino','images/sdier4.png', [], 13, 0, 0, 0, 0)
         self.dummy5 = Child('Sophie','images/sdier7.png', [], 13, 0, 0, 0, 0)
         self.dummy6 = Child('Arjan','images/sdier6.png', [], 13, 0, 0, 0, 0)
         self.dummy7 = Child('Anne','images/sdier5.png', [], 13, 0, 0, 0, 0)
         
          #comment dit stuk weg als je weer from scratch wil beginnen
          #met alle instellingen gedelete
-        with open('data_kinderen.pkl', 'rb') as input:
-            self.dummy = pickle.load(input)
-            self.dummy2 = pickle.load(input)
-            self.dummy3 = pickle.load(input)
-            self.dummy4 = pickle.load(input)
-            self.dummy5 = pickle.load(input)
-            self.dummy6 = pickle.load(input)
-            self.dummy7 = pickle.load(input)
+         
+        #with open('data_kinderen.pkl', 'rb') as input:
+         #   self.dummy = pickle.load(input)
+          #  self.dummy2 = pickle.load(input)
+           # self.dummy3 = pickle.load(input)
+            #self.dummy4 = pickle.load(input)
+            #self.dummy5 = pickle.load(input)
+            #self.dummy6 = pickle.load(input)
+            #self.dummy7 = pickle.load(input)
         
         
         #huidig dummy kind
