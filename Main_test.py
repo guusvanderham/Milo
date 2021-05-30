@@ -446,14 +446,14 @@ class Ui(QtWidgets.QMainWindow):
          #comment dit stuk weg als je weer from scratch wil beginnen
          #met alle instellingen gedelete
          
-        #with open('data_kinderen.pkl', 'rb') as input:
-         #   self.dummy = pickle.load(input)
-          #  self.dummy2 = pickle.load(input)
-           # self.dummy3 = pickle.load(input)
-            #self.dummy4 = pickle.load(input)
-            #self.dummy5 = pickle.load(input)
-            #self.dummy6 = pickle.load(input)
-            #self.dummy7 = pickle.load(input)
+        with open('data_kinderen.pkl', 'rb') as input:
+            self.dummy = pickle.load(input)
+            self.dummy2 = pickle.load(input)
+            self.dummy3 = pickle.load(input)
+            self.dummy4 = pickle.load(input)
+            self.dummy5 = pickle.load(input)
+            self.dummy6 = pickle.load(input)
+            self.dummy7 = pickle.load(input)
         
         
         #huidig dummy kind
