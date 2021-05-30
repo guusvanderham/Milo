@@ -21,6 +21,7 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
+print('We gaan het programma laden, dit kan ongeveer 2 minuten duren. Sluit dit scherm niet af.')
 [m,mf,c] = load_model()
 #[m,mf,c] = ['dum', 'dummy','dumst']
 
