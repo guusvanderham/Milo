@@ -21,32 +21,32 @@ import time
 import sys
 sys.path.insert(1, 'Detection')
 from inference import *
-#[m,mf,c] = load_model()
-[m,mf,c] = ['dum', 'dummy','dumst']
+[m,mf,c] = load_model()
+#[m,mf,c] = ['dum', 'dummy','dumst']
 
 
 #%%
 def set_caption(self, pagenr):
     captions = ['Hallo! Vandaag lezen we \'Kijk eens wat een kleintje!\'',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Het kleine kalfje en moeder koe. Lopen samen naar de boerderij toe.',
-        'Milo: Wat een schattig kalfje. Welk dier zou je nu willen zien? Laat eens zien aan mij.',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komt daar voorbij? \n Daar loopt de haan, wat hoor ik nu? De haan roept heel hard: kukeleku!',
+        'Milo: Wat een schattig kalfje. Welk dier zou je nu willen zien? \n Laat eens zien aan mij.',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komt daar voorbij? \n Daar loopt de haan, wat hoor ik nu? \n De haan roept heel hard: kukeleku!',
         'Milo: Wat vind jij het leukste dierengeluid?',
         'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De hond, die blaft hard voor zijn hok En ...miauw! De poes: die schrok!',
         'Milo: Oh! Ik schrok ook! Ben jij wel eens geschrokken van een dier? \n Hoe was dat?',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar vliegt de vogel, in de lucht heel snel. En de boer op de grond, die zet hem wel!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar vliegt de vogel, in de lucht heel snel. \n En de boer op de grond, die zet hem wel!',
         'Milo: Wauw, wat heeft die vogel mooie vleugels! \n Weet jij of er nog meer dieren zijn die vleugels hebben?',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Moeder varken en de kleine biggen. Gaan achter het hek in de modder liggen.',
-        'Een lekker modderbadje daar heb ik ook wel zin in. \n Welk dier wil je nu zien? Laat eens zien aan mij?',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Een kuiken dat piept, hij zwemt in het water. En mama eend? Die komt wat later.',
-        'Milo: Spitter spetter spater, ik hou van water. \n Welk dier wil je nu zien? Laat eens zien aan mij?',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De geit, die heeft allemaal gras in zijn bek. En konijn in haar hol? Die vindt het maar gek!',
-        'Milo: Konijntjes zijn super zacht! Heb jij al wel eens een dier geaaid? Hoe voelde dat?',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De kip die zoekt in de tuin wat te eten. Maar het ei in haar nest is ze niet vergeten!',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Moeder varken en de kleine biggen. \n Gaan achter het hek in de modder liggen.',
+        'Een lekker modderbadje daar heb ik ook wel zin in. \n Welk dier wil je nu zien? \n Laat eens zien aan mij?',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Een kuiken dat piept, hij zwemt in het water. \n En mama eend? Die komt wat later.',
+        'Milo: Spitter spetter spater, ik hou van water. \n Welk dier wil je nu zien? \n Laat eens zien aan mij?',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De geit, die heeft allemaal gras in zijn bek. \n En konijn in haar hol? Die vindt het maar gek!',
+        'Milo: Konijntjes zijn super zacht! \n Heb jij al wel eens een dier geaaid? Hoe voelde dat?',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n De kip die zoekt in de tuin wat te eten. \n Maar het ei in haar nest is ze niet vergeten!',
         'Milo: Wat een goeie mama is die kip. Kijk ik ben ook een kip! \n Pok pok pok! Hahaha! Welk dier wil je nu zien? \n Laat maar zien aan mij!',
-        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar is het lammetje, met zijn kopje zo zacht. En daar mama schaap, die lief op hem wacht.',
+        'Milo en Lana lopen langs de wei. Kijk eens even, wie komen daar voorbij? \n Daar is het lammetje, met zijn kopje zo zacht. \n En daar mama schaap, die lief op hem wacht.',
         'Milo: Welk dier vind jij zacht?',
-        'Zie Milo en Lana eens vrolijk zwaaien! Ze mogen van de boer alle dieren aaien. \n Wat een fijne lente-dag was dat, Met al die grote en kleine dieren op pad!',
+        'Zie Milo en Lana eens vrolijk zwaaien! Ze mogen van de boer \n  alle dieren aaien. Wat een fijne lente-dag was dat, \n Met al die grote en kleine dieren op pad!',
         'Milo: Wat een leuk verhaal was dat! Welk dier vond jij het leukst? ',
         'Hallo'
         ]
@@ -1305,7 +1305,7 @@ class Ui(QtWidgets.QMainWindow):
         
     def font_large(self):
         self.log.append(str(self.starttime-time.time())+"tekst large")
-        self.huidig_kind.font_size = 21
+        self.huidig_kind.font_size = 19
         self.letters_klein.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_medium.setStyleSheet("QPushButton{color:grey;text-decoration:none;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
         self.letters_groot.setStyleSheet("QPushButton{color:orange;text-decoration:underline;border-top:3px transparent;border-bottom: 3px transparent;border-right: 10px transparent;border-left: 10px transparent;}")
@@ -1358,5 +1358,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui(app)
     window.show()
-    sys.exit()
-    #sys.exit(app.exec_()) 
+    #sys.exit()
+    sys.exit(app.exec_()) 

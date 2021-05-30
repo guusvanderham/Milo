@@ -15,10 +15,10 @@ class Child:
         self.opnieuw_zichtbaar = opnieuw_zichtbaar 
         self.prikkelarm = prikkelarm
         self.knopgr = knopgr
-dummy = Child('Tim', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
-dummy2 = Child('Lieke', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
-dummy3 = Child('Jorik','images/sdier3.png', [], 13, 0, 0, 0, 0)
-dummy4 = Child('Noraja','images/sdier4.png', [], 13, 0, 0, 0, 0)
+dummy = Child('Damian', 'images/sdier1.png', [], 13, 0, 0, 0, 0)
+dummy2 = Child('Fem', 'images/sdier2.png', [], 13, 0, 0, 0, 0)
+dummy3 = Child('June','images/sdier3.png', [], 13, 0, 0, 0, 0)
+dummy4 = Child('Lino','images/sdier4.png', [], 13, 0, 0, 0, 0)
 dummy5 = Child('Sophie','images/sdier7.png', [], 13, 0, 0, 0, 0)
 dummy6 = Child('Arjan','images/sdier6.png', [], 13, 0, 0, 0, 0)
 dummy7 = Child('Anne','images/sdier5.png', [], 13, 0, 0, 0, 0)
