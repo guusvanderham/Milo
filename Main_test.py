@@ -7,7 +7,6 @@ from PyQt5.QtGui import QImage, QPixmap, QFont
 import cv2
 import threading
 import winsound
-import pandas as pd
 import pickle
 from PyQt5.QtWidgets import (
     QWidget, QApplication, QProgressBar, QMainWindow,
@@ -312,17 +311,17 @@ class Thread3(QThread):
              17: "Sounds\\kip.wav",
              4: "Sounds\\haan.wav",
              5: "Sounds\\haan.wav",
-             101: "Sounds\\pagina1.wav",
-             103: "Sounds\\pagina2.wav",
-             105: "Sounds\\pagina3.wav",
-             107: "Sounds\\pagina4.wav",
-             109: "Sounds\\pagina5.wav",
-             111: "Sounds\\pagina6.wav",
-             113: "Sounds\\pagina7.wav",
-             115: "Sounds\\pagina8.wav",
-             117: "Sounds\\pagina9.wav",
-             119: "Sounds\\pagina10.wav",
-             121: "Sounds\\pagina11.wav"}
+             101: "Sounds\\Nathalie\\pagina1.wav",
+             103: "Sounds\\Nathalie\\pagina2.wav",
+             105: "Sounds\\Nathalie\\pagina3.wav",
+             107: "Sounds\\Nathalie\\pagina4.wav",
+             109: "Sounds\\Nathalie\\pagina5.wav",
+             111: "Sounds\\Nathalie\\pagina6.wav",
+             113: "Sounds\\Nathalie\\pagina7.wav",
+             115: "Sounds\\Nathalie\\pagina8.wav",
+             117: "Sounds\\Nathalie\\pagina9.wav",
+             119: "Sounds\\Nathalie\\pagina10.wav",
+             121: "Sounds\\Nathalie\\pagina11.wav"}
     pagenr=0
     
     def run(self):
@@ -402,7 +401,7 @@ class Ui(QtWidgets.QMainWindow):
         #print(np.array(self.log))
         totallog = np.array(self.log)
         print(str(self.huidig_kind.name)+str(time.time())+'.txt')
-        np.savetxt(str(self.huidig_kind.name)+str(time.time())+'.txt', np.array(self.log), delimiter=',', fmt="%s")
+        np.savetxt('C:/Users/Laptop CA/Desktop/Log bestanden Milo app/'+str(self.huidig_kind.name)+str(time.time())+'.txt', np.array(self.log), delimiter=',', fmt="%s")
         
         with open('data_kinderen.pkl', 'wb') as output:
             pickle.dump(self.dummy, output, pickle.HIGHEST_PROTOCOL)
